@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate Android Passkeys"
+  short_description: "Trace and test Android browser passkey behavior"
+  default_prompt: "Use $investigate-android-passkeys to investigate a passkey behavior in AOSP, Chromium, or a custom Android browser."

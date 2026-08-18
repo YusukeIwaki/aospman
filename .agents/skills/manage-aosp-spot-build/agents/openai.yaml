@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage AOSP Spot Builds"
+  short_description: "Create, use, and clean up GCP Spot build VMs"
+  default_prompt: "Use $manage-aosp-spot-build to run an AOSP or Chromium build on a cost-safe ephemeral Spot VM."
