@@ -1,0 +1,18 @@
+<% @title = "ログイン済み | Passkey Test Lab" %>
+<section class="account-shell">
+  <div class="success-mark" aria-hidden="true">✓</div>
+  <p class="eyebrow">AUTHENTICATED</p>
+  <h1>ログインできました</h1>
+  <p class="lead">パスキーの署名検証が成功し、認証済みページを表示しています。</p>
+
+  <dl class="account-details">
+    <div><dt>ユーザー</dt><dd><%= Rack::Utils.escape_html(current_user.fetch("name")) %></dd></div>
+    <div><dt>登録パスキー</dt><dd><%= current_user.fetch("credentials", []).length %> 件</dd></div>
+    <div><dt>RP ID</dt><dd><code><%= Rack::Utils.escape_html(PasskeyTestApp::WEBAUTHN_RP_ID) %></code></dd></div>
+    <div><dt>Origin</dt><dd><code><%= Rack::Utils.escape_html(PasskeyTestApp::WEBAUTHN_ORIGIN) %></code></dd></div>
+  </dl>
+
+  <form action="/logout" method="post">
+    <button class="secondary-button" type="submit">ログアウトして再テスト</button>
+  </form>
+</section>

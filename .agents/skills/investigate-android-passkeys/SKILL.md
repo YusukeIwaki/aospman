@@ -9,13 +9,13 @@ Separate mechanisms before changing code. Ordinary WebAuthn, browser-origin dele
 
 ## Begin with evidence
 
-1. Read the root `MEMO.md` completely.
+1. Read `references/architecture-baseline.md` completely and identify which architecture boundary is under test.
 2. State one falsifiable question and the smallest experiment that can answer it.
 3. Fetch current upstream source, then pin and record the exact commit/tag before citing paths or building.
 4. Read `references/experiment-matrix.md` and select the applicable track.
 5. Record Android API level, system build, WebView/Chrome version, app package and signing certificate, credential provider, RP origin, source revision, and relevant feature flags.
 
-Treat `MEMO.md` as a researched hypothesis. Correct it when current source or results disagree.
+Treat the architecture baseline as a researched hypothesis. Correct that reference when current source or reproducible results disagree.
 
 ## Choose the cheapest valid track
 

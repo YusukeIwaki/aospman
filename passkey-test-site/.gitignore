@@ -1,0 +1,7 @@
+/.bundle/
+/.railway/
+/coverage/
+/data/
+/log/
+/tmp/
+*.log

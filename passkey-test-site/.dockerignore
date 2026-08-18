@@ -1,0 +1,9 @@
+.git
+.railway
+.bundle
+coverage
+data
+log
+tmp
+test
+*.log

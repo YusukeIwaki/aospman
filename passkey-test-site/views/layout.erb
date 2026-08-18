@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111827">
+    <title><%= @title || "Passkey Test Lab" %></title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body data-page="<%= logged_in? ? "account" : "home" %>">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Passkey Test Lab ホーム">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>Passkey Test Lab</span>
+      </a>
+      <span class="environment-badge">Ruby + Sinatra</span>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

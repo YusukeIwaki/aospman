@@ -3,12 +3,12 @@
 ## Project goal
 
 - Investigate whether a custom Android browser can use passkeys after small, reviewable changes to AOSP, Android WebView, or Chromium.
-- Treat `MEMO.md` as the starting hypothesis, not as timeless truth. Re-check relevant upstream source and official documentation at a pinned revision before drawing conclusions.
+- Treat `.agents/skills/investigate-android-passkeys/references/architecture-baseline.md` as the starting architecture hypothesis, not as timeless truth. Re-check relevant upstream source and official documentation at a pinned revision before drawing conclusions.
 - Keep these cases separate: ordinary WebAuthn create/get, Credential Manager privileged-browser/provider approval, conditional mediation, and Chrome Password Manager/Autofill UI integration.
 
 ## Start every task
 
-1. Read `MEMO.md` and inspect the current repository state before proposing or changing code.
+1. Inspect the current repository state and read every applicable `AGENTS.md` before proposing or changing code.
 2. For AOSP, Chromium, WebView, WebAuthn, Credential Manager, passkey, Autofill, or browser experiments, use `$investigate-android-passkeys` from `.agents/skills/investigate-android-passkeys`.
 3. For any remote checkout, compile, test build, or GCP resource operation, use `$manage-aosp-spot-build` from `.agents/skills/manage-aosp-spot-build`.
 4. Prefer the smallest experiment that can falsify the current hypothesis. Do not start a full AOSP or Chromium build when an app-only, source-reading, or targeted component test can answer the question.

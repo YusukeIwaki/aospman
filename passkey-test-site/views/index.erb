@@ -1,0 +1,64 @@
+<% @title = "パスキー動作確認 | Passkey Test Lab" %>
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">WEBAUTHN TEST CONTENT</p>
+    <h1>パスワードなしの<br><span>ログインを試す。</span></h1>
+    <p class="lead">パスキーの作成、通常ログイン、autofill（Conditional UI）を1ページで確認できる検証用サイトです。</p>
+    <div class="capabilities" aria-label="ブラウザ対応状況">
+      <span id="webauthn-support" class="capability checking">WebAuthn 確認中</span>
+      <span id="conditional-support" class="capability checking">Autofill 確認中</span>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <div class="tabs" role="tablist" aria-label="認証方法">
+      <button class="tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-panel">ログイン</button>
+      <button class="tab" id="register-tab" type="button" role="tab" aria-selected="false" aria-controls="register-panel">新規登録</button>
+    </div>
+
+    <section id="login-panel" class="tab-panel" role="tabpanel" aria-labelledby="login-tab">
+      <h2>パスキーでログイン</h2>
+      <p>ユーザー名を入力してボタンを押すか、入力欄をタップしてパスキー候補を選びます。</p>
+      <form id="login-form">
+        <label for="login-username">ユーザー名</label>
+        <input id="login-username" name="username" type="text" autocomplete="username webauthn" autocapitalize="none" spellcheck="false" placeholder="例: test-user">
+        <button class="primary-button" type="submit">
+          <span class="button-icon" aria-hidden="true">⌁</span>
+          パスキーでログイン
+        </button>
+      </form>
+      <p id="autofill-status" class="hint">対応ブラウザでは、この入力欄からパスキー autofill を選べます。</p>
+    </section>
+
+    <section id="register-panel" class="tab-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
+      <h2>パスキーを作成</h2>
+      <p>検証に使う名前を入力すると、端末に discoverable credential を作成します。</p>
+      <form id="register-form">
+        <label for="register-username">ユーザー名</label>
+        <input id="register-username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" minlength="2" maxlength="64" required placeholder="例: test-user">
+        <button class="primary-button" type="submit">
+          <span class="button-icon" aria-hidden="true">＋</span>
+          パスキーを作成
+        </button>
+      </form>
+      <p class="hint">同じユーザー名には、ログイン後のみ追加のパスキーを登録できます。</p>
+    </section>
+  </div>
+</section>
+
+<section class="steps-section">
+  <div>
+    <p class="eyebrow">QUICK TEST</p>
+    <h2>3ステップで確認</h2>
+  </div>
+  <ol class="steps">
+    <li><span>01</span><strong>作成</strong><p>「新規登録」から端末にパスキーを保存。</p></li>
+    <li><span>02</span><strong>ログアウト</strong><p>認証済みページからセッションを終了。</p></li>
+    <li><span>03</span><strong>再ログイン</strong><p>ボタンまたは入力欄の autofill から認証。</p></li>
+  </ol>
+</section>
+
+<section class="notice-card">
+  <strong>テスト専用サイト</strong>
+  <p>実在するメールアドレスや機密情報は入力しないでください。登録データはこの検証サービス内にのみ保存されます。</p>
+</section>
