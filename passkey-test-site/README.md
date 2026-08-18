@@ -14,9 +14,32 @@ WebAuthn は `localhost` を secure context として扱います。依存関係
 
 ```sh
 rbenv local 4.0.0
-bundle install
-bundle exec ruby -Itest test/app_test.rb
+rbenv exec bundle install
+npm ci
+./node_modules/.bin/playwright install chromium
+rbenv exec bundle exec ruby -Itest test/app_test.rb
+rbenv exec bundle exec smartest smartest/passkey_flow_test.rb
 ```
+
+## ブラウザE2Eテスト
+
+Smartest 0.7.0とPlaywright 1.61.0の仮想WebAuthn Authenticatorを使い、ブラウザ上で次のフローを検証します。
+
+- パスキー作成、認証済みページ表示、ログアウト
+- discoverable credentialを使ったユーザー名なしログイン
+- `mediation: "conditional"` から登録済みパスキーを使う再ログイン
+
+既定はChromiumです。Playwrightの各ブラウザを導入した環境では、同じテストをFirefoxとWebKitでも実行できます。
+
+```sh
+rbenv exec bundle exec smartest smartest/passkey_flow_test.rb
+BROWSER=firefox rbenv exec bundle exec smartest smartest/passkey_flow_test.rb
+BROWSER=webkit rbenv exec bundle exec smartest smartest/passkey_flow_test.rb
+```
+
+このテストはWebAuthnのcreate/get、署名検証、セッション遷移、およびConditional Mediationのアプリケーション経路を担保します。OSやブラウザが表示する実際のパスキー候補UI、Credential Manager、Android WebViewのautofill統合は仮想Authenticatorの対象外なので、対象端末でも別途確認してください。
+
+Pull RequestではGitHub ActionsがRackテストとJavaScript構文チェックに加え、Chromium、Firefox、WebKitの3ブラウザで同じSmartest E2Eを実行します。
 
 コンテナで起動する場合:
 

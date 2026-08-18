@@ -1,0 +1,70 @@
+name: Passkey test site
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: passkey-test-site-${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  rack-test:
+    name: Rack and JavaScript
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: passkey-test-site
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "4.0.0"
+          bundler-cache: true
+          working-directory: passkey-test-site
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: Run Rack tests
+        run: bundle exec ruby -Itest test/app_test.rb
+      - name: Check browser JavaScript
+        run: node --check public/app.js
+
+  browser-e2e:
+    name: Smartest E2E (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          - chromium
+          - firefox
+          - webkit
+    defaults:
+      run:
+        working-directory: passkey-test-site
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "4.0.0"
+          bundler-cache: true
+          working-directory: passkey-test-site
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: passkey-test-site/package-lock.json
+      - name: Install Node dependencies
+        run: npm ci
+      - name: Install Playwright browser
+        run: ./node_modules/.bin/playwright install --with-deps "${{ matrix.browser }}"
+      - name: Run Smartest browser tests
+        run: bundle exec smartest smartest/passkey_flow_test.rb
+        env:
+          BROWSER: ${{ matrix.browser }}
+          CI: "true"

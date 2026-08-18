@@ -8,5 +8,7 @@ gem "webauthn", "~> 3.4"
 
 group :test do
   gem "minitest", "~> 5.25"
+  gem "playwright-ruby-client", "1.61.0"
   gem "rack-test", "~> 2.2"
+  gem "smartest", "0.7.0"
 end
