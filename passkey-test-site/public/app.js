@@ -149,10 +149,10 @@
     if (!form) return;
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      const username = new FormData(form).get("username");
       setBusy(form, true);
       try {
         if (conditionalController) conditionalController.abort();
-        const username = new FormData(form).get("username");
         const result = await postJSON("/api/register/options", { username });
         const credential = await navigator.credentials.create({
           publicKey: creationOptionsFromJSON(result.publicKey)
@@ -171,10 +171,10 @@
     if (!form) return;
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      const username = new FormData(form).get("username");
       setBusy(form, true);
       try {
         if (conditionalController) conditionalController.abort();
-        const username = new FormData(form).get("username");
         const result = await postJSON("/api/login/options", { username });
         const credential = await navigator.credentials.get({
           publicKey: requestOptionsFromJSON(result.publicKey)

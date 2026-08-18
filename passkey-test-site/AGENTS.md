@@ -14,6 +14,7 @@ This file is the canonical handoff for the web application in this directory. It
 - Use rbenv Ruby `4.0.0`; `.ruby-version`, `Gemfile`, `Gemfile.lock`, and both Docker stages must stay on Ruby 4.0.0 unless the user explicitly requests an upgrade.
 - The shell used by Codex may not initialize rbenv shims. Run Ruby, Bundler, and tests with `rbenv exec` and confirm `rbenv exec ruby -v` before diagnosing version-related failures.
 - The application is Sinatra + Puma + `webauthn-ruby`. The current lockfile resolves Sinatra 4.2.1, Puma 7.2.1, and WebAuthn 3.4.3. Do not upgrade them incidentally.
+- Browser E2E tests use Smartest 0.7.0, `playwright-ruby-client` 1.61.0, and the Playwright Node package 1.61.0. Keep the Ruby client and Node package on the same Playwright release.
 - Puma runs a single process (`workers 0`) with 1–3 threads. Production sets `PUMA_MAX_THREADS=3`.
 - Static assets are local. Do not add telemetry, remote fonts, analytics, polling, or other idle outbound traffic; the service is intended to sleep in Railway Serverless mode.
 
@@ -26,6 +27,9 @@ This file is the canonical handoff for the web application in this directory. It
 - `views/index.erb`: registration/login test page.
 - `views/account.erb`: authenticated page and logout control.
 - `test/app_test.rb`: Rack tests and an end-to-end cryptographic ceremony using `WebAuthn::FakeClient`.
+- `smartest/`: Rack server and browser fixtures plus Playwright virtual-authenticator E2E tests.
+- `package.json` and `package-lock.json`: exact Playwright 1.61.0 Node dependency used by the Ruby client.
+- `../.github/workflows/passkey-test-site.yml`: pull-request CI for Rack/JavaScript checks and the three-browser Smartest E2E matrix.
 - `Dockerfile`: deterministic Ruby 4.0.0 multi-stage production image. OpenSSL build headers are required for Ruby 4's OpenSSL gem.
 - `railway.toml`: Docker build, start command, restart policy, and `/health` check.
 
@@ -82,11 +86,17 @@ Run the smallest relevant checks, but always run the full WebAuthn test before h
 ```sh
 rbenv exec ruby -v
 rbenv exec bundle install
+npm ci
+./node_modules/.bin/playwright install chromium
 rbenv exec bundle exec ruby -Itest test/app_test.rb
+rbenv exec bundle exec smartest smartest/passkey_flow_test.rb
 node --check public/app.js
 ```
 
 - The full test must continue to cover registration verification, authenticated-page access, logout, and authentication verification with the same fake authenticator—not only option JSON shape.
+- The Smartest E2E suite must cover page-driven registration, authenticated-page rendering, logout, discoverable usernameless login, and the Conditional Mediation application path with Playwright 1.61 credentials. Run it before handing off any authentication or frontend-form change.
+- `BROWSER=firefox` and `BROWSER=webkit` run the same E2E suite on the other Playwright engines. The virtual authenticator validates browser-side ceremonies and server signatures, not an operating-system passkey picker, Credential Manager provider, or Android WebView autofill UI.
+- Keep pull-request CI on all three Playwright engines. Install only the matrix browser and its Linux dependencies in each job with Playwright's `install --with-deps` command.
 - For Docker/runtime changes, also run `docker build -t passkey-test-lab:ruby-4.0 .`, start a disposable container, verify `/health`, verify the container reports Ruby 4.0.0, then stop it.
 - For production smoke tests, use `/health`, `GET /`, and usernameless `/api/login/options`. Do not synthesize a production registration unless the user asked for test data.
 - For UI changes, check both login and registration panels at a narrow and a wide viewport and inspect browser console errors.

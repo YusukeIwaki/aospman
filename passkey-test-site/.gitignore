@@ -3,5 +3,6 @@
 /coverage/
 /data/
 /log/
+/node_modules/
 /tmp/
 *.log

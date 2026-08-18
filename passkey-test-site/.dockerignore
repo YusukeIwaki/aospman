@@ -4,6 +4,8 @@
 coverage
 data
 log
+node_modules
 tmp
 test
+smartest
 *.log
