@@ -1,0 +1,351 @@
+diff --git a/android_webview/browser/BUILD.gn b/android_webview/browser/BUILD.gn
+index 8876e875cb..7af0353e1c 100644
+--- a/android_webview/browser/BUILD.gn
++++ b/android_webview/browser/BUILD.gn
+@@ -126,6 +126,8 @@ source_set("browser") {
+     "aw_web_contents_view_delegate.h",
+     "aw_web_ui_controller_factory.cc",
+     "aw_web_ui_controller_factory.h",
++    "aw_webauthn_client_android.cc",
++    "aw_webauthn_client_android.h",
+     "aw_window_coverage_tracker.cc",
+     "content_restriction/aw_content_restriction_blocked_navigation_tracker.cc",
+     "content_restriction/aw_content_restriction_blocked_navigation_tracker.h",
+@@ -353,6 +355,7 @@ source_set("browser") {
+     "//components/version_info",
+     "//components/version_info/android:channel_getter",
+     "//components/visitedlink/browser",
++    "//components/webauthn/android",
+     "//components/webdata/common",
+     "//components/webui/flags",
+     "//components/webui/user_actions",
+diff --git a/android_webview/browser/aw_browser_process.cc b/android_webview/browser/aw_browser_process.cc
+index 06ac55a816..b907e73fd7 100644
+--- a/android_webview/browser/aw_browser_process.cc
++++ b/android_webview/browser/aw_browser_process.cc
+@@ -6,14 +6,15 @@
+ 
+ #include "android_webview/browser/aw_browser_context.h"
+ #include "android_webview/browser/aw_content_browser_client.h"
+-#include "base/android/pre_freeze_background_memory_trimmer.h"
+ #include "android_webview/browser/aw_enterprise_authentication_app_link_manager.h"
++#include "android_webview/browser/aw_webauthn_client_android.h"
+ #include "android_webview/browser/lifecycle/aw_contents_lifecycle_notifier.h"
+ #include "android_webview/browser/metrics/visibility_metrics_logger.h"
+ #include "android_webview/common/crash_reporter/crash_keys.h"
+ #include "base/android/jni_array.h"
+ #include "base/android/jni_string.h"
+ #include "base/android/path_utils.h"
++#include "base/android/pre_freeze_background_memory_trimmer.h"
+ #include "base/base_paths_posix.h"
+ #include "base/functional/callback_helpers.h"
+ #include "base/memory/memory_pressure_listener_registry.h"
+@@ -32,6 +33,7 @@
+ #include "components/os_crypt/async/browser/posix_key_provider.h"
+ #include "components/safe_browsing/core/browser/db/v4_protocol_config.h"
+ #include "components/safe_browsing/core/common/features.h"
++#include "components/webauthn/android/webauthn_client_android.h"
+ #include "content/public/browser/browser_task_traits.h"
+ #include "content/public/browser/browser_thread.h"
+ #include "content/public/browser/process_visibility_util.h"
+@@ -115,6 +117,10 @@ AwBrowserProcess::AwBrowserProcess(AwContentBrowserClient* browser_client)
+   origin_trials_settings_storage_ =
+       std::make_unique<embedder_support::OriginTrialsSettingsStorage>();
+ 
++  if (!webauthn::WebAuthnClientAndroid::HasClient()) {
++    webauthn::WebAuthnClientAndroid::SetClient(
++        std::make_unique<AwWebAuthnClientAndroid>());
++  }
+   // Initialize OSCryptAsync with a PosixKeyProvider.
+   auto key_provider = std::make_unique<os_crypt_async::PosixKeyProvider>();
+   std::vector<std::pair<size_t, std::unique_ptr<os_crypt_async::KeyProvider>>>
+diff --git a/android_webview/browser/aw_webauthn_client_android.cc b/android_webview/browser/aw_webauthn_client_android.cc
+new file mode 100644
+index 0000000000..20f40b8c66
+--- /dev/null
++++ b/android_webview/browser/aw_webauthn_client_android.cc
+@@ -0,0 +1,35 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "android_webview/browser/aw_webauthn_client_android.h"
++
++#include "base/functional/callback.h"
++#include "content/public/browser/render_frame_host.h"
++#include "device/fido/discoverable_credential_metadata.h"
++
++namespace android_webview {
++
++AwWebAuthnClientAndroid::~AwWebAuthnClientAndroid() = default;
++
++void AwWebAuthnClientAndroid::OnWebAuthnRequestPending(
++    content::RenderFrameHost* frame_host,
++    std::vector<device::DiscoverableCredentialMetadata> credentials,
++    webauthn::AssertionMediationType mediation_type,
++    base::RepeatingCallback<void(const std::vector<uint8_t>& id)>
++        passkey_callback,
++    base::RepeatingCallback<void(std::u16string_view, std::u16string_view)>
++        password_callback,
++    base::RepeatingClosure hybrid_closure,
++    base::RepeatingCallback<void(webauthn::NonCredentialReturnReason)>
++        non_credential_callback) {}
++
++void AwWebAuthnClientAndroid::CleanupWebAuthnRequest(
++    content::RenderFrameHost* frame_host) {}
++
++bool AwWebAuthnClientAndroid::ShouldDisallowCredentialRequest(
++    content::RenderFrameHost* render_frame_host) {
++  return false;
++}
++
++}  // namespace android_webview
+diff --git a/android_webview/browser/aw_webauthn_client_android.h b/android_webview/browser/aw_webauthn_client_android.h
+new file mode 100644
+index 0000000000..384b86df48
+--- /dev/null
++++ b/android_webview/browser/aw_webauthn_client_android.h
+@@ -0,0 +1,50 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef ANDROID_WEBVIEW_BROWSER_AW_WEBAUTHN_CLIENT_ANDROID_H_
++#define ANDROID_WEBVIEW_BROWSER_AW_WEBAUTHN_CLIENT_ANDROID_H_
++
++#include <cstdint>
++#include <string>
++#include <vector>
++
++#include "base/functional/callback_forward.h"
++#include "components/webauthn/android/webauthn_client_android.h"
++
++namespace content {
++class RenderFrameHost;
++}
++
++namespace device {
++class DiscoverableCredentialMetadata;
++}
++
++namespace android_webview {
++
++// Installs the generic WebAuthn client hooks needed by WebView's Android
++// Autofill provider. WebView does not provide Chrome's custom credential UI;
++// conditional Credential Manager requests are surfaced by Android Autofill.
++class AwWebAuthnClientAndroid : public webauthn::WebAuthnClientAndroid {
++ public:
++  ~AwWebAuthnClientAndroid() override;
++
++  void OnWebAuthnRequestPending(
++      content::RenderFrameHost* frame_host,
++      std::vector<device::DiscoverableCredentialMetadata> credentials,
++      webauthn::AssertionMediationType mediation_type,
++      base::RepeatingCallback<void(const std::vector<uint8_t>& id)>
++          passkey_callback,
++      base::RepeatingCallback<void(std::u16string_view, std::u16string_view)>
++          password_callback,
++      base::RepeatingClosure hybrid_closure,
++      base::RepeatingCallback<void(webauthn::NonCredentialReturnReason)>
++          non_credential_callback) override;
++  void CleanupWebAuthnRequest(content::RenderFrameHost* frame_host) override;
++  bool ShouldDisallowCredentialRequest(
++      content::RenderFrameHost* render_frame_host) override;
++};
++
++}  // namespace android_webview
++
++#endif  // ANDROID_WEBVIEW_BROWSER_AW_WEBAUTHN_CLIENT_ANDROID_H_
+diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java
+index c498c76b8d..1cbb80ada5 100644
+--- a/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java
++++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java
+@@ -8,6 +8,7 @@ import static org.chromium.build.NullUtil.assertNonNull;
+ import static org.chromium.build.NullUtil.assumeNonNull;
+ import static org.chromium.components.webauthn.WebauthnLogger.log;
+ import static org.chromium.components.webauthn.WebauthnLogger.updateLogState;
++import static org.chromium.components.webauthn.WebauthnModeProvider.is;
+ import static org.chromium.components.webauthn.WebauthnModeProvider.isChrome;
+ 
+ import android.annotation.SuppressLint;
+@@ -32,6 +33,7 @@ import org.chromium.build.annotations.NullMarked;
+ import org.chromium.build.annotations.Nullable;
+ import org.chromium.components.password_manager.BrowserAssistedLoginType;
+ import org.chromium.components.ukm.UkmRecorder;
++import org.chromium.components.webauthn.cred_man.CredManSupportProvider;
+ import org.chromium.content_public.browser.LifecycleState;
+ import org.chromium.content_public.browser.RenderFrameHost;
+ import org.chromium.content_public.browser.Visibility;
+@@ -189,8 +191,11 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+                                     .build()));
+             return;
+         }
+-        if (!GmsCoreUtils.isWebauthnSupported()
+-                || (!isChrome(mWebContents) && !GmsCoreUtils.isResultReceiverSupported())) {
++        boolean canUseBrowserCredMan = canUseBrowserCredMan();
++        if ((!GmsCoreUtils.isWebauthnSupported() && !canUseBrowserCredMan)
++                || (!isChrome(mWebContents)
++                        && !GmsCoreUtils.isResultReceiverSupported()
++                        && !canUseBrowserCredMan)) {
+             mRequestCallback.onComplete(
+                     WebauthnRequestResponse.forFailedMakeCredential(
+                             AuthenticatorStatus.NOT_IMPLEMENTED,
+@@ -291,8 +296,11 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+                 options.publicKey == null
+                         && options.password
+                         && options.mediation == Mediation.IMMEDIATE;
+-        if (!GmsCoreUtils.isWebauthnSupported()
+-                || (!isChrome(mWebContents) && !GmsCoreUtils.isResultReceiverSupported())
++        boolean canUseBrowserCredMan = canUseBrowserCredMan();
++        if ((!GmsCoreUtils.isWebauthnSupported() && !canUseBrowserCredMan)
++                || (!isChrome(mWebContents)
++                        && !GmsCoreUtils.isResultReceiverSupported()
++                        && !canUseBrowserCredMan)
+                 || (options.publicKey == null && !isPasswordOnlyFlux)) {
+             RequestMetrics metrics =
+                     new RequestMetrics.Builder()
+@@ -336,13 +344,20 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+         mPendingFido2CredentialRequest.handleReportRequest(options, assertNonNull(mOrigin));
+     }
+ 
++    private boolean canUseBrowserCredMan() {
++        return is(mWebContents, WebauthnMode.BROWSER)
++                && CredManSupportProvider.getCredManSupportForWebView() != CredManSupport.DISABLED;
++    }
++
+     private boolean couldSupportConditionalMediation() {
+-        return GmsCoreUtils.isWebauthnSupported() && isChrome(mWebContents);
++        return (GmsCoreUtils.isWebauthnSupported() && isChrome(mWebContents))
++                || canUseBrowserCredMan();
+     }
+ 
+     private boolean couldSupportUvpaa() {
+-        return GmsCoreUtils.isWebauthnSupported()
+-                && (isChrome(mWebContents) || GmsCoreUtils.isResultReceiverSupported());
++        return (GmsCoreUtils.isWebauthnSupported()
++                        && (isChrome(mWebContents) || GmsCoreUtils.isResultReceiverSupported()))
++                || canUseBrowserCredMan();
+     }
+ 
+     @Override
+diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java
+index 055d8c5f07..af36824498 100644
+--- a/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java
++++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java
+@@ -704,10 +704,24 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+ 
+         if (!isChrome(mAuthenticationContextProvider.getWebContents())) {
+             if (options.mediation == Mediation.CONDITIONAL) {
+-                returnErrorAndResetCallback(
+-                        AuthenticatorStatus.NOT_IMPLEMENTED,
+-                        /* response= */ null,
+-                        /* credentialRequestResult= */ null);
++                if (!is(mAuthenticationContextProvider.getWebContents(), WebauthnMode.BROWSER)
++                        || CredManSupportProvider.getCredManSupportForWebView()
++                                == CredManSupport.DISABLED) {
++                    returnErrorAndResetCallback(
++                            AuthenticatorStatus.NOT_IMPLEMENTED,
++                            /* response= */ null,
++                            /* credentialRequestResult= */ null);
++                    return;
++                }
++                mBarrier.resetAndSetWaitStatus(Barrier.Mode.ONLY_CRED_MAN);
++                mCredManHelper.startPrefetchRequest(
++                        options,
++                        callerOriginString,
++                        mClientDataJson,
++                        clientDataHash,
++                        mBarrier,
++                        /* stopImmediateTimer= */ null,
++                        /* ignoreGpm= */ false);
+                 return;
+             }
+             if (CredManSupportProvider.getCredManSupportForWebView() == CredManSupport.DISABLED) {
+@@ -1895,7 +1909,8 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+ 
+     @Override
+     public @Nullable WebauthnBrowserBridge getBridge() {
+-        if (!isChrome(mAuthenticationContextProvider.getWebContents())) {
++        if (!isChrome(mAuthenticationContextProvider.getWebContents())
++                && !is(mAuthenticationContextProvider.getWebContents(), WebauthnMode.BROWSER)) {
+             return null;
+         }
+         if (mBrowserBridge == null) {
+diff --git a/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java b/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java
+index ca2e26a7fc..2b340c2d84 100644
+--- a/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java
++++ b/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java
+@@ -15,6 +15,8 @@ import static org.mockito.Mockito.never;
+ import static org.mockito.Mockito.verify;
+ import static org.mockito.Mockito.when;
+ 
++import android.os.Build;
++
+ import androidx.test.core.app.ApplicationProvider;
+ import androidx.test.filters.SmallTest;
+ 
+@@ -30,6 +32,7 @@ import org.mockito.junit.MockitoJUnit;
+ import org.mockito.junit.MockitoRule;
+ import org.robolectric.annotation.Config;
+ 
++import org.chromium.base.TriState;
+ import org.chromium.base.test.BaseRobolectricTestRunner;
+ import org.chromium.blink.mojom.Authenticator;
+ import org.chromium.blink.mojom.AuthenticatorStatus;
+@@ -40,6 +43,7 @@ import org.chromium.blink.mojom.PublicKeyCredentialRequestOptions;
+ import org.chromium.blink.mojom.WebAuthnClientCapability;
+ import org.chromium.components.ukm.UkmRecorder;
+ import org.chromium.components.ukm.UkmRecorderJni;
++import org.chromium.components.webauthn.cred_man.CredManSupportProvider;
+ import org.chromium.content_public.browser.LifecycleState;
+ import org.chromium.content_public.browser.RenderFrameHost;
+ import org.chromium.content_public.browser.Visibility;
+@@ -129,6 +133,22 @@ public class AuthenticatorImplTest {
+         assertEquals(10, mCapabilitiesCaptor.getValue().length);
+     }
+ 
++    @Test
++    public void testConditionalMediationAvailable_browserCredManWithoutGms() {
++        when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++        GmsCoreUtils.setGmsCoreVersionForTesting(-1);
++        CredManSupportProvider.setupForTesting(Build.VERSION_CODES.UPSIDE_DOWN_CAKE, TriState.TRUE);
++        Authenticator.IsConditionalMediationAvailable_Response callback =
++                mock(Authenticator.IsConditionalMediationAvailable_Response.class);
++
++        mAuthenticator.isConditionalMediationAvailable(callback);
++
++        verify(callback).call(true);
++        verify(mFido2CredentialRequestMock)
++                .handleIsUserVerifyingPlatformAuthenticatorAvailableRequest(any());
++    }
++
+     @Test
+     public void testGetClientCapabilities_RelatedOrigins_ShouldBeSupported() {
+         GmsCoreUtils.setGmsCoreVersionForTesting(GmsCoreUtils.GMSCORE_MIN_VERSION);
+diff --git a/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java b/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
+index 9a5206b580..4359d80fda 100644
+--- a/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
++++ b/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
+@@ -817,6 +817,21 @@ public class Fido2CredentialRequestRobolectricTest {
+         verifyNoInteractions(mCredManHelperMock);
+     }
+ 
++    @Test
++    @SmallTest
++    public void testConditionalGetCredential_webAuthnModeBrowser_goesToCredManPrefetch() {
++        setGetCredentialRequestOptions(/* hasAllowList= */ false);
++        mRequestOptions.mediation = Mediation.CONDITIONAL;
++        Mockito.when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        Mockito.when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++
++        handleGetCredentialRequest();
++
++        assertThat(mCallback.getStatus()).isNull();
++        verify(mCredManHelperMock)
++                .startPrefetchRequest(any(), any(), any(), any(), any(), any(), anyBoolean());
++    }
++
+     @Test
+     @SmallTest
+     public void testConditionalGetCredential_RpCancelWhileIdleWithGpmInCredMan_notAllowedError() {

@@ -4,6 +4,7 @@ set -euo pipefail
 readonly AOSPMAN_PROJECT="${AOSPMAN_GCP_PROJECT:-aospman}"
 readonly AOSPMAN_DEFAULT_DISK_GB="${AOSPMAN_DISK_GB:-600}"
 readonly AOSPMAN_DEFAULT_TTL_HOURS="${AOSPMAN_TTL_HOURS:-8}"
+readonly AOSPMAN_ENABLE_NESTED_VIRT="${AOSPMAN_ENABLE_NESTED_VIRT:-0}"
 readonly AOSPMAN_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 usage() {
@@ -11,14 +12,15 @@ usage() {
 Usage:
   spot-vm.sh audit
   spot-vm.sh list
-  spot-vm.sh preflight [auto|preferred|fallback]
-  spot-vm.sh create [auto|preferred|fallback] [VM_NAME] [TTL_HOURS] [DISK_GB]
+  spot-vm.sh preflight [auto|preferred|fallback|constrained]
+  spot-vm.sh create [auto|preferred|fallback|constrained] [VM_NAME] [TTL_HOURS] [DISK_GB]
   spot-vm.sh bootstrap VM_NAME
   spot-vm.sh ssh VM_NAME
   spot-vm.sh delete VM_NAME
   spot-vm.sh cleanup-managed --confirm
 
 Defaults: auto profile, generated name, 8-hour maximum run duration, 600 GB disk.
+Set AOSPMAN_ENABLE_NESTED_VIRT=1 when the build VM must host Cuttlefish.
 EOF
 }
 
@@ -40,6 +42,9 @@ profile_values() {
     fallback)
       printf '%s\t%s\t%s\t%s\n' 'n2-highcpu-96' 'asia-northeast1-b' 'asia-northeast1' 'N2_CPUS'
       ;;
+    constrained)
+      printf '%s\t%s\t%s\t%s\n' 'n2-highcpu-32' 'asia-northeast1-b' 'asia-northeast1' 'N2_CPUS'
+      ;;
     *)
       die "Unknown profile: $1"
       ;;
@@ -58,6 +63,10 @@ validate_context() {
 
 quota_json() {
   gcloud compute regions describe "$1" --project="${AOSPMAN_PROJECT}" --format=json
+}
+
+project_quota_json() {
+  gcloud compute project-info describe --project="${AOSPMAN_PROJECT}" --format=json
 }
 
 quota_field() {
@@ -85,21 +94,25 @@ preflight_profile() {
     return 1
   fi
 
-  local cpus memory_mb quotas total_limit total_usage family_limit family_usage spot_limit spot_usage
+  local cpus memory_mb quotas project_quotas total_limit total_usage family_limit family_usage spot_limit spot_usage global_limit global_usage
   read -r cpus memory_mb <<<"${machine_data}"
   quotas="$(quota_json "${region}")"
+  project_quotas="$(project_quota_json)"
   total_limit="$(quota_field "${quotas}" 'CPUS' 'limit')"
   total_usage="$(quota_field "${quotas}" 'CPUS' 'usage')"
   family_limit="$(quota_field "${quotas}" "${family_metric}" 'limit')"
   family_usage="$(quota_field "${quotas}" "${family_metric}" 'usage')"
   spot_limit="$(quota_field "${quotas}" 'PREEMPTIBLE_CPUS' 'limit')"
   spot_usage="$(quota_field "${quotas}" 'PREEMPTIBLE_CPUS' 'usage')"
+  global_limit="$(quota_field "${project_quotas}" 'CPUS_ALL_REGIONS' 'limit')"
+  global_usage="$(quota_field "${project_quotas}" 'CPUS_ALL_REGIONS' 'usage')"
 
   printf '%s profile\n' "${profile}"
   printf '  machine: %s (%s vCPU, %s MiB RAM)\n' "${machine}" "${cpus}" "${memory_mb}"
   printf '  zone: %s\n' "${zone}"
   printf '  CPUS quota: %s limit, %s used\n' "${total_limit}" "${total_usage}"
   printf '  %s quota: %s limit, %s used\n' "${family_metric}" "${family_limit}" "${family_usage}"
+  printf '  CPUS_ALL_REGIONS quota: %s limit, %s used\n' "${global_limit}" "${global_usage}"
   printf '  PREEMPTIBLE_CPUS quota: %s limit, %s used (informational)\n' "${spot_limit}" "${spot_usage}"
 
   if ! enough_quota "${total_limit}" "${total_usage}" "${cpus}"; then
@@ -108,6 +121,10 @@ preflight_profile() {
   fi
   if ! enough_quota "${family_limit}" "${family_usage}" "${cpus}"; then
     printf '  result: insufficient %s quota for %s vCPUs\n' "${family_metric}" "${cpus}" >&2
+    return 1
+  fi
+  if ! enough_quota "${global_limit}" "${global_usage}" "${cpus}"; then
+    printf '  result: insufficient CPUS_ALL_REGIONS quota for %s vCPUs\n' "${cpus}" >&2
     return 1
   fi
   printf '  result: quota and machine checks passed; Spot capacity is checked at creation time\n'
@@ -127,6 +144,11 @@ select_profile() {
   printf 'Preferred profile is not currently viable; checking fallback.\n' >&2
   if preflight_profile fallback >&2; then
     printf '%s\n' 'fallback'
+    return 0
+  fi
+  printf 'Fallback profile is not currently viable; checking constrained profile.\n' >&2
+  if preflight_profile constrained >&2; then
+    printf '%s\n' 'constrained'
     return 0
   fi
   return 1
@@ -190,9 +212,25 @@ create_vm() {
   (( ttl_hours >= 1 && ttl_hours <= 12 )) || die 'TTL_HOURS must be between 1 and 12.'
   [[ "${disk_gb}" =~ ^[0-9]+$ ]] || die 'DISK_GB must be an integer.'
   (( disk_gb >= 400 && disk_gb <= 4096 )) || die 'DISK_GB must be between 400 and 4096.'
+  [[ "${AOSPMAN_ENABLE_NESTED_VIRT}" == '0' || "${AOSPMAN_ENABLE_NESTED_VIRT}" == '1' ]] || \
+    die 'AOSPMAN_ENABLE_NESTED_VIRT must be 0 or 1.'
 
   local machine zone region family_metric
   IFS=$'\t' read -r machine zone region family_metric <<<"$(profile_values "${profile}")"
+
+  local storage_quotas ssd_limit ssd_usage
+  storage_quotas="$(quota_json "${region}")"
+  ssd_limit="$(quota_field "${storage_quotas}" 'SSD_TOTAL_GB' 'limit')"
+  ssd_usage="$(quota_field "${storage_quotas}" 'SSD_TOTAL_GB' 'usage')"
+  enough_quota "${ssd_limit}" "${ssd_usage}" "${disk_gb}" || \
+    die "Insufficient SSD_TOTAL_GB quota for a ${disk_gb} GB pd-balanced disk in ${region} (${ssd_limit} limit, ${ssd_usage} used)."
+
+  local -a nested_virtualization_args=(--no-enable-nested-virtualization)
+  if [[ "${AOSPMAN_ENABLE_NESTED_VIRT}" == '1' ]]; then
+    [[ "${profile}" == 'fallback' || "${profile}" == 'constrained' ]] || \
+      die 'Nested virtualization is configured only for Intel N2 profiles.'
+    nested_virtualization_args=(--enable-nested-virtualization)
+  fi
 
   printf 'Creating %s as %s profile in %s.\n' "${name}" "${profile}" "${zone}"
   gcloud compute instances create "${name}" \
@@ -204,18 +242,19 @@ create_vm() {
     --max-run-duration="${ttl_hours}h" \
     --maintenance-policy=TERMINATE \
     --no-restart-on-failure \
-    --image-family=ubuntu-2204-lts-amd64 \
+    --image-family=ubuntu-2204-lts \
     --image-project=ubuntu-os-cloud \
     --boot-disk-type=pd-balanced \
     --boot-disk-size="${disk_gb}GB" \
     --boot-disk-auto-delete \
     --no-service-account \
     --no-scopes \
+    "${nested_virtualization_args[@]}" \
     --labels=managed-by=aospman,workload=android-build,lifecycle=ephemeral \
     --quiet
 
   gcloud compute instances describe "${name}" --project="${AOSPMAN_PROJECT}" --zone="${zone}" \
-    --format='yaml(name,status,machineType.basename(),zone.basename(),scheduling.provisioningModel,scheduling.instanceTerminationAction,scheduling.terminationTimestamp,disks[].autoDelete,labels)'
+    --format='yaml(name,status,machineType.basename(),zone.basename(),advancedMachineFeatures.enableNestedVirtualization,scheduling.provisioningModel,scheduling.instanceTerminationAction,scheduling.terminationTimestamp,disks[].autoDelete,labels)'
   printf 'Bootstrap: %s bootstrap %s\n' "$0" "${name}"
   printf 'Cleanup:   %s delete %s\n' "$0" "${name}"
 }

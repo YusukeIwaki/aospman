@@ -1,0 +1,29 @@
+List of devices attached
+0.0.0.0:6520           device product:aosp_cf_x86_64_only_phone model:Cuttlefish_x86_64_phone_64_bit_only device:vsoc_x86_64_only transport_id:25
+
+generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/eng.yusuke:userdebug/test-keys
+37
+userdebug
+1
+Current WebView Update Service state
+  Current WebView package (name, version): (com.android.webview, 154.0.8011.0)
+  Minimum targetSdkVersion: 33
+  Minimum WebView version code: 801100007
+  Number of relros started: 1
+  Number of relros finished: 1
+  WebView package dirty: false
+  Any WebView package installed: true
+  Preferred WebView package (name, version): (com.android.webview, 154.0.8011.0)
+  WebView packages:
+    Valid package com.android.webview (versionName: 154.0.8011.0, versionCode: 801100007, targetSdkVersion: 36) is  installed/enabled for all users
+com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService
+com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService
+    install permissions:
+      android.permission.INTERNET: granted=true
+      android.permission.CREDENTIAL_MANAGER_SET_ORIGIN: granted=true
+      android.permission.USE_FINGERPRINT: granted=true
+      android.permission.USE_BIOMETRIC: granted=true
+      android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS: granted=true
+      com.example.webviewpasskeybrowser.browser.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+    User 0: ceDataInode=2702 deDataInode=2738 pccCeDataInode=0 pccDeDataInode=0 installed=true hidden=false suspended=false appLockEnabled=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false
+      installReason=0

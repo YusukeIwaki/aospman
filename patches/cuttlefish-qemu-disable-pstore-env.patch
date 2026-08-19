@@ -1,0 +1,49 @@
+diff --git a/host/libs/config/kernel_args.cpp b/host/libs/config/kernel_args.cpp
+index f5bdf7dc0..31e796ffb 100644
+--- a/host/libs/config/kernel_args.cpp
++++ b/host/libs/config/kernel_args.cpp
+@@ -86,11 +86,13 @@ std::vector<std::string> VmManagerKernelCmdline(
+       // See external/crosvm/x86_64/src/lib.rs
+       // this feature is not supported on aarch64
+       // check guest's /proc/iomem when you need to change mem_address or mem_size
+-      vm_manager_cmdline.push_back("ramoops.mem_address=0x150000000");
+-      vm_manager_cmdline.push_back("ramoops.mem_size=0x200000");
+-      vm_manager_cmdline.push_back("ramoops.console_size=0x80000");
+-      vm_manager_cmdline.push_back("ramoops.record_size=0x80000");
+-      vm_manager_cmdline.push_back("ramoops.dump_oops=1");
++      if (StringFromEnv("AOSPMAN_DISABLE_QEMU_PSTORE", "") != "1") {
++        vm_manager_cmdline.push_back("ramoops.mem_address=0x150000000");
++        vm_manager_cmdline.push_back("ramoops.mem_size=0x200000");
++        vm_manager_cmdline.push_back("ramoops.console_size=0x80000");
++        vm_manager_cmdline.push_back("ramoops.record_size=0x80000");
++        vm_manager_cmdline.push_back("ramoops.dump_oops=1");
++      }
+     }
+   }
+ 
+diff --git a/host/libs/vm_manager/qemu_manager.cpp b/host/libs/vm_manager/qemu_manager.cpp
+index d929a52d6..3fc7611f9 100644
+--- a/host/libs/vm_manager/qemu_manager.cpp
++++ b/host/libs/vm_manager/qemu_manager.cpp
+@@ -347,8 +347,11 @@ Result<std::vector<MonitorCommand>> QemuManager::StartCommands(
+     }
+   }
+ 
++  const bool enable_pstore =
++      std::getenv("AOSPMAN_DISABLE_QEMU_PSTORE") == nullptr;
++
+   auto pstore_size_bytes = 0;
+-  if (FileExists(instance.pstore_path())) {
++  if (enable_pstore && FileExists(instance.pstore_path())) {
+     pstore_size_bytes = FileSize(instance.pstore_path());
+     CF_EXPECT((pstore_size_bytes & (1024 * 1024 - 1)) == 0,
+               instance.pstore_path() << " file size (" << pstore_size_bytes
+@@ -719,7 +722,7 @@ Result<std::vector<MonitorCommand>> QemuManager::StartCommands(
+     ++i;
+   }
+ 
+-  if (is_x86 && FileExists(instance.pstore_path())) {
++  if (is_x86 && enable_pstore && FileExists(instance.pstore_path())) {
+     // QEMU will assign the NVDIMM (ramoops pstore region) 150000000-1501fffff
+     // As we will pass this to ramoops, define this region first so it is always
+     // located at this address. This is currently x86 only.

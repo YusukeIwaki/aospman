@@ -1,0 +1,26 @@
+diff --git a/base/cvd/cuttlefish/host/commands/vhost_user_media/emulated_camera_mplane/src/device.rs b/base/cvd/cuttlefish/host/commands/vhost_user_media/emulated_camera_mplane/src/device.rs
+--- a/base/cvd/cuttlefish/host/commands/vhost_user_media/emulated_camera_mplane/src/device.rs
++++ b/base/cvd/cuttlefish/host/commands/vhost_user_media/emulated_camera_mplane/src/device.rs
+@@ -1116,9 +1116,8 @@ impl V4l2MplaneDevice {
+             capabilities: (BufferCapabilities::SUPPORTS_MMAP
+                 | BufferCapabilities::SUPPORTS_ORPHANED_BUFS)
+                 .bits(),
+-            // This device does not support V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS,
+-            // so the flags field in v4l2_requestbuffers must be 0.
+-            flags: 0,
++            // Default-initialize the optional flags field and reserved storage so this builds
++            // against both pre-flags and current V4L2 UAPI headers.
+             ..Default::default()
+         })
+     }
+diff --git a/base/cvd/cuttlefish/host/commands/vhost_user_media/v4l2_stream_proxy/src/device.rs b/base/cvd/cuttlefish/host/commands/vhost_user_media/v4l2_stream_proxy/src/device.rs
+--- a/base/cvd/cuttlefish/host/commands/vhost_user_media/v4l2_stream_proxy/src/device.rs
++++ b/base/cvd/cuttlefish/host/commands/vhost_user_media/v4l2_stream_proxy/src/device.rs
+@@ -611,7 +611,6 @@ impl V4l2ProxyBackend {
+             capabilities: (BufferCapabilities::SUPPORTS_MMAP
+                 | BufferCapabilities::SUPPORTS_ORPHANED_BUFS)
+                 .bits(),
+-            flags: 0,
+             ..Default::default()
+         })
+     }

@@ -1,0 +1,13 @@
+diff --git a/src/devices/video_decoder.rs b/src/devices/video_decoder.rs
+--- a/src/devices/video_decoder.rs
++++ b/src/devices/video_decoder.rs
+@@ -987,8 +987,7 @@ impl V4l2DecoderBackend {
+             capabilities: (BufferCapabilities::SUPPORTS_MMAP
+                 | BufferCapabilities::SUPPORTS_ORPHANED_BUFS)
+                 .bits(),
+-            flags: 0,
+-            reserved: Default::default(),
++            ..Default::default()
+         })
+     }
+ 

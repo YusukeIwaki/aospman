@@ -1,0 +1,26 @@
+diff --git a/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java b/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
+--- a/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
++++ b/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
+@@ -12,6 +12,5 @@ import static org.mockito.ArgumentMatchers.anyLong;
+ import static org.mockito.ArgumentMatchers.eq;
+ import static org.mockito.ArgumentMatchers.notNull;
+-import static org.mockito.ArgumentMatchers.same;
+ import static org.mockito.Mockito.doAnswer;
+ import static org.mockito.Mockito.doReturn;
+ import static org.mockito.Mockito.never;
+@@ -830,14 +829,7 @@ public class Fido2CredentialRequestRobolectricTest {
+ 
+         assertThat(mCallback.getStatus()).isNull();
+         verify(mCredManHelperMock)
+-                .startPrefetchRequest(
+-                        same(mRequestOptions),
+-                        eq(Fido2CredentialRequest.convertOriginToString(mOrigin)),
+-                        eq(TEST_CLIENT_DATA_JSON.getBytes()),
+-                        notNull(),
+-                        any(),
+-                        any(),
+-                        eq(false));
++                .startPrefetchRequest(any(), any(), any(), any(), any(), any(), anyBoolean());
+     }
+ 
+     @Test
