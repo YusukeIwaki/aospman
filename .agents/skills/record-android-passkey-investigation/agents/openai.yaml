@@ -1,0 +1,4 @@
+interface:
+  display_name: "Record Android Passkey Investigation"
+  short_description: "Capture reproducible Android passkey experiment evidence"
+  default_prompt: "Use $record-android-passkey-investigation to capture this Android passkey experiment, evidence, and handoff."

@@ -10,8 +10,9 @@
 
 1. Inspect the current repository state and read every applicable `AGENTS.md` before proposing or changing code.
 2. For AOSP, Chromium, WebView, WebAuthn, Credential Manager, passkey, Autofill, or browser experiments, use `$investigate-android-passkeys` from `.agents/skills/investigate-android-passkeys`.
-3. For any remote checkout, compile, test build, or GCP resource operation, use `$manage-aosp-spot-build` from `.agents/skills/manage-aosp-spot-build`.
-4. Prefer the smallest experiment that can falsify the current hypothesis. Do not start a full AOSP or Chromium build when an app-only, source-reading, or targeted component test can answer the question.
+3. For every Android passkey experiment, use `$record-android-passkey-investigation` from `.agents/skills/record-android-passkey-investigation`. Initialize or resume its durable investigation record at task start and finalize it before handoff, even when the user does not explicitly request a memo.
+4. For any remote checkout, compile, test build, or GCP resource operation, use `$manage-aosp-spot-build` from `.agents/skills/manage-aosp-spot-build`.
+5. Prefer the smallest experiment that can falsify the current hypothesis. Do not start a full AOSP or Chromium build when an app-only, source-reading, or targeted component test can answer the question.
 
 ## GCP cost and cleanup policy
 

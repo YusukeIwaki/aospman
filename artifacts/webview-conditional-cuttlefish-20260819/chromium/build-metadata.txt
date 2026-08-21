@@ -1,0 +1,15 @@
+chromium_head=e807462122f5935c440b9bd4a9721e1cb8ac6e4e
+chromium_describe=e807462122-dirty
+chromium_version=MAJOR=154.MINOR=0.BUILD=8011.PATCH=0
+depot_tools_head=65cd67ed5cf5995455999fcc0e189e8c113dccc0
+gn_args_begin
+target_os = "android"
+target_cpu = "x64"
+is_debug = false
+is_component_build = false
+symbol_level = 0
+blink_symbol_level = 0
+v8_symbol_level = 0
+use_remoteexec = false
+treat_warnings_as_errors = false
+gn_args_end

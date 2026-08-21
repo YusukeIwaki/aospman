@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-sudo apt-get update
+sudo apt-get update -o Acquire::http::No-Cache=true
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
   bison \
   build-essential \

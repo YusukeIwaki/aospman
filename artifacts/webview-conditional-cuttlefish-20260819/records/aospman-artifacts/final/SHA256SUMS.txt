@@ -1,0 +1,8 @@
+a7e4809a1df0aeb79466916796e8abaef523ee720ba11122a3a9336e769eb157  /work/test-apks/aospman-test-credential-provider-debug.apk
+38a214fd63ceae5d1b93374ec8ec9b466cdbd16e4ccf63170467b87d272d1dc7  /work/test-apks/control-SystemWebView64.apk
+29fbd6f64673b426b654e79e9173f4655bf31b795c710d2aa8a4f14154583dee  /work/test-apks/patched-SystemWebView64.apk
+7f5952561d21bef98dfb0b78f9524e29bea145ce3de0900430cd9816eb06cae8  /work/test-apks/webview-passkey-browser-browser-debug.apk
+80febc1d8a4e37f5b92dde70db0d56ae05d91068785f7b52213cbd8f40af06df  /work/test-apks/webview-passkey-browser-browser-query-debug.apk
+e6813e3a15ae41f18c5d5f34233b16d067f6ead4799ffe04f45e2e49529eb50f  /work/test-apks/webview-passkey-browser-control-debug.apk
+a8454192ce43165ff17b27f99163a728ec78350a673a2f12089b5f40700d0451  /work/aosp/out/dist/cvd-host_package.tar.gz
+103ae55f5381cdf45c02120c969ff62eabb0aeaeda0bb47270bf0efd1458e700  /work/aosp/out/dist/aosp_cf_x86_64_only_phone-img-yusuke-iwaki.zip

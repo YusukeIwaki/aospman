@@ -1,0 +1,55 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediationAvailable_browserCredManWithoutGms[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediationAvailable_browserCredManWithoutGms[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webAuthnModeBrowser_goesToCredManPrefetch[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webAuthnModeBrowser_goesToCredManPrefetch[36]"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webAuthnModeBrowser_goesToCredManPrefetch[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 492,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediationAvailable_browserCredManWithoutGms[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 4388,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediationAvailable_browserCredManWithoutGms[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 2357,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webAuthnModeBrowser_goesToCredManPrefetch[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 494,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

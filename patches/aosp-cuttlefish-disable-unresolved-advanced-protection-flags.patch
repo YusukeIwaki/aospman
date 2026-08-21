@@ -1,0 +1,19 @@
+diff --git a/data/etc/advanced-protection-config.xml b/data/etc/advanced-protection-config.xml
+index aafc3319c204..aa143c4c00ba 100644
+--- a/data/etc/advanced-protection-config.xml
++++ b/data/etc/advanced-protection-config.xml
+@@ -40,12 +40,10 @@
+ <advanced-protection-config>
+     <available-protections>
+         <protection id="DISALLOW_CELLULAR_2G" />
+-        <protection id="DISALLOW_INSECURE_WIFI_AUTOJOIN"
+-                    featureFlag="android.security.aapm_feature_disable_insecure_wifi_autojoin" />
++        <!-- Test-image workaround: omit flag-gated protections whose android.security
++             package is unavailable through AconfigPackage during system_server startup. -->
+         <protection id="DISALLOW_INSTALL_UNKNOWN_SOURCES" />
+         <protection id="DISALLOW_USB" />
+         <protection id="ENABLE_MTE" />
+-        <protection id="DISALLOW_NON_TOOL_ACCESSIBILITY_SERVICES"
+-                    featureFlag="android.security.extend_aapm_to_a11y_services" />
+     </available-protections>
+ </advanced-protection-config>
