@@ -1,0 +1,10 @@
+Project: aospman
+
+Instances: none
+Disks: none
+Reserved addresses: none
+Snapshots: none
+Custom images: none
+
+Command: .agents/skills/manage-aosp-spot-build/scripts/spot-vm.sh audit
+Exit status: 0
