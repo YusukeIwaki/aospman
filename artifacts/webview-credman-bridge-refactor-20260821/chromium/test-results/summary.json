@@ -1,0 +1,30 @@
+{
+  "chromium_revision": "98596990901c11e89a24f6217f1b66513b065026",
+  "gn_output": "out/webview-x64",
+  "robolectric": {
+    "classes": [
+      "org.chromium.components.webauthn.AuthenticatorImplTest",
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest",
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest"
+    ],
+    "sdk_variants": [29, 36],
+    "passed": 178,
+    "failed": 0,
+    "note": "89 tests passed on each SDK variant. The original runner JSON was on the maximum-lifetime Spot VM when it auto-deleted during final artifact transfer; this durable summary records the observed runner result."
+  },
+  "native": {
+    "target": "components/webauthn/android:unit_tests",
+    "result": "compiled",
+    "objects": [
+      "webauthn_cred_man_delegate_unittest.o",
+      "webauthn_cred_man_delegate_factory_unittest.o"
+    ],
+    "executed": false,
+    "note": "The Android native source-set and test objects compiled; no host-native gtest execution was claimed."
+  },
+  "packages": {
+    "control_system_webview_64_apk": "passed",
+    "treatment_system_webview_64_apk": "passed",
+    "treatment_chrome_public_apk": "passed"
+  }
+}

@@ -1,163 +1,77 @@
-diff --git a/android_webview/browser/BUILD.gn b/android_webview/browser/BUILD.gn
-index 8876e875cb..7af0353e1c 100644
---- a/android_webview/browser/BUILD.gn
-+++ b/android_webview/browser/BUILD.gn
-@@ -126,6 +126,8 @@ source_set("browser") {
-     "aw_web_contents_view_delegate.h",
-     "aw_web_ui_controller_factory.cc",
-     "aw_web_ui_controller_factory.h",
-+    "aw_webauthn_client_android.cc",
-+    "aw_webauthn_client_android.h",
-     "aw_window_coverage_tracker.cc",
-     "content_restriction/aw_content_restriction_blocked_navigation_tracker.cc",
-     "content_restriction/aw_content_restriction_blocked_navigation_tracker.h",
-@@ -353,6 +355,7 @@ source_set("browser") {
-     "//components/version_info",
-     "//components/version_info/android:channel_getter",
-     "//components/visitedlink/browser",
-+    "//components/webauthn/android",
-     "//components/webdata/common",
-     "//components/webui/flags",
-     "//components/webui/user_actions",
-diff --git a/android_webview/browser/aw_browser_process.cc b/android_webview/browser/aw_browser_process.cc
-index 06ac55a816..b907e73fd7 100644
---- a/android_webview/browser/aw_browser_process.cc
-+++ b/android_webview/browser/aw_browser_process.cc
-@@ -6,14 +6,15 @@
+diff --git a/components/webauthn/android/BUILD.gn b/components/webauthn/android/BUILD.gn
+index 1294598..8fbcb9e 100644
+--- a/components/webauthn/android/BUILD.gn
++++ b/components/webauthn/android/BUILD.gn
+@@ -11,6 +11,7 @@ generate_jni("jni_headers") {
+     "java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java",
+     "java/src/org/chromium/components/webauthn/InternalAuthenticator.java",
+     "java/src/org/chromium/components/webauthn/WebauthnBrowserBridge.java",
++    "java/src/org/chromium/components/webauthn/WebauthnCredManBridge.java",
+     "java/src/org/chromium/components/webauthn/WebauthnFeatureMap.java",
+     "java/src/org/chromium/components/webauthn/WebauthnModeProvider.java",
+     "java/src/org/chromium/components/webauthn/cred_man/CredManSupportProvider.java",
+@@ -55,6 +56,7 @@ android_library("java") {
+     "java/src/org/chromium/components/webauthn/RecordOutcomeCallback.java",
+     "java/src/org/chromium/components/webauthn/RequestMetrics.java",
+     "java/src/org/chromium/components/webauthn/WebauthnBrowserBridge.java",
++    "java/src/org/chromium/components/webauthn/WebauthnCredManBridge.java",
+     "java/src/org/chromium/components/webauthn/WebauthnCredentialDetails.java",
+     "java/src/org/chromium/components/webauthn/WebauthnFeatureMap.java",
+     "java/src/org/chromium/components/webauthn/WebauthnFeatures.java",
+@@ -163,6 +165,7 @@ source_set("android") {
+     "webauthn_browser_bridge.h",
+     "webauthn_client_android.cc",
+     "webauthn_client_android.h",
++    "webauthn_cred_man_bridge.cc",
+     "webauthn_cred_man_delegate.cc",
+     "webauthn_cred_man_delegate.h",
+     "webauthn_cred_man_delegate_factory.cc",
+diff --git a/components/webauthn/android/README.md b/components/webauthn/android/README.md
+index 8a8ddf2..21caabf 100644
+--- a/components/webauthn/android/README.md
++++ b/components/webauthn/android/README.md
+@@ -31,6 +31,11 @@ Fido2CredentialRequest (Java) ◄────── JNI ──────► We
+           │                                                   ▼
+           │                                      Chrome UI controller (C++)
+           │
++          ├────────────────────────── JNI ──────► WebauthnCredManBridge
++          │                                                   │
++          │                                                   ▼
++          │                                      Embedder Autofill hooks (C++)
++          │
+       ┌───┴─────────────────────┬─────────────────────────┐
+       │ (Android 14+)           │ (Cond. Create)          │ (Pre-A14/Fallback)
+       ▼                         ▼                         ▼
+@@ -93,7 +98,8 @@ The matrices below are for non-payment requests.
+ :            :                :         : FIDO2 Browser APIs.                  :
+ | BROWSER    | FULL           | CredMan | WebView browser on Android 14+.      |
+ :            :                :         : Handles the request using Credential :
+-:            :                :         : Manager                              :
++:            :                :         : Manager. Conditional requests use    :
++:            :                :         : pending-get and Android Autofill.     :
+ | CHROME     | DISABLED       | FIDO    | Pre-Android 14 Chrome. Directly      |
+ :            :                :         : targets GMS Core FIDO2 Browser       :
+ :            :                :         : APIs, handling credential pickers    :
+@@ -208,6 +214,17 @@ Since the underlying FIDO2/CredMan backends are accessed via the Java layer,
+ but the browser UI and autofill systems are orchestrated in C++ Chrome layers,
+ `WebauthnBrowserBridge` acts as the bidirectional JNI bridge.
  
- #include "android_webview/browser/aw_browser_context.h"
- #include "android_webview/browser/aw_content_browser_client.h"
--#include "base/android/pre_freeze_background_memory_trimmer.h"
- #include "android_webview/browser/aw_enterprise_authentication_app_link_manager.h"
-+#include "android_webview/browser/aw_webauthn_client_android.h"
- #include "android_webview/browser/lifecycle/aw_contents_lifecycle_notifier.h"
- #include "android_webview/browser/metrics/visibility_metrics_logger.h"
- #include "android_webview/common/crash_reporter/crash_keys.h"
- #include "base/android/jni_array.h"
- #include "base/android/jni_string.h"
- #include "base/android/path_utils.h"
-+#include "base/android/pre_freeze_background_memory_trimmer.h"
- #include "base/base_paths_posix.h"
- #include "base/functional/callback_helpers.h"
- #include "base/memory/memory_pressure_listener_registry.h"
-@@ -32,6 +33,7 @@
- #include "components/os_crypt/async/browser/posix_key_provider.h"
- #include "components/safe_browsing/core/browser/db/v4_protocol_config.h"
- #include "components/safe_browsing/core/common/features.h"
-+#include "components/webauthn/android/webauthn_client_android.h"
- #include "content/public/browser/browser_task_traits.h"
- #include "content/public/browser/browser_thread.h"
- #include "content/public/browser/process_visibility_util.h"
-@@ -115,6 +117,10 @@ AwBrowserProcess::AwBrowserProcess(AwContentBrowserClient* browser_client)
-   origin_trials_settings_storage_ =
-       std::make_unique<embedder_support::OriginTrialsSettingsStorage>();
++Credential Manager lifecycle events are routed separately through
++`WebauthnCredManBridge`. This common, stateless JNI bridge is available to both
++Chrome and WebView embedders. It does not expose Chrome's credential picker;
++WebView conditional requests are surfaced through the existing Android
++Autofill integration. Chrome enables per-frame CredMan delegates through its
++`WebAuthnClientAndroid`; the common CredMan bridge explicitly enables the same
++delegate factory for a `WebContents` when a conditional request becomes
++pending, without requiring WebView to install a Chrome UI client.
++The CredMan lifecycle methods are therefore not part of
++`WebAuthnClientAndroid` or `WebauthnBrowserBridge`.
++
+ ---
  
-+  if (!webauthn::WebAuthnClientAndroid::HasClient()) {
-+    webauthn::WebAuthnClientAndroid::SetClient(
-+        std::make_unique<AwWebAuthnClientAndroid>());
-+  }
-   // Initialize OSCryptAsync with a PosixKeyProvider.
-   auto key_provider = std::make_unique<os_crypt_async::PosixKeyProvider>();
-   std::vector<std::pair<size_t, std::unique_ptr<os_crypt_async::KeyProvider>>>
-diff --git a/android_webview/browser/aw_webauthn_client_android.cc b/android_webview/browser/aw_webauthn_client_android.cc
-new file mode 100644
-index 0000000000..20f40b8c66
---- /dev/null
-+++ b/android_webview/browser/aw_webauthn_client_android.cc
-@@ -0,0 +1,35 @@
-+// Copyright 2026 The Chromium Authors
-+// Use of this source code is governed by a BSD-style license that can be
-+// found in the LICENSE file.
-+
-+#include "android_webview/browser/aw_webauthn_client_android.h"
-+
-+#include "base/functional/callback.h"
-+#include "content/public/browser/render_frame_host.h"
-+#include "device/fido/discoverable_credential_metadata.h"
-+
-+namespace android_webview {
-+
-+AwWebAuthnClientAndroid::~AwWebAuthnClientAndroid() = default;
-+
-+void AwWebAuthnClientAndroid::OnWebAuthnRequestPending(
-+    content::RenderFrameHost* frame_host,
-+    std::vector<device::DiscoverableCredentialMetadata> credentials,
-+    webauthn::AssertionMediationType mediation_type,
-+    base::RepeatingCallback<void(const std::vector<uint8_t>& id)>
-+        passkey_callback,
-+    base::RepeatingCallback<void(std::u16string_view, std::u16string_view)>
-+        password_callback,
-+    base::RepeatingClosure hybrid_closure,
-+    base::RepeatingCallback<void(webauthn::NonCredentialReturnReason)>
-+        non_credential_callback) {}
-+
-+void AwWebAuthnClientAndroid::CleanupWebAuthnRequest(
-+    content::RenderFrameHost* frame_host) {}
-+
-+bool AwWebAuthnClientAndroid::ShouldDisallowCredentialRequest(
-+    content::RenderFrameHost* render_frame_host) {
-+  return false;
-+}
-+
-+}  // namespace android_webview
-diff --git a/android_webview/browser/aw_webauthn_client_android.h b/android_webview/browser/aw_webauthn_client_android.h
-new file mode 100644
-index 0000000000..384b86df48
---- /dev/null
-+++ b/android_webview/browser/aw_webauthn_client_android.h
-@@ -0,0 +1,50 @@
-+// Copyright 2026 The Chromium Authors
-+// Use of this source code is governed by a BSD-style license that can be
-+// found in the LICENSE file.
-+
-+#ifndef ANDROID_WEBVIEW_BROWSER_AW_WEBAUTHN_CLIENT_ANDROID_H_
-+#define ANDROID_WEBVIEW_BROWSER_AW_WEBAUTHN_CLIENT_ANDROID_H_
-+
-+#include <cstdint>
-+#include <string>
-+#include <vector>
-+
-+#include "base/functional/callback_forward.h"
-+#include "components/webauthn/android/webauthn_client_android.h"
-+
-+namespace content {
-+class RenderFrameHost;
-+}
-+
-+namespace device {
-+class DiscoverableCredentialMetadata;
-+}
-+
-+namespace android_webview {
-+
-+// Installs the generic WebAuthn client hooks needed by WebView's Android
-+// Autofill provider. WebView does not provide Chrome's custom credential UI;
-+// conditional Credential Manager requests are surfaced by Android Autofill.
-+class AwWebAuthnClientAndroid : public webauthn::WebAuthnClientAndroid {
-+ public:
-+  ~AwWebAuthnClientAndroid() override;
-+
-+  void OnWebAuthnRequestPending(
-+      content::RenderFrameHost* frame_host,
-+      std::vector<device::DiscoverableCredentialMetadata> credentials,
-+      webauthn::AssertionMediationType mediation_type,
-+      base::RepeatingCallback<void(const std::vector<uint8_t>& id)>
-+          passkey_callback,
-+      base::RepeatingCallback<void(std::u16string_view, std::u16string_view)>
-+          password_callback,
-+      base::RepeatingClosure hybrid_closure,
-+      base::RepeatingCallback<void(webauthn::NonCredentialReturnReason)>
-+          non_credential_callback) override;
-+  void CleanupWebAuthnRequest(content::RenderFrameHost* frame_host) override;
-+  bool ShouldDisallowCredentialRequest(
-+      content::RenderFrameHost* render_frame_host) override;
-+};
-+
-+}  // namespace android_webview
-+
-+#endif  // ANDROID_WEBVIEW_BROWSER_AW_WEBAUTHN_CLIENT_ANDROID_H_
+ ## Password Retrieval Support
 diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java
-index c498c76b8d..1cbb80ada5 100644
+index c498c76..545a5ed 100644
 --- a/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java
 +++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/AuthenticatorImpl.java
 @@ -8,6 +8,7 @@ import static org.chromium.build.NullUtil.assertNonNull;
@@ -182,11 +96,11 @@ index c498c76b8d..1cbb80ada5 100644
          }
 -        if (!GmsCoreUtils.isWebauthnSupported()
 -                || (!isChrome(mWebContents) && !GmsCoreUtils.isResultReceiverSupported())) {
-+        boolean canUseBrowserCredMan = canUseBrowserCredMan();
-+        if ((!GmsCoreUtils.isWebauthnSupported() && !canUseBrowserCredMan)
++        boolean canUseBrowserCredManForCreate = canUseBrowserCredMan() && !options.isConditional;
++        if ((!GmsCoreUtils.isWebauthnSupported() && !canUseBrowserCredManForCreate)
 +                || (!isChrome(mWebContents)
 +                        && !GmsCoreUtils.isResultReceiverSupported()
-+                        && !canUseBrowserCredMan)) {
++                        && !canUseBrowserCredManForCreate)) {
              mRequestCallback.onComplete(
                      WebauthnRequestResponse.forFailedMakeCredential(
                              AuthenticatorStatus.NOT_IMPLEMENTED,
@@ -204,19 +118,23 @@ index c498c76b8d..1cbb80ada5 100644
                  || (options.publicKey == null && !isPasswordOnlyFlux)) {
              RequestMetrics metrics =
                      new RequestMetrics.Builder()
-@@ -336,13 +344,20 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+@@ -336,13 +344,24 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
          mPendingFido2CredentialRequest.handleReportRequest(options, assertNonNull(mOrigin));
      }
  
+-    private boolean couldSupportConditionalMediation() {
 +    private boolean canUseBrowserCredMan() {
 +        return is(mWebContents, WebauthnMode.BROWSER)
 +                && CredManSupportProvider.getCredManSupportForWebView() != CredManSupport.DISABLED;
 +    }
 +
-     private boolean couldSupportConditionalMediation() {
--        return GmsCoreUtils.isWebauthnSupported() && isChrome(mWebContents);
++    private boolean couldSupportConditionalGet() {
 +        return (GmsCoreUtils.isWebauthnSupported() && isChrome(mWebContents))
 +                || canUseBrowserCredMan();
++    }
++
++    private boolean couldSupportConditionalCreate() {
+         return GmsCoreUtils.isWebauthnSupported() && isChrome(mWebContents);
      }
  
      private boolean couldSupportUvpaa() {
@@ -228,11 +146,69 @@ index c498c76b8d..1cbb80ada5 100644
      }
  
      @Override
+@@ -416,7 +435,7 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+                             capabilities.add(
+                                     createWebAuthnClientCapability(
+                                             AuthenticatorConstants.CAPABILITY_CONDITIONAL_GET,
+-                                            couldSupportConditionalMediation() && isUvpaa));
++                                            couldSupportConditionalGet() && isUvpaa));
+                             capabilities.add(
+                                     createWebAuthnClientCapability(
+                                             AuthenticatorConstants.CAPABILITY_UVPAA,
+@@ -424,7 +443,7 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+                             capabilities.add(
+                                     createWebAuthnClientCapability(
+                                             AuthenticatorConstants.CAPABILITY_CONDITIONAL_CREATE,
+-                                            isUvpaa && couldSupportConditionalMediation()));
++                                            isUvpaa && couldSupportConditionalCreate()));
+                             capabilities.add(
+                                     createWebAuthnClientCapability(
+                                             AuthenticatorConstants.CAPABILITY_IMMEDIATE_GET,
+@@ -482,7 +501,7 @@ public final class AuthenticatorImpl implements Authenticator, AuthenticationCon
+     public void isConditionalMediationAvailable(
+             final IsConditionalMediationAvailable_Response callback) {
+         log(TAG, "isConditionalMediationAvailable");
+-        if (!couldSupportConditionalMediation()) {
++        if (!couldSupportConditionalGet()) {
+             callback.call(false);
+             return;
+         }
 diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java
-index 055d8c5f07..af36824498 100644
+index 055d8c5..1fb1903 100644
 --- a/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java
 +++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/Fido2CredentialRequest.java
-@@ -704,10 +704,24 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+@@ -73,7 +73,8 @@ import java.util.List;
+ /** Uses the Google Play Services Fido2 APIs. Holds the logic of each request. */
+ @JNINamespace("webauthn")
+ @NullMarked
+-public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
++public class Fido2CredentialRequest
++        implements WebauthnBrowserBridge.Provider, WebauthnCredManBridge.Provider {
+     private static final String TAG = "Fido2CredentialRequest";
+     // These constants are GMS Core error messages. GMS Core has started prepending bracketed
+     // internal error codes (e.g., "[50157]") to these messages, which breaks Chrome's string
+@@ -117,6 +118,7 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+     private boolean mAppIdExtensionUsed;
+     private boolean mEchoCredProps;
+     private @Nullable WebauthnBrowserBridge mBrowserBridge;
++    private @Nullable WebauthnCredManBridge mCredManBridge;
+ 
+     private RunnableTimer mImmediateTimer = new RunnableTimer();
+ 
+@@ -164,7 +166,11 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+         }
+         mPlayServicesAvailable = playServicesAvailable;
+         mCredManHelper =
+-                new CredManHelper(mAuthenticationContextProvider, this, mPlayServicesAvailable);
++                new CredManHelper(
++                        mAuthenticationContextProvider,
++                        /* browserBridgeProvider= */ this,
++                        /* credManBridgeProvider= */ this,
++                        mPlayServicesAvailable);
+         mIdentityCredentialsHelper = new IdentityCredentialsHelper(mAuthenticationContextProvider);
+         mBarrier = new Barrier(mAuthenticationContextProvider);
+     }
+@@ -704,10 +710,24 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
  
          if (!isChrome(mAuthenticationContextProvider.getWebContents())) {
              if (options.mediation == Mediation.CONDITIONAL) {
@@ -261,18 +237,397 @@ index 055d8c5f07..af36824498 100644
                  return;
              }
              if (CredManSupportProvider.getCredManSupportForWebView() == CredManSupport.DISABLED) {
-@@ -1895,7 +1909,8 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+@@ -1012,6 +1032,10 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+         mBrowserBridge = bridge;
+     }
  
-     @Override
-     public @Nullable WebauthnBrowserBridge getBridge() {
--        if (!isChrome(mAuthenticationContextProvider.getWebContents())) {
-+        if (!isChrome(mAuthenticationContextProvider.getWebContents())
-+                && !is(mAuthenticationContextProvider.getWebContents(), WebauthnMode.BROWSER)) {
-             return null;
++    public void overrideCredManBridgeForTesting(WebauthnCredManBridge bridge) {
++        mCredManBridge = bridge;
++    }
++
+     public void setCredManHelperForTesting(CredManHelper helper) {
+         mCredManHelper = helper;
+     }
+@@ -1904,6 +1928,14 @@ public class Fido2CredentialRequest implements WebauthnBrowserBridge.Provider {
+         return mBrowserBridge;
+     }
+ 
++    @Override
++    public WebauthnCredManBridge getCredManBridge() {
++        if (mCredManBridge == null) {
++            mCredManBridge = new WebauthnCredManBridge();
++        }
++        return mCredManBridge;
++    }
++
+     private void cleanupRequest() {
+         WebauthnBrowserBridge bridge = getBridge();
+         if (bridge != null && bridge.isInitialized()) {
+diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnBrowserBridge.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnBrowserBridge.java
+index 128830c..af8ddc3 100644
+--- a/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnBrowserBridge.java
++++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnBrowserBridge.java
+@@ -23,8 +23,8 @@ import org.chromium.url.mojom.Url;
+ import java.util.List;
+ 
+ /**
+- * Provides a bridge from the the Android Web Authentication request handlers to the embedding
+- * browser.
++ * Provides Chrome's custom credential-selection bridge from Android WebAuthn request handlers to
++ * the embedding browser.
+  */
+ @JNINamespace("webauthn")
+ @NullMarked
+@@ -112,54 +112,6 @@ public class WebauthnBrowserBridge {
+                         nonCredentialCallback);
+     }
+ 
+-    /**
+-     * Provides the C++ side |hasResults| and |fullAssertion| to be consumed during user interaction
+-     * (i.e. focusing login forms).
+-     *
+-     * @param frameHost The RenderFrameHost for the frame that generated the request.
+-     * @param hasResults The response from credMan whether there are credentials for the
+-     *     GetAssertion request.
+-     * @param fullAssertion The CredMan request to trigger UI for credential selection for the
+-     *     completed conditional request.
+-     */
+-    public void onCredManConditionalRequestPending(
+-            @Nullable RenderFrameHost frameHost,
+-            boolean hasResults,
+-            Callback<Boolean> fullAssertion) {
+-        log(TAG, "onCredManConditionalRequestPending with hasResults: %b", hasResults);
+-        prepareNativeBrowserBridgeIfRequired();
+-
+-        WebauthnBrowserBridgeJni.get()
+-                .onCredManConditionalRequestPending(
+-                        mNativeWebauthnBrowserBridge, frameHost, hasResults, fullAssertion);
+-    }
+-
+-    /**
+-     * Notifies the C++ side that the credMan UI is closed.
+-     *
+-     * @param frameHost The RenderFrameHost related to this CredMan call
+-     * @param success true iff user is authenticated
+-     */
+-    public void onCredManUiClosed(@Nullable RenderFrameHost frameHost, boolean success) {
+-        log(TAG, "onCredManUiClosed with success: %b", success);
+-        prepareNativeBrowserBridgeIfRequired();
+-
+-        WebauthnBrowserBridgeJni.get()
+-                .onCredManUiClosed(mNativeWebauthnBrowserBridge, frameHost, success);
+-    }
+-
+-    public void onPasswordCredentialReceived(
+-            @Nullable RenderFrameHost frameHost,
+-            @Nullable String username,
+-            @Nullable String password) {
+-        log(TAG, "onPasswordCredentialReceived");
+-        prepareNativeBrowserBridgeIfRequired();
+-
+-        WebauthnBrowserBridgeJni.get()
+-                .onPasswordCredentialReceived(
+-                        mNativeWebauthnBrowserBridge, frameHost, username, password);
+-    }
+-
+     /**
+      * Notifies the native code that an outstanding Conditional UI request initiated through
+      * onCredentialsDetailsListReceived has been completed or canceled.
+@@ -174,21 +126,6 @@ public class WebauthnBrowserBridge {
+         WebauthnBrowserBridgeJni.get().cleanupRequest(mNativeWebauthnBrowserBridge, frameHost);
+     }
+ 
+-    /**
+-     * Notifies the native code that an outstanding Android Credential Management
+-     * prepareGetCredential request has been canceled.
+-     *
+-     * @param frameHost The RenderFrameHost for the frame that generated the cancellation.
+-     */
+-    public void cleanupCredManRequest(@Nullable RenderFrameHost frameHost) {
+-        log(TAG, "cleanupCredManRequest");
+-
+-        assert mNativeWebauthnBrowserBridge != 0;
+-
+-        WebauthnBrowserBridgeJni.get()
+-                .cleanupCredManRequest(mNativeWebauthnBrowserBridge, frameHost);
+-    }
+-
+     public boolean isInitialized() {
+         return mNativeWebauthnBrowserBridge != 0;
+     }
+@@ -305,28 +242,8 @@ public class WebauthnBrowserBridge {
+                 @Nullable Runnable hybridCallback,
+                 Callback<Integer> nonCredentialCallback);
+ 
+-        void onCredManConditionalRequestPending(
+-                long nativeWebauthnBrowserBridge,
+-                @Nullable RenderFrameHost frameHost,
+-                boolean hasResults,
+-                Callback<Boolean> fullAssertion);
+-
+-        void onCredManUiClosed(
+-                long nativeWebauthnBrowserBridge,
+-                @Nullable RenderFrameHost frameHost,
+-                boolean success);
+-
+-        void onPasswordCredentialReceived(
+-                long nativeWebauthnBrowserBridge,
+-                @Nullable RenderFrameHost frameHost,
+-                @Nullable String username,
+-                @Nullable String password);
+-
+         void cleanupRequest(long nativeWebauthnBrowserBridge, @Nullable RenderFrameHost frameHost);
+ 
+-        void cleanupCredManRequest(
+-                long nativeWebauthnBrowserBridge, @Nullable RenderFrameHost frameHost);
+-
+         void destroy(long nativeWebauthnBrowserBridge);
+ 
+         boolean shouldDisallowCredentialRequest(@Nullable RenderFrameHost frameHost);
+diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnCredManBridge.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnCredManBridge.java
+new file mode 100644
+index 0000000..55676ec
+--- /dev/null
++++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/WebauthnCredManBridge.java
+@@ -0,0 +1,78 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++package org.chromium.components.webauthn;
++
++import static org.chromium.components.webauthn.WebauthnLogger.log;
++
++import org.jni_zero.JNINamespace;
++import org.jni_zero.NativeMethods;
++
++import org.chromium.base.Callback;
++import org.chromium.build.annotations.NullMarked;
++import org.chromium.build.annotations.Nullable;
++import org.chromium.content_public.browser.RenderFrameHost;
++
++/**
++ * Routes Credential Manager lifecycle events to the embedding browser.
++ *
++ * <p>Unlike {@link WebauthnBrowserBridge}, this bridge does not expose Chrome's custom credential
++ * picker. It is shared by Chrome and WebView embedders that integrate conditional Credential
++ * Manager requests with Android Autofill.
++ */
++@JNINamespace("webauthn")
++@NullMarked
++public class WebauthnCredManBridge {
++    private static final String TAG = "WebauthnCredManBridge";
++
++    /** Owner of the bridge should implement this interface and cache the bridge. */
++    public interface Provider {
++        WebauthnCredManBridge getCredManBridge();
++    }
++
++    public void onCredManConditionalRequestPending(
++            @Nullable RenderFrameHost frameHost,
++            boolean hasResults,
++            Callback<Boolean> fullAssertion) {
++        log(TAG, "onCredManConditionalRequestPending with hasResults: %b", hasResults);
++        WebauthnCredManBridgeJni.get()
++                .onCredManConditionalRequestPending(frameHost, hasResults, fullAssertion);
++    }
++
++    public void onCredManUiClosed(@Nullable RenderFrameHost frameHost, boolean success) {
++        log(TAG, "onCredManUiClosed with success: %b", success);
++        WebauthnCredManBridgeJni.get().onCredManUiClosed(frameHost, success);
++    }
++
++    public void onPasswordCredentialReceived(
++            @Nullable RenderFrameHost frameHost,
++            @Nullable String username,
++            @Nullable String password) {
++        log(TAG, "onPasswordCredentialReceived");
++        WebauthnCredManBridgeJni.get().onPasswordCredentialReceived(frameHost, username, password);
++    }
++
++    public void cleanupCredManRequest(@Nullable RenderFrameHost frameHost) {
++        log(TAG, "cleanupCredManRequest");
++        WebauthnCredManBridgeJni.get().cleanupCredManRequest(frameHost);
++    }
++
++    @NativeMethods
++    public interface Natives {
++        // Native methods are implemented in webauthn_cred_man_bridge.cc.
++        void onCredManConditionalRequestPending(
++                @Nullable RenderFrameHost frameHost,
++                boolean hasResults,
++                Callback<Boolean> fullAssertion);
++
++        void onCredManUiClosed(@Nullable RenderFrameHost frameHost, boolean success);
++
++        void onPasswordCredentialReceived(
++                @Nullable RenderFrameHost frameHost,
++                @Nullable String username,
++                @Nullable String password);
++
++        void cleanupCredManRequest(@Nullable RenderFrameHost frameHost);
++    }
++}
+diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/cred_man/CredManHelper.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/cred_man/CredManHelper.java
+index 65ef1a2..d4725f8 100644
+--- a/components/webauthn/android/java/src/org/chromium/components/webauthn/cred_man/CredManHelper.java
++++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/cred_man/CredManHelper.java
+@@ -48,6 +48,7 @@ import org.chromium.components.webauthn.GetAssertionOutcome;
+ import org.chromium.components.webauthn.MakeCredentialOutcome;
+ import org.chromium.components.webauthn.RequestMetrics;
+ import org.chromium.components.webauthn.WebauthnBrowserBridge;
++import org.chromium.components.webauthn.WebauthnCredManBridge;
+ import org.chromium.components.webauthn.WebauthnMode;
+ import org.chromium.components.webauthn.WebauthnModeProvider;
+ import org.chromium.components.webauthn.WebauthnRequestCallback;
+@@ -85,7 +86,8 @@ public class CredManHelper {
+     private final boolean mPlayServicesAvailable;
+     private boolean mRequestPasswords;
+     private final AuthenticationContextProvider mAuthenticationContextProvider;
+-    private final WebauthnBrowserBridge.Provider mBridgeProvider;
++    private final WebauthnBrowserBridge.Provider mBrowserBridgeProvider;
++    private final WebauthnCredManBridge.Provider mCredManBridgeProvider;
+     private byte @Nullable [] mClientDataJson;
+     private @CancellableUiState int mCancellableUiState = CancellableUiState.NONE;
+     private final @Nullable CredManRequestDecorator mCredManRequestDecorator;
+@@ -94,11 +96,13 @@ public class CredManHelper {
+ 
+     public CredManHelper(
+             AuthenticationContextProvider authenticationContextProvider,
+-            WebauthnBrowserBridge.Provider bridgeProvider,
++            WebauthnBrowserBridge.Provider browserBridgeProvider,
++            WebauthnCredManBridge.Provider credManBridgeProvider,
+             boolean playServicesAvailable) {
+         mMetricsHelper = new CredManMetricsHelper();
+         mAuthenticationContextProvider = authenticationContextProvider;
+-        mBridgeProvider = bridgeProvider;
++        mBrowserBridgeProvider = browserBridgeProvider;
++        mCredManBridgeProvider = credManBridgeProvider;
+         mPlayServicesAvailable = playServicesAvailable;
+         mCredManRequestDecorator =
+                 WebauthnModeProvider.getInstance()
+@@ -259,7 +263,7 @@ public class CredManHelper {
+         long startTimeMs = SystemClock.elapsedRealtime();
+         mBarrier = barrier; // Store this for any cancellation requests.
+         final Barrier localBarrier = barrier;
+-        final WebauthnBrowserBridge localBridge = assumeNonNull(mBridgeProvider.getBridge());
++        final WebauthnCredManBridge localBridge = mCredManBridgeProvider.getCredManBridge();
+ 
+         RenderFrameHost frameHost = mAuthenticationContextProvider.getRenderFrameHost();
+         OutcomeReceiver<PrepareGetCredentialResponse, GetCredentialException> receiver =
+@@ -447,7 +451,7 @@ public class CredManHelper {
+         log(TAG, "startGetRequest");
+         mClientDataJson = clientDataJson;
+         RenderFrameHost frameHost = mAuthenticationContextProvider.getRenderFrameHost();
+-        final WebauthnBrowserBridge localBridge = assumeNonNull(mBridgeProvider.getBridge());
++        final WebauthnCredManBridge localBridge = mCredManBridgeProvider.getCredManBridge();
+         WebauthnRequestCallback callback = mAuthenticationContextProvider.getRequestCallback();
+         if (callback != null) {
+             callback.addCompletionCallback(this::cleanupRequest);
+@@ -467,7 +471,7 @@ public class CredManHelper {
+                                         + " ("
+                                         + getCredentialException.getMessage()
+                                         + ")");
+-                        notifyBrowserOnCredManClosed(false);
++                        notifyEmbedderOnCredManClosed(false);
+                         if (mCancellableUiState == CancellableUiState.CANCEL_PENDING) {
+                             mCancellableUiState = CancellableUiState.NONE;
+                             return;
+@@ -547,11 +551,9 @@ public class CredManHelper {
+                     public void onResult(GetCredentialResponse getCredentialResponse) {
+                         log(TAG, "startGetRequest.onResult");
+                         if (mCancellableUiState == CancellableUiState.CANCEL_PENDING) {
+-                            notifyBrowserOnCredManClosed(false);
++                            notifyEmbedderOnCredManClosed(false);
+                             mCancellableUiState = CancellableUiState.NONE;
+-                            if (localBridge != null && localBridge.isInitialized()) {
+-                                localBridge.cleanupCredManRequest(frameHost);
+-                            }
++                            localBridge.cleanupCredManRequest(frameHost);
+                             return;
+                         }
+                         Bundle data = getCredentialResponse.getCredential().getData();
+@@ -580,9 +582,10 @@ public class CredManHelper {
+                                 return;
+                             }
+ 
+-                            // Unlike passkeys, password filling is delegated to the Chrome Password
+-                            // Manager UI and does not resolve the Mojo request callback.
+-                            // Thus, we must clean up the browser bridge request manually.
++                            // Unlike passkeys, password filling is delegated to the embedder's
++                            // Autofill integration and does not resolve the Mojo request callback.
++                            // Chrome's custom UI also needs its browser-bridge request cleaned up;
++                            // cleanupRequest() is a no-op for embedders without that bridge.
+                             cleanupRequest();
+                             localBridge.onPasswordCredentialReceived(
+                                     frameHost,
+@@ -612,7 +615,7 @@ public class CredManHelper {
+                                     options.mediation == Mediation.CONDITIONAL
+                                             ? CancellableUiState.WAITING_FOR_SELECTION
+                                             : CancellableUiState.NONE;
+-                            notifyBrowserOnCredManClosed(false);
++                            notifyEmbedderOnCredManClosed(false);
+                             RequestMetrics metrics =
+                                     new RequestMetrics.Builder()
+                                             .setGetAssertionResult(
+@@ -637,7 +640,7 @@ public class CredManHelper {
+                                     options.mediation == Mediation.CONDITIONAL
+                                             ? CancellableUiState.WAITING_FOR_SELECTION
+                                             : CancellableUiState.NONE;
+-                            notifyBrowserOnCredManClosed(false);
++                            notifyEmbedderOnCredManClosed(false);
+                             RequestMetrics metrics =
+                                     new RequestMetrics.Builder()
+                                             .setGetAssertionResult(
+@@ -659,7 +662,7 @@ public class CredManHelper {
+                                 options.mediation == Mediation.CONDITIONAL
+                                         ? CancellableUiState.WAITING_FOR_SELECTION
+                                         : CancellableUiState.NONE;
+-                        notifyBrowserOnCredManClosed(true);
++                        notifyEmbedderOnCredManClosed(true);
+                         mMetricsHelper.reportGetCredentialMetrics(
+                                 CredManGetRequestEnum.SUCCESS_PASSKEY, mCancellableUiState);
+                         if (frameHost != null) {
+@@ -734,11 +737,9 @@ public class CredManHelper {
+                 mBarrier.onCredManCancelled(error);
+                 break;
+             case CancellableUiState.WAITING_FOR_SELECTION:
+-                WebauthnBrowserBridge bridge = mBridgeProvider.getBridge();
+-                if (bridge != null && bridge.isInitialized()) {
+-                    bridge.cleanupCredManRequest(
+-                            mAuthenticationContextProvider.getRenderFrameHost());
+-                }
++                mCredManBridgeProvider
++                        .getCredManBridge()
++                        .cleanupCredManRequest(mAuthenticationContextProvider.getRenderFrameHost());
+                 mCancellableUiState = CancellableUiState.NONE;
+                 assumeNonNull(mBarrier);
+                 mBarrier.onCredManCancelled(error);
+@@ -771,10 +772,9 @@ public class CredManHelper {
+         return false;
+     }
+ 
+-    private void notifyBrowserOnCredManClosed(boolean success) {
+-        if (mBridgeProvider.getBridge() == null) return;
+-        mBridgeProvider
+-                .getBridge()
++    private void notifyEmbedderOnCredManClosed(boolean success) {
++        mCredManBridgeProvider
++                .getCredManBridge()
+                 .onCredManUiClosed(mAuthenticationContextProvider.getRenderFrameHost(), success);
+     }
+ 
+@@ -856,7 +856,7 @@ public class CredManHelper {
+     }
+ 
+     private void cleanupRequest() {
+-        WebauthnBrowserBridge bridge = mBridgeProvider.getBridge();
++        WebauthnBrowserBridge bridge = mBrowserBridgeProvider.getBridge();
+         if (bridge != null && bridge.isInitialized()) {
+             bridge.cleanupRequest(mAuthenticationContextProvider.getRenderFrameHost());
          }
-         if (mBrowserBridge == null) {
 diff --git a/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java b/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java
-index ca2e26a7fc..2b340c2d84 100644
+index ca2e26a..2f0fa38 100644
 --- a/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java
 +++ b/components/webauthn/android/junit/src/org/chromium/components/webauthn/AuthenticatorImplTest.java
 @@ -15,6 +15,8 @@ import static org.mockito.Mockito.never;
@@ -300,7 +655,7 @@ index ca2e26a7fc..2b340c2d84 100644
  import org.chromium.content_public.browser.LifecycleState;
  import org.chromium.content_public.browser.RenderFrameHost;
  import org.chromium.content_public.browser.Visibility;
-@@ -129,6 +133,22 @@ public class AuthenticatorImplTest {
+@@ -129,6 +133,49 @@ public class AuthenticatorImplTest {
          assertEquals(10, mCapabilitiesCaptor.getValue().length);
      }
  
@@ -320,14 +675,155 @@ index ca2e26a7fc..2b340c2d84 100644
 +                .handleIsUserVerifyingPlatformAuthenticatorAvailableRequest(any());
 +    }
 +
++    @Test
++    public void testBrowserCredMan_doesNotAdvertiseConditionalCreate() {
++        when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++        GmsCoreUtils.setGmsCoreVersionForTesting(-1);
++        CredManSupportProvider.setupForTesting(Build.VERSION_CODES.UPSIDE_DOWN_CAKE, TriState.TRUE);
++
++        testCapability(AuthenticatorConstants.CAPABILITY_CONDITIONAL_GET, true);
++        testCapability(AuthenticatorConstants.CAPABILITY_CONDITIONAL_CREATE, false);
++    }
++
++    @Test
++    public void testConditionalMediationUnavailable_browserBeforeApi34() {
++        when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++        GmsCoreUtils.setGmsCoreVersionForTesting(-1);
++        CredManSupportProvider.setupForTesting(Build.VERSION_CODES.TIRAMISU, TriState.FALSE);
++        Authenticator.IsConditionalMediationAvailable_Response callback =
++                mock(Authenticator.IsConditionalMediationAvailable_Response.class);
++
++        mAuthenticator.isConditionalMediationAvailable(callback);
++
++        verify(callback).call(false);
++        verify(mFido2CredentialRequestMock, never())
++                .handleIsUserVerifyingPlatformAuthenticatorAvailableRequest(any());
++    }
++
      @Test
      public void testGetClientCapabilities_RelatedOrigins_ShouldBeSupported() {
          GmsCoreUtils.setGmsCoreVersionForTesting(GmsCoreUtils.GMSCORE_MIN_VERSION);
+@@ -345,6 +392,40 @@ public class AuthenticatorImplTest {
+                 .handleMakeCredentialRequest(any(), any(), any(), any(), any());
+     }
+ 
++    @Test
++    public void testMakeCredential_browserCredManWithoutGms_reachesRequestHandler() {
++        when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++        GmsCoreUtils.setGmsCoreVersionForTesting(-1);
++        CredManSupportProvider.setupForTesting(Build.VERSION_CODES.UPSIDE_DOWN_CAKE, TriState.TRUE);
++        Authenticator.MakeCredential_Response callback =
++                mock(Authenticator.MakeCredential_Response.class);
++
++        mAuthenticator.makeCredential(new PublicKeyCredentialCreationOptions(), callback);
++
++        verify(callback, never()).call(anyInt(), any(), any());
++        verify(mFido2CredentialRequestMock)
++                .handleMakeCredentialRequest(any(), any(), any(), any(), any());
++    }
++
++    @Test
++    public void testConditionalMakeCredential_browserCredManWithoutGms_notImplemented() {
++        when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++        GmsCoreUtils.setGmsCoreVersionForTesting(-1);
++        CredManSupportProvider.setupForTesting(Build.VERSION_CODES.UPSIDE_DOWN_CAKE, TriState.TRUE);
++        PublicKeyCredentialCreationOptions options = new PublicKeyCredentialCreationOptions();
++        options.isConditional = true;
++        Authenticator.MakeCredential_Response callback =
++                mock(Authenticator.MakeCredential_Response.class);
++
++        mAuthenticator.makeCredential(options, callback);
++
++        verify(callback).call(eq(AuthenticatorStatus.NOT_IMPLEMENTED), any(), any());
++        verify(mFido2CredentialRequestMock, never())
++                .handleMakeCredentialRequest(any(), any(), any(), any(), any());
++    }
++
+     @Test
+     public void testGetCredential_blockedByEmbedder() {
+         when(mWebauthnBrowserBridgeNativesMock.shouldDisallowCredentialRequest(mRenderFrameHost))
+@@ -386,6 +467,23 @@ public class AuthenticatorImplTest {
+         verify(mFido2CredentialRequestMock).handleGetCredentialRequest(any(), any(), any(), any());
+     }
+ 
++    @Test
++    public void testGetCredential_browserCredManWithoutGms_reachesRequestHandler() {
++        when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++        GmsCoreUtils.setGmsCoreVersionForTesting(-1);
++        CredManSupportProvider.setupForTesting(Build.VERSION_CODES.UPSIDE_DOWN_CAKE, TriState.TRUE);
++        GetCredentialOptions options = new GetCredentialOptions();
++        options.publicKey = new PublicKeyCredentialRequestOptions();
++        Authenticator.GetCredential_Response callback =
++                mock(Authenticator.GetCredential_Response.class);
++
++        mAuthenticator.getCredential(options, callback);
++
++        verify(callback, never()).call(any());
++        verify(mFido2CredentialRequestMock).handleGetCredentialRequest(any(), any(), any(), any());
++    }
++
+     @Test
+     public void testMakeCredential_blockedByEmbedder_notChrome() {
+         GmsCoreUtils.setGmsCoreVersionForTesting(300000000);
 diff --git a/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java b/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
-index 9a5206b580..4359d80fda 100644
+index 9a5206b..98e81fd 100644
 --- a/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
 +++ b/components/webauthn/android/junit/src/org/chromium/components/webauthn/Fido2CredentialRequestRobolectricTest.java
-@@ -817,6 +817,21 @@ public class Fido2CredentialRequestRobolectricTest {
+@@ -112,6 +112,7 @@ public class Fido2CredentialRequestRobolectricTest {
+     @Mock GURLUtils.Natives mGURLUtilsJniMock;
+     @Mock Activity mActivity;
+     @Mock WebauthnBrowserBridge mBrowserBridgeMock;
++    @Mock WebauthnCredManBridge mCredManBridgeMock;
+     @Mock CredManHelper mCredManHelperMock;
+     @Mock Barrier mBarrierMock;
+     @Mock WebauthnModeProvider mModeProviderMock;
+@@ -205,6 +206,7 @@ public class Fido2CredentialRequestRobolectricTest {
+                 /* overrideAndroidVersion= */ Build.VERSION_CODES.UPSIDE_DOWN_CAKE,
+                 /* overrideForcesGpm= */ TriState.TRUE);
+         mRequest.overrideBrowserBridgeForTesting(mBrowserBridgeMock);
++        mRequest.overrideCredManBridgeForTesting(mCredManBridgeMock);
+         Mockito.when(mBrowserBridgeMock.isInitialized()).thenReturn(true);
+         mRequest.setCredManHelperForTesting(mCredManHelperMock);
+         mRequest.setBarrierForTesting(mBarrierMock);
+@@ -643,7 +645,7 @@ public class Fido2CredentialRequestRobolectricTest {
+         assertThat(mFido2ApiCallHelper.mGetAssertionCalled).isTrue();
+         assertThat(mCallback.getStatus())
+                 .isEqualTo(Integer.valueOf(AuthenticatorStatus.NOT_ALLOWED_ERROR));
+-        verify(mBrowserBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
+     }
+ 
+     @Test
+@@ -768,7 +770,7 @@ public class Fido2CredentialRequestRobolectricTest {
+                         /* barrier= */ any(),
+                         /* stopImmediateTimer= */ any(),
+                         /* ignoreGpm= */ eq(false));
+-        verify(mBrowserBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
+     }
+ 
+     @Test
+@@ -800,12 +802,12 @@ public class Fido2CredentialRequestRobolectricTest {
+         verify(mBrowserBridgeMock, times(1))
+                 .onCredentialsDetailsListReceived(
+                         any(), any(), eq(AssertionMediationType.CONDITIONAL), any(), any(), any());
+-        verify(mBrowserBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
+     }
+ 
+     @Test
+     @SmallTest
+-    public void testConditionalGetCredential_webauthnModeNotChrome_notImplemented() {
++    public void testConditionalGetCredential_webAuthnModeApp_notImplemented() {
+         setGetCredentialRequestOptions(/* hasAllowList= */ false);
+         mRequestOptions.mediation = Mediation.CONDITIONAL;
+         Mockito.when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.APP);
+@@ -817,6 +819,41 @@ public class Fido2CredentialRequestRobolectricTest {
          verifyNoInteractions(mCredManHelperMock);
      }
  
@@ -344,8 +840,671 @@ index 9a5206b580..4359d80fda 100644
 +        assertThat(mCallback.getStatus()).isNull();
 +        verify(mCredManHelperMock)
 +                .startPrefetchRequest(any(), any(), any(), any(), any(), any(), anyBoolean());
++        assertThat(mRequest.getBridge()).isNull();
++        assertThat(mRequest.getCredManBridge()).isSameInstanceAs(mCredManBridgeMock);
++    }
++
++    @Test
++    @SmallTest
++    public void testConditionalGetCredential_webAuthnModeBrowserBeforeApi34_notImplemented() {
++        setGetCredentialRequestOptions(/* hasAllowList= */ false);
++        mRequestOptions.mediation = Mediation.CONDITIONAL;
++        CredManSupportProvider.setupForTesting(
++                /* overrideAndroidVersion= */ Build.VERSION_CODES.TIRAMISU,
++                /* overrideForcesGpm= */ TriState.FALSE);
++        Mockito.when(mModeProviderMock.getWebauthnMode(any())).thenReturn(WebauthnMode.BROWSER);
++        Mockito.when(mModeProviderMock.getGlobalWebauthnMode()).thenReturn(WebauthnMode.NONE);
++
++        handleGetCredentialRequest();
++
++        assertThat(mCallback.getStatus()).isEqualTo(AuthenticatorStatus.NOT_IMPLEMENTED);
++        verifyNoInteractions(mCredManHelperMock);
++        assertThat(mRequest.getBridge()).isNull();
 +    }
 +
      @Test
      @SmallTest
      public void testConditionalGetCredential_RpCancelWhileIdleWithGpmInCredMan_notAllowedError() {
+@@ -831,7 +868,7 @@ public class Fido2CredentialRequestRobolectricTest {
+         assertThat(mCallback.getStatus()).isEqualTo(null);
+         verify(mCredManHelperMock).cancelGetAssertion(AuthenticatorStatus.ABORT_ERROR);
+         verify(mBrowserBridgeMock, never()).cleanupRequest(any());
+-        verify(mBrowserBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
+     }
+ 
+     @Test
+@@ -856,7 +893,7 @@ public class Fido2CredentialRequestRobolectricTest {
+         verify(mBarrierMock).onFido2ApiCancelled();
+         verify(mCredManHelperMock).cancelGetAssertion(AuthenticatorStatus.ABORT_ERROR);
+         verify(mBrowserBridgeMock).cleanupRequest(any());
+-        verify(mBrowserBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
+     }
+ 
+     @Test
+@@ -950,7 +987,7 @@ public class Fido2CredentialRequestRobolectricTest {
+                         /* barrier= */ any(),
+                         /* stopImmediateTimer= */ notNull(),
+                         /* ignoreGpm= */ eq(false));
+-        verify(mBrowserBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridgeMock, never()).onCredManUiClosed(any(), anyBoolean());
+     }
+ 
+     @Test
+diff --git a/components/webauthn/android/junit/src/org/chromium/components/webauthn/cred_man/CredManHelperRobolectricTest.java b/components/webauthn/android/junit/src/org/chromium/components/webauthn/cred_man/CredManHelperRobolectricTest.java
+index 753a4b9..97773f8 100644
+--- a/components/webauthn/android/junit/src/org/chromium/components/webauthn/cred_man/CredManHelperRobolectricTest.java
++++ b/components/webauthn/android/junit/src/org/chromium/components/webauthn/cred_man/CredManHelperRobolectricTest.java
+@@ -62,6 +62,7 @@ import org.chromium.components.webauthn.AuthenticationContextProvider;
+ import org.chromium.components.webauthn.Barrier;
+ import org.chromium.components.webauthn.Fido2ApiTestHelper;
+ import org.chromium.components.webauthn.WebauthnBrowserBridge;
++import org.chromium.components.webauthn.WebauthnCredManBridge;
+ import org.chromium.components.webauthn.WebauthnFeatures;
+ import org.chromium.components.webauthn.WebauthnModeProvider;
+ import org.chromium.components.webauthn.WebauthnRequestCallback;
+@@ -106,6 +107,7 @@ public class CredManHelperRobolectricTest {
+     @Mock private RenderFrameHost mFrameHost;
+     @Mock private CredManMetricsHelper mMetricsHelper;
+     @Mock private WebauthnBrowserBridge mBrowserBridge;
++    @Mock private WebauthnCredManBridge mCredManBridge;
+     @Mock private Barrier mBarrier;
+     @Mock private CredManRequestDecorator mRequestDecorator;
+     @Mock private WebauthnModeProvider mWebauthnModeProvider;
+@@ -118,7 +120,7 @@ public class CredManHelperRobolectricTest {
+     @Mock private GetCredential_Response mGetCredentialResponseCallback;
+     private WebauthnRequestCallback mRequestCallback;
+ 
+-    private final WebauthnBrowserBridge.Provider mBridgeProvider =
++    private final WebauthnBrowserBridge.Provider mBrowserBridgeProvider =
+             new WebauthnBrowserBridge.Provider() {
+                 @Override
+                 public WebauthnBrowserBridge getBridge() {
+@@ -126,6 +128,14 @@ public class CredManHelperRobolectricTest {
+                 }
+             };
+ 
++    private final WebauthnCredManBridge.Provider mCredManBridgeProvider =
++            new WebauthnCredManBridge.Provider() {
++                @Override
++                public WebauthnCredManBridge getCredManBridge() {
++                    return mCredManBridge;
++                }
++            };
++
+     @Before
+     public void setUp() throws Exception {
+         WebContentsStatics.setWebContentsForTesting(null);
+@@ -155,7 +165,8 @@ public class CredManHelperRobolectricTest {
+         mCredManHelper =
+                 new CredManHelper(
+                         mAuthenticationContextProviderMock,
+-                        mBridgeProvider,
++                        mBrowserBridgeProvider,
++                        mCredManBridgeProvider,
+                         /* playServicesAvailable= */ true);
+         mCredManHelper.setMetricsHelperForTesting(mMetricsHelper);
+         when(mContext.getSystemService(Context.CREDENTIAL_SERVICE)).thenReturn(mCredentialManager);
+@@ -363,7 +374,7 @@ public class CredManHelperRobolectricTest {
+         shadowCredentialManager.getGetCredentialCallback().onResult(response);
+ 
+         verify(mGetCredentialResponseCallback).call(any());
+-        verify(mBrowserBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
+         verify(mBrowserBridge, times(1)).cleanupRequest(any());
+         verify(mMetricsHelper, times(1))
+                 .reportGetCredentialMetrics(eq(CredManGetRequestEnum.SENT_REQUEST), anyInt());
+@@ -420,7 +431,7 @@ public class CredManHelperRobolectricTest {
+                 new GetCredentialException(GetCredentialException.TYPE_NO_CREDENTIAL, "Message");
+         shadowCredentialManager.getGetCredentialCallback().onError(exception);
+         verify(noCredentialsFallback, times(1)).run();
+-        verify(mBrowserBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
+         verify(mBrowserBridge, never()).cleanupRequest(any());
+     }
+ 
+@@ -470,7 +481,7 @@ public class CredManHelperRobolectricTest {
+         shadowCredentialManager.getGetCredentialCallback().onError(exception);
+ 
+         verify(mGetCredentialResponseCallback).call(any());
+-        verify(mBrowserBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
+         verify(mBrowserBridge, times(1)).cleanupRequest(any());
+         verify(mMetricsHelper, times(1))
+                 .reportGetCredentialMetrics(eq(CredManGetRequestEnum.CANCELLED), anyInt());
+@@ -498,7 +509,7 @@ public class CredManHelperRobolectricTest {
+         shadowCredentialManager.getGetCredentialCallback().onError(exception);
+ 
+         verify(mGetCredentialResponseCallback).call(any());
+-        verify(mBrowserBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
+         verify(mBrowserBridge, times(1)).cleanupRequest(any());
+         verify(mMetricsHelper, times(1))
+                 .reportGetCredentialMetrics(eq(CredManGetRequestEnum.FAILURE), anyInt());
+@@ -539,9 +550,9 @@ public class CredManHelperRobolectricTest {
+         credManCallSuccessfulRunback.getValue().run();
+ 
+         verify(mGetCredentialResponseCallback, never()).call(any());
+-        verify(mBrowserBridge, times(1))
++        verify(mCredManBridge, times(1))
+                 .onCredManConditionalRequestPending(any(), anyBoolean(), any());
+-        verify(mBrowserBridge, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, never()).onCredManUiClosed(any(), anyBoolean());
+         verify(mMetricsHelper, times(1))
+                 .recordCredmanPrepareRequestHistogram(eq(CredManPrepareRequestEnum.SENT_REQUEST));
+         verify(mMetricsHelper, times(1))
+@@ -614,8 +625,8 @@ public class CredManHelperRobolectricTest {
+         mCredManHelper.cancelGetAssertion(AuthenticatorStatus.ABORT_ERROR);
+ 
+         verify(mBarrier, times(1)).onCredManCancelled(AuthenticatorStatus.ABORT_ERROR);
+-        verify(mBrowserBridge, times(1)).cleanupCredManRequest(any());
+-        verify(mBrowserBridge, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).cleanupCredManRequest(any());
++        verify(mCredManBridge, never()).onCredManUiClosed(any(), anyBoolean());
+         verify(mMetricsHelper, never()).reportGetCredentialMetrics(anyInt(), anyInt());
+     }
+ 
+@@ -655,7 +666,7 @@ public class CredManHelperRobolectricTest {
+                 .recordCredmanPrepareRequestDuration(anyLong(), anyBoolean());
+ 
+         // Setup the test for startGetRequest:
+-        verify(mBrowserBridge, times(1))
++        verify(mCredManBridge, times(1))
+                 .onCredManConditionalRequestPending(any(), anyBoolean(), callbackCaptor.capture());
+ 
+         // Trigger the startPrefetchRequest's startGetRequest:
+@@ -668,8 +679,8 @@ public class CredManHelperRobolectricTest {
+ 
+         verify(mGetCredentialResponseCallback, never()).call(any());
+         verify(mBrowserBridge, never()).cleanupRequest(any());
+-        verify(mBrowserBridge, never()).cleanupCredManRequest(any());
+-        verify(mBrowserBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, never()).cleanupCredManRequest(any());
++        verify(mCredManBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
+         verify(mMetricsHelper, times(1))
+                 .reportGetCredentialMetrics(eq(CredManGetRequestEnum.CANCELLED), anyInt());
+     }
+@@ -708,7 +719,7 @@ public class CredManHelperRobolectricTest {
+ 
+         verify(mMetricsHelper, times(1))
+                 .recordCredmanPrepareRequestDuration(anyLong(), anyBoolean());
+-        verify(mBrowserBridge, times(1))
++        verify(mCredManBridge, times(1))
+                 .onCredManConditionalRequestPending(any(), anyBoolean(), callbackCaptor.capture());
+ 
+         String username = "coolUserName";
+@@ -720,11 +731,11 @@ public class CredManHelperRobolectricTest {
+         callbackCaptor.getValue().onResult(true);
+         shadowCredentialManager.getGetCredentialCallback().onResult(response);
+ 
+-        verify(mBrowserBridge, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, never()).onCredManUiClosed(any(), anyBoolean());
+         // A password is selected, the callback will not be signed.
+         verify(mGetCredentialResponseCallback, never()).call(any());
+ 
+-        verify(mBrowserBridge, times(1))
++        verify(mCredManBridge, times(1))
+                 .onPasswordCredentialReceived(any(), eq(username), eq(password));
+         verify(mMetricsHelper, times(1))
+                 .reportGetCredentialMetrics(eq(CredManGetRequestEnum.SUCCESS_PASSWORD), anyInt());
+@@ -791,7 +802,7 @@ public class CredManHelperRobolectricTest {
+ 
+         verify(stopImmediateTimer, times(1)).run();
+         verify(mGetCredentialResponseCallback, never()).call(any());
+-        verify(mBrowserBridge, never())
++        verify(mCredManBridge, never())
+                 .onCredManConditionalRequestPending(any(), anyBoolean(), any());
+         verify(mMetricsHelper, times(1))
+                 .recordCredmanPrepareRequestHistogram(eq(CredManPrepareRequestEnum.SENT_REQUEST));
+@@ -810,7 +821,7 @@ public class CredManHelperRobolectricTest {
+         shadowCredentialManager.getGetCredentialCallback().onResult(response);
+ 
+         verify(mGetCredentialResponseCallback).call(any());
+-        verify(mBrowserBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).onCredManUiClosed(any(), anyBoolean());
+         verify(mMetricsHelper, times(1))
+                 .reportGetCredentialMetrics(eq(CredManGetRequestEnum.SENT_REQUEST), anyInt());
+         verify(mMetricsHelper, times(1))
+@@ -842,8 +853,8 @@ public class CredManHelperRobolectricTest {
+                 new GetCredentialResponse(createPasswordCredential(username, password));
+         shadowCredentialManager.getGetCredentialCallback().onResult(response);
+ 
+-        verify(mBrowserBridge, never()).onCredManUiClosed(any(), anyBoolean());
+-        verify(mBrowserBridge, never()).onPasswordCredentialReceived(any(), any(), any());
++        verify(mCredManBridge, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, never()).onPasswordCredentialReceived(any(), any(), any());
+         verify(mBrowserBridge, times(1)).cleanupRequest(any());
+ 
+         ArgumentCaptor<org.chromium.blink.mojom.GetCredentialResponse> responseCaptor =
+@@ -891,8 +902,8 @@ public class CredManHelperRobolectricTest {
+         mCredManHelper.cancelGetAssertion(AuthenticatorStatus.NOT_ALLOWED_ERROR);
+ 
+         verify(mBarrier, times(1)).onCredManCancelled(AuthenticatorStatus.NOT_ALLOWED_ERROR);
+-        verify(mBrowserBridge, times(1)).cleanupCredManRequest(any());
+-        verify(mBrowserBridge, never()).onCredManUiClosed(any(), anyBoolean());
++        verify(mCredManBridge, times(1)).cleanupCredManRequest(any());
++        verify(mCredManBridge, never()).onCredManUiClosed(any(), anyBoolean());
+         verify(mMetricsHelper, never()).reportGetCredentialMetrics(anyInt(), anyInt());
+     }
+ 
+diff --git a/components/webauthn/android/webauthn_browser_bridge.cc b/components/webauthn/android/webauthn_browser_bridge.cc
+index a726569..bea45e6 100644
+--- a/components/webauthn/android/webauthn_browser_bridge.cc
++++ b/components/webauthn/android/webauthn_browser_bridge.cc
+@@ -189,64 +189,6 @@ void WebauthnBrowserBridge::OnCredentialsDetailsListReceived(
+       std::move(non_credential_callback));
+ }
+ 
+-void TriggerFullRequest(
+-    const base::android::JavaRef<jobject>& jfull_request_runnable,
+-    bool request_passwords) {
+-  base::android::RunBooleanCallbackAndroid(jfull_request_runnable,
+-                                           request_passwords);
+-}
+-
+-void WebauthnBrowserBridge::OnCredManConditionalRequestPending(
+-    JNIEnv* env,
+-    const base::android::JavaRef<jobject>& jframe_host,
+-    bool jhas_results,
+-    const base::android::JavaRef<jobject>& jfull_request_runnable) {
+-  auto* client = WebAuthnClientAndroid::GetClient();
+-  auto* render_frame_host =
+-      content::RenderFrameHost::FromJavaRenderFrameHost(jframe_host);
+-  if (!client || !render_frame_host ||
+-      !content::WebContents::FromRenderFrameHost(render_frame_host)) {
+-    return;
+-  }
+-  client->OnCredManConditionalRequestPending(
+-      render_frame_host, jhas_results,
+-      base::BindRepeating(
+-          &TriggerFullRequest,
+-          ScopedJavaGlobalRef<jobject>(env, jfull_request_runnable)));
+-}
+-
+-void WebauthnBrowserBridge::OnCredManUiClosed(
+-    JNIEnv* env,
+-    const base::android::JavaRef<jobject>& jframe_host,
+-    bool jsuccess) {
+-  auto* client = WebAuthnClientAndroid::GetClient();
+-  auto* render_frame_host =
+-      content::RenderFrameHost::FromJavaRenderFrameHost(jframe_host);
+-  if (!client || !render_frame_host ||
+-      !content::WebContents::FromRenderFrameHost(render_frame_host)) {
+-    return;
+-  }
+-  client->OnCredManUiClosed(render_frame_host, jsuccess);
+-}
+-
+-void WebauthnBrowserBridge::OnPasswordCredentialReceived(
+-    JNIEnv* env,
+-    const base::android::JavaRef<jobject>& jframe_host,
+-    const base::android::JavaRef<jstring>& jusername,
+-    const base::android::JavaRef<jstring>& jpassword) {
+-  auto* client = WebAuthnClientAndroid::GetClient();
+-  auto* render_frame_host =
+-      content::RenderFrameHost::FromJavaRenderFrameHost(jframe_host);
+-  if (!client || !render_frame_host ||
+-      !content::WebContents::FromRenderFrameHost(render_frame_host)) {
+-    return;
+-  }
+-  client->OnPasswordCredentialReceived(
+-      render_frame_host,
+-      base::android::ConvertJavaStringToUTF16(env, jusername),
+-      base::android::ConvertJavaStringToUTF16(env, jpassword));
+-}
+-
+ void WebauthnBrowserBridge::CleanupRequest(
+     JNIEnv* env,
+     const base::android::JavaRef<jobject>& jframe_host) const {
+@@ -266,20 +208,6 @@ void WebauthnBrowserBridge::CleanupRequest(
+   client->CleanupWebAuthnRequest(render_frame_host);
+ }
+ 
+-void WebauthnBrowserBridge::CleanupCredManRequest(
+-    JNIEnv* env,
+-    const base::android::JavaRef<jobject>& jframe_host) const {
+-  auto* client = WebAuthnClientAndroid::GetClient();
+-  auto* render_frame_host =
+-      content::RenderFrameHost::FromJavaRenderFrameHost(jframe_host);
+-
+-  if (!client || !render_frame_host ||
+-      !content::WebContents::FromRenderFrameHost(render_frame_host)) {
+-    return;
+-  }
+-  client->CleanupCredManRequest(render_frame_host);
+-}
+-
+ void WebauthnBrowserBridge::Destroy(JNIEnv* env) {
+   delete this;
+ }
+diff --git a/components/webauthn/android/webauthn_browser_bridge.h b/components/webauthn/android/webauthn_browser_bridge.h
+index 24a9b83..54289ef 100644
+--- a/components/webauthn/android/webauthn_browser_bridge.h
++++ b/components/webauthn/android/webauthn_browser_bridge.h
+@@ -33,26 +33,6 @@ class WebauthnBrowserBridge {
+   void CleanupRequest(JNIEnv* env,
+                       const base::android::JavaRef<jobject>& jframe_host) const;
+ 
+-  void CleanupCredManRequest(
+-      JNIEnv* env,
+-      const base::android::JavaRef<jobject>& jframe_host) const;
+-
+-  void OnCredManConditionalRequestPending(
+-      JNIEnv* env,
+-      const base::android::JavaRef<jobject>& jframe_host,
+-      bool jhas_results,
+-      const base::android::JavaRef<jobject>& jfull_request_runnable);
+-
+-  void OnCredManUiClosed(JNIEnv* env,
+-                         const base::android::JavaRef<jobject>& jframe_host,
+-                         bool jsuccess);
+-
+-  void OnPasswordCredentialReceived(
+-      JNIEnv* env,
+-      const base::android::JavaRef<jobject>& jframe_host,
+-      const base::android::JavaRef<jstring>& jusername,
+-      const base::android::JavaRef<jstring>& jpassword);
+-
+   void Destroy(JNIEnv* env);
+ 
+  private:
+diff --git a/components/webauthn/android/webauthn_client_android.cc b/components/webauthn/android/webauthn_client_android.cc
+index 1eacf17..9d44d7a 100644
+--- a/components/webauthn/android/webauthn_client_android.cc
++++ b/components/webauthn/android/webauthn_client_android.cc
+@@ -5,15 +5,9 @@
+ #include "components/webauthn/android/webauthn_client_android.h"
+ 
+ #include <memory>
+-#include <string>
+-#include <utility>
+ 
+ #include "base/check.h"
+ #include "base/check_is_test.h"
+-#include "base/functional/callback.h"
+-#include "components/webauthn/android/webauthn_cred_man_delegate.h"
+-#include "components/webauthn/android/webauthn_cred_man_delegate_factory.h"
+-#include "content/public/browser/web_contents.h"
+ 
+ namespace webauthn {
+ 
+@@ -48,51 +42,4 @@ void WebAuthnClientAndroid::ClearClientForTesting() {
+   g_webauthn_client = nullptr;
+ }
+ 
+-void WebAuthnClientAndroid::OnCredManConditionalRequestPending(
+-    content::RenderFrameHost* render_frame_host,
+-    bool has_results,
+-    base::RepeatingCallback<void(bool)> full_assertion_request) {
+-  if (webauthn::WebAuthnCredManDelegate* cred_man_delegate =
+-          webauthn::WebAuthnCredManDelegateFactory::GetFactory(
+-              content::WebContents::FromRenderFrameHost(render_frame_host))
+-              ->GetRequestDelegate(render_frame_host)) {
+-    cred_man_delegate->OnCredManConditionalRequestPending(
+-        has_results, std::move(full_assertion_request));
+-  }
+-}
+-
+-void WebAuthnClientAndroid::OnCredManUiClosed(
+-    content::RenderFrameHost* render_frame_host,
+-    bool success) {
+-  if (webauthn::WebAuthnCredManDelegate* cred_man_delegate =
+-          webauthn::WebAuthnCredManDelegateFactory::GetFactory(
+-              content::WebContents::FromRenderFrameHost(render_frame_host))
+-              ->GetRequestDelegate(render_frame_host)) {
+-    cred_man_delegate->OnCredManUiClosed(success);
+-  }
+-}
+-
+-void WebAuthnClientAndroid::CleanupCredManRequest(
+-    content::RenderFrameHost* frame_host) {
+-  if (webauthn::WebAuthnCredManDelegate* credman_delegate =
+-          webauthn::WebAuthnCredManDelegateFactory::GetFactory(
+-              content::WebContents::FromRenderFrameHost(frame_host))
+-              ->GetRequestDelegate(frame_host)) {
+-    credman_delegate->CleanUpConditionalRequest();
+-  }
+-  return;
+-}
+-
+-void WebAuthnClientAndroid::OnPasswordCredentialReceived(
+-    content::RenderFrameHost* render_frame_host,
+-    std::u16string username,
+-    std::u16string password) {
+-  if (webauthn::WebAuthnCredManDelegate* cred_man_delegate =
+-          webauthn::WebAuthnCredManDelegateFactory::GetFactory(
+-              content::WebContents::FromRenderFrameHost(render_frame_host))
+-              ->GetRequestDelegate(render_frame_host)) {
+-    cred_man_delegate->FillUsernameAndPassword(username, password);
+-  }
+-}
+-
+ }  // namespace webauthn
+diff --git a/components/webauthn/android/webauthn_client_android.h b/components/webauthn/android/webauthn_client_android.h
+index a530153..24beb0a 100644
+--- a/components/webauthn/android/webauthn_client_android.h
++++ b/components/webauthn/android/webauthn_client_android.h
+@@ -83,29 +83,6 @@ class WebAuthnClientAndroid {
+   virtual bool ShouldDisallowCredentialRequest(
+       content::RenderFrameHost* render_frame_host) = 0;
+ 
+-  // Called when a pendingGetCredential call is completed. The provided closure
+-  // can be used to trigger CredMan UI flows. Android U+ only.
+-  void OnCredManConditionalRequestPending(
+-      content::RenderFrameHost* render_frame_host,
+-      bool has_results,
+-      base::RepeatingCallback<void(bool)> full_assertion_request);
+-
+-  // Called when a CredMan sheet is closed. This can happen if the user
+-  // dismissed the UI, selected a credential, or if there are errors. Android U+
+-  // only.
+-  void OnCredManUiClosed(content::RenderFrameHost* render_frame_host,
+-                         bool success);
+-
+-  // Called when a conditional request that is stored in CredMan should be
+-  // cleaned. Android U+ only.
+-  void CleanupCredManRequest(content::RenderFrameHost* render_frame_host);
+-
+-  // Called when a user selects a password from the CredMan UI. The provided
+-  // `username` and `password` can be filled in the password form in the
+-  // `render_frame_host`.
+-  void OnPasswordCredentialReceived(content::RenderFrameHost* render_frame_host,
+-                                    std::u16string username,
+-                                    std::u16string password);
+ };
+ 
+ }  // namespace webauthn
+diff --git a/components/webauthn/android/webauthn_cred_man_bridge.cc b/components/webauthn/android/webauthn_cred_man_bridge.cc
+new file mode 100644
+index 0000000..a84fb79
+--- /dev/null
++++ b/components/webauthn/android/webauthn_cred_man_bridge.cc
+@@ -0,0 +1,115 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include <jni.h>
++
++#include "base/android/callback_android.h"
++#include "base/android/jni_string.h"
++#include "base/android/scoped_java_ref.h"
++#include "base/functional/bind.h"
++#include "components/webauthn/android/webauthn_cred_man_delegate.h"
++#include "components/webauthn/android/webauthn_cred_man_delegate_factory.h"
++#include "content/public/browser/render_frame_host.h"
++#include "content/public/browser/web_contents.h"
++
++// Must come after all headers that specialize FromJniType() / ToJniType().
++#include "components/webauthn/android/jni_headers/WebauthnCredManBridge_jni.h"
++
++namespace webauthn {
++
++namespace {
++
++content::RenderFrameHost* GetLiveRenderFrameHost(
++    const base::android::JavaRef<jobject>& jframe_host) {
++  auto* render_frame_host =
++      content::RenderFrameHost::FromJavaRenderFrameHost(jframe_host);
++  if (!render_frame_host || !render_frame_host->IsRenderFrameLive() ||
++      !content::WebContents::FromRenderFrameHost(render_frame_host)) {
++    return nullptr;
++  }
++  return render_frame_host;
++}
++
++WebAuthnCredManDelegate* GetCredManDelegate(
++    const base::android::JavaRef<jobject>& jframe_host,
++    bool enable_for_conditional_request) {
++  auto* render_frame_host = GetLiveRenderFrameHost(jframe_host);
++  if (!render_frame_host) {
++    return nullptr;
++  }
++  auto* factory = WebAuthnCredManDelegateFactory::GetFactory(
++      content::WebContents::FromRenderFrameHost(render_frame_host));
++  if (enable_for_conditional_request) {
++    factory->EnableRequestDelegateForWebContents();
++  }
++  return factory->GetRequestDelegate(render_frame_host);
++}
++
++void TriggerFullRequest(
++    const base::android::JavaRef<jobject>& jfull_request_callback,
++    bool request_passwords) {
++  base::android::RunBooleanCallbackAndroid(jfull_request_callback,
++                                           request_passwords);
++}
++
++void JNI_WebauthnCredManBridge_OnCredManConditionalRequestPending(
++    JNIEnv* env,
++    const base::android::JavaRef<jobject>& jframe_host,
++    bool has_results,
++    const base::android::JavaRef<jobject>& jfull_request_callback) {
++  auto* delegate =
++      GetCredManDelegate(jframe_host, /*enable_for_conditional_request=*/true);
++  if (!delegate) {
++    return;
++  }
++  delegate->OnCredManConditionalRequestPending(
++      has_results,
++      base::BindRepeating(&TriggerFullRequest,
++                          base::android::ScopedJavaGlobalRef<jobject>(
++                              env, jfull_request_callback)));
++}
++
++void JNI_WebauthnCredManBridge_OnCredManUiClosed(
++    JNIEnv* env,
++    const base::android::JavaRef<jobject>& jframe_host,
++    bool success) {
++  auto* delegate =
++      GetCredManDelegate(jframe_host, /*enable_for_conditional_request=*/false);
++  if (!delegate) {
++    return;
++  }
++  delegate->OnCredManUiClosed(success);
++}
++
++void JNI_WebauthnCredManBridge_OnPasswordCredentialReceived(
++    JNIEnv* env,
++    const base::android::JavaRef<jobject>& jframe_host,
++    const base::android::JavaRef<jstring>& jusername,
++    const base::android::JavaRef<jstring>& jpassword) {
++  auto* delegate =
++      GetCredManDelegate(jframe_host, /*enable_for_conditional_request=*/false);
++  if (!delegate) {
++    return;
++  }
++  delegate->FillUsernameAndPassword(
++      base::android::ConvertJavaStringToUTF16(env, jusername),
++      base::android::ConvertJavaStringToUTF16(env, jpassword));
++}
++
++void JNI_WebauthnCredManBridge_CleanupCredManRequest(
++    JNIEnv* env,
++    const base::android::JavaRef<jobject>& jframe_host) {
++  auto* delegate =
++      GetCredManDelegate(jframe_host, /*enable_for_conditional_request=*/false);
++  if (!delegate) {
++    return;
++  }
++  delegate->CleanUpConditionalRequest();
++}
++
++}  // namespace
++
++}  // namespace webauthn
++
++DEFINE_JNI(WebauthnCredManBridge)
+diff --git a/components/webauthn/android/webauthn_cred_man_delegate_factory.cc b/components/webauthn/android/webauthn_cred_man_delegate_factory.cc
+index 8e9bc93..55188f4 100644
+--- a/components/webauthn/android/webauthn_cred_man_delegate_factory.cc
++++ b/components/webauthn/android/webauthn_cred_man_delegate_factory.cc
+@@ -32,6 +32,10 @@ WebAuthnCredManDelegateFactory* WebAuthnCredManDelegateFactory::GetFactory(
+   return FromWebContents(web_contents);
+ }
+ 
++void WebAuthnCredManDelegateFactory::EnableRequestDelegateForWebContents() {
++  request_delegate_enabled_for_web_contents_ = true;
++}
++
+ WebAuthnCredManDelegate* WebAuthnCredManDelegateFactory::GetRequestDelegate(
+     content::RenderFrameHost* frame_host) {
+   CHECK_EQ(web_contents(),
+@@ -44,10 +48,11 @@ WebAuthnCredManDelegate* WebAuthnCredManDelegateFactory::GetRequestDelegate(
+     return nullptr;
+   }
+ 
+-  // If the embedder did not initialize the client handling webauthn requests,
+-  // the delegate won't be of much use. The unavailable delegate can be used as
+-  // a good signal that conditional requests cannot be handled.
+-  if (!WebAuthnClientAndroid::HasClient()) {
++  // Chrome enables delegates by installing WebAuthnClientAndroid. Other
++  // embedders that use the common Android Autofill integration must explicitly
++  // enable delegates for their WebContents.
++  if (!WebAuthnClientAndroid::HasClient() &&
++      !request_delegate_enabled_for_web_contents_) {
+     return nullptr;
+   }
+ 
+diff --git a/components/webauthn/android/webauthn_cred_man_delegate_factory.h b/components/webauthn/android/webauthn_cred_man_delegate_factory.h
+index a986729..5c57293 100644
+--- a/components/webauthn/android/webauthn_cred_man_delegate_factory.h
++++ b/components/webauthn/android/webauthn_cred_man_delegate_factory.h
+@@ -37,6 +37,10 @@ class WebAuthnCredManDelegateFactory
+   static WebAuthnCredManDelegateFactory* GetFactory(
+       content::WebContents* web_contents);
+ 
++  // Enables delegates for an embedder that uses the common Android Autofill
++  // integration without installing Chrome's WebAuthnClientAndroid.
++  void EnableRequestDelegateForWebContents();
++
+   // Returns the delegate for the given frame, creating one if possible.
+   // Can return nullptr.
+   WebAuthnCredManDelegate* GetRequestDelegate(
+@@ -56,6 +60,7 @@ class WebAuthnCredManDelegateFactory
+   base::flat_map<content::RenderFrameHost*,
+                  std::unique_ptr<WebAuthnCredManDelegate>>
+       delegate_map_;
++  bool request_delegate_enabled_for_web_contents_ = false;
+ 
+   WEB_CONTENTS_USER_DATA_KEY_DECL();
+ };
+diff --git a/components/webauthn/android/webauthn_cred_man_delegate_factory_unittest.cc b/components/webauthn/android/webauthn_cred_man_delegate_factory_unittest.cc
+index d0cf100..53ecc18 100644
+--- a/components/webauthn/android/webauthn_cred_man_delegate_factory_unittest.cc
++++ b/components/webauthn/android/webauthn_cred_man_delegate_factory_unittest.cc
+@@ -72,4 +72,13 @@ TEST_F(WebAuthnCredManDelegateFactoryTest, GetNoDelegateWithoutClient) {
+                          web_contents()->GetPrimaryMainFrame()));
+ }
+ 
++TEST_F(WebAuthnCredManDelegateFactoryTest,
++       GetDelegateWhenEnabledWithoutClient) {
++  WebAuthnClientAndroid::ClearClientForTesting();
++  factory()->EnableRequestDelegateForWebContents();
++
++  EXPECT_NE(nullptr, factory()->GetRequestDelegate(
++                         web_contents()->GetPrimaryMainFrame()));
++}
++
+ }  // namespace webauthn
