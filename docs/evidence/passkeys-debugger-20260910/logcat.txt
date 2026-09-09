@@ -1,0 +1,40 @@
+09-10 04:28:27.781  2441  2441 I AospmanPhase: debugger-control
+09-10 04:34:11.796  3182  3182 I AospmanPhase: debugger-treatment-create
+09-10 04:36:21.497   707  1023 I CredentialManager: starting executeCreateCredential with callingPackage: acr.browser.lightning.passkey
+09-10 04:36:21.498   707  1023 I CredentialManager: Provider session created and being added for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:36:21.759   707   707 I CredentialManager: Remote provider responded with a valid response: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:36:21.759   707   707 I CredentialManager: Provider status changed: SAVE_ENTRIES_RECEIVED, and source: REMOTE_PROVIDER
+09-10 04:36:21.759   707   707 I CredentialManager: Provider status changed - ui invocation is needed
+09-10 04:36:21.759   707   707 I CredentialManager: For ui, provider data size: 1
+09-10 04:37:22.976   707   707 I CredentialManager: Final credential received from: com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService
+09-10 04:37:22.976   707   707 I CredentialManager: finishing session with propagateCancellation false
+09-10 04:41:16.740  4354  4354 I AospmanPhase: debugger-treatment-conditional
+09-10 04:41:16.801   707  1023 I CredentialManager: PrepareGetRequestSession constructed.
+09-10 04:41:16.801   707  1023 I CredentialManager: Filtering request options for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:16.801   707  1023 W CredentialManager: Could not parse hybrid service while filtering options
+09-10 04:41:16.801   707  1023 I CredentialManager: Option of type: androidx.credentials.TYPE_PUBLIC_KEY_CREDENTIAL meets all filteringconditions
+09-10 04:41:16.801   707  1023 I CredentialManager: Provider session created and being added for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:16.813   707  1023 I CredentialManager: PrepareGetRequestSession constructed.
+09-10 04:41:16.813   707  1023 I CredentialManager: Filtering request options for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:16.813   707  1023 W CredentialManager: Could not parse hybrid service while filtering options
+09-10 04:41:16.813   707  1023 I CredentialManager: Option of type: androidx.credentials.TYPE_PUBLIC_KEY_CREDENTIAL meets all filteringconditions
+09-10 04:41:16.813   707  1023 I CredentialManager: Provider session created and being added for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:16.850   707   707 I CredentialManager: Remote provider responded with a valid response: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:16.850   707   707 I CredentialManager: Provider Status changed with status: CREDENTIALS_RECEIVED, and source: REMOTE_PROVIDER
+09-10 04:41:16.850   707   707 I CredentialManager: For ui, provider data size: 1
+09-10 04:41:16.852   707   707 I CredentialManager: Remote provider responded with a valid response: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:16.852   707   707 I CredentialManager: Provider Status changed with status: CREDENTIALS_RECEIVED, and source: REMOTE_PROVIDER
+09-10 04:41:16.852   707   707 I CredentialManager: For ui, provider data size: 1
+09-10 04:41:38.094   707  1024 I CredentialManager: starting executeGetCredential with callingPackage: acr.browser.lightning.passkey
+09-10 04:41:38.094   707  1024 I CredentialManager: Filtering request options for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:38.094   707  1024 W CredentialManager: Could not parse hybrid service while filtering options
+09-10 04:41:38.094   707  1024 I CredentialManager: Option of type: androidx.credentials.TYPE_PUBLIC_KEY_CREDENTIAL meets all filteringconditions
+09-10 04:41:38.094   707  1024 I CredentialManager: Provider session created and being added for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:38.130   707   707 I CredentialManager: Remote provider responded with a valid response: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}
+09-10 04:41:38.130   707   707 I CredentialManager: Status changed for: ComponentInfo{com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService}, with status: CREDENTIALS_RECEIVED, and source: REMOTE_PROVIDER
+09-10 04:41:38.131   707   707 I CredentialManager: Provider status changed - ui invocation is needed
+09-10 04:41:38.131   707   707 I CredentialManager: For ui, provider data size: 1
+09-10 04:42:36.941   707   707 I CredentialManager: onUiEntrySelected with entryType: credential_key, and entryKey: <selector-entry>
+09-10 04:42:36.941   707   707 I CredentialManager: onFinalResponseReceived from: com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService
+09-10 04:42:36.941   707   707 I CredentialManager: finishing session with propagateCancellation false
+09-10 04:43:56.734  4581  4581 I AospmanPhase: debugger-control-conditional

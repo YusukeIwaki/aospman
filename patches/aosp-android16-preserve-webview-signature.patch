@@ -1,0 +1,22 @@
+--- a/Android.bp
++++ b/Android.bp
+@@ -48,7 +48,8 @@
+ webview_app_import {
+     name: "webview",
+     product_specific: true,
+-    default_dev_cert: true,
++    presigned: true,
++    preprocessed: true,
+     required: [
+         "libwebviewchromium_loader",
+         "libwebviewchromium_plat_support",
+@@ -72,8 +73,8 @@
+         },
+     },
+     optional_uses_libs: [
++        "android.test.base",
+         "androidx.window.extensions",
+         "android.ext.adservices",
+-        "com.android.extensions.xr",
+     ],
+ }

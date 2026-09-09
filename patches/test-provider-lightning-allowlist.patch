@@ -1,0 +1,45 @@
+diff --git a/test-credential-provider/app/src/main/java/com/example/android/authentication/myvault/TestBrowserAllowlist.kt b/test-credential-provider/app/src/main/java/com/example/android/authentication/myvault/TestBrowserAllowlist.kt
+index f1e99fc..8b1c2d3 100644
+--- a/test-credential-provider/app/src/main/java/com/example/android/authentication/myvault/TestBrowserAllowlist.kt
++++ b/test-credential-provider/app/src/main/java/com/example/android/authentication/myvault/TestBrowserAllowlist.kt
+@@ -13,7 +13,8 @@ package com.example.android.authentication.myvault
+  * Test-provider policy for browser-origin delegation.
+  *
+  * This is deliberately narrower than a production provider policy: it authorizes only the
+- * browser-flavor test APK and its pinned debug certificate. It does not reuse or modify Google
++ * browser-flavor test APK and the two Lightning test APKs with their pinned debug certificate.
++ * It does not reuse or modify Google
+  * Password Manager's allowlist.
+  */
+ object TestBrowserAllowlist {
+@@ -31,6 +32,30 @@ object TestBrowserAllowlist {
+                   }
+                 ]
+               }
++            },
++            {
++              "type": "android",
++              "info": {
++                "package_name": "acr.browser.lightning",
++                "signatures": [
++                  {
++                    "build": "test-debug",
++                    "cert_fingerprint_sha256": "D6:B8:90:EC:A6:F4:70:8A:FF:24:BE:19:17:6C:56:AF:EE:38:D8:D4:D5:61:2A:99:64:F5:F5:81:CC:C2:B4:B1"
++                  }
++                ]
++              }
++            },
++            {
++              "type": "android",
++              "info": {
++                "package_name": "acr.browser.lightning.passkey",
++                "signatures": [
++                  {
++                    "build": "test-debug",
++                    "cert_fingerprint_sha256": "D6:B8:90:EC:A6:F4:70:8A:FF:24:BE:19:17:6C:56:AF:EE:38:D8:D4:D5:61:2A:99:64:F5:F5:81:CC:C2:B4:B1"
++                  }
++                ]
++              }
+             }
+           ]
+         }

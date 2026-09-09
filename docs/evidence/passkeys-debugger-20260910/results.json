@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-10 JST",
+  "rpOrigin": "https://www.passkeys-debugger.io",
+  "rpId": "www.passkeys-debugger.io",
+  "device": {
+    "avd": "aospman_android16",
+    "serial": "emulator-5560",
+    "api": 36,
+    "abi": "arm64-v8a",
+    "fingerprint": "Android/sdk_phone64_arm64/emu64a:16/BP4A.251205.006/aospman-android16-arm64:userdebug/test-keys"
+  },
+  "common": {
+    "webviewVersion": "154.0.8016.0",
+    "webviewApkSha256": "bf0c5f74c1275d622ecca1f0bf7a8e180fd50ad2a8a1da892809c310fcbfc914",
+    "provider": "com.example.aospman.passkeyprovider/com.example.android.authentication.myvault.data.MyVaultService",
+    "providerApkSha256": "a1bbe99ae9d741ba74b3bd176dbc6dd558a7355e327277e1400af86eaa9092d4"
+  },
+  "cases": {
+    "control": {
+      "package": "acr.browser.lightning",
+      "apkSha256": "a59a85e6024c9b1aeb908694de41a9d50d94fc13ee010ab572ccbe040ca63e07",
+      "capabilities": {
+        "secureContext": true,
+        "publicKeyCredential": "undefined",
+        "conditional": null,
+        "platform": null
+      },
+      "conditionalInput": {
+        "autocomplete": "webauthn",
+        "valueLength": 0
+      },
+      "webauthnErrors": [
+        {
+          "time": "2026-09-09T19:33:42.100Z",
+          "event": "console",
+          "type": "warning",
+          "args": [
+            "An error occurred",
+            "NotSupportedError: Error connecting to Web Authentication service."
+          ]
+        },
+        {
+          "time": "2026-09-09T19:45:27.907Z",
+          "event": "console",
+          "type": "warning",
+          "args": [
+            "An error occurred",
+            "NotSupportedError: Error connecting to Web Authentication service."
+          ]
+        },
+        {
+          "time": "2026-09-09T19:45:27.911Z",
+          "event": "console",
+          "type": "warning",
+          "args": [
+            "An error occurred",
+            "NotSupportedError: Error connecting to Web Authentication service."
+          ]
+        }
+      ],
+      "creation": "NotSupportedError before provider UI",
+      "conditional": "NotSupportedError; no candidate after focus, with saved RP credential already present"
+    },
+    "treatment": {
+      "package": "acr.browser.lightning.passkey",
+      "apkSha256": "951a481a4e7b19139fee383c6a3d09b1bbe27c4a9c721efd0b67f94b893f2833",
+      "capabilities": {
+        "secureContext": true,
+        "publicKeyCredential": "function",
+        "conditional": true,
+        "platform": true
+      },
+      "conditionalInput": {
+        "autocomplete": "webauthn",
+        "valueLength": 0
+      },
+      "webauthnErrors": [],
+      "creation": "Completed normal provider and device authentication; registration response returned",
+      "conditional": "Empty-field focus opened saved-passkey selector; normal device authentication returned assertion; no login-button press",
+      "verification": {
+        "source": "Offline verification of unmodified JSON returned to the third-party page; not a server-side login result",
+        "rpId": "www.passkeys-debugger.io",
+        "origin": "https://www.passkeys-debugger.io",
+        "registration": {
+          "type": "webauthn.create",
+          "origin": "https://www.passkeys-debugger.io",
+          "crossOrigin": false,
+          "challengeMatchesCreationRequest": true,
+          "rpIdHashMatches": true,
+          "algorithm": -7,
+          "flags": 93,
+          "userPresent": true,
+          "userVerified": true
+        },
+        "conditional": {
+          "type": "webauthn.get",
+          "origin": "https://www.passkeys-debugger.io",
+          "crossOrigin": false,
+          "credentialMatchesRegistration": true,
+          "rpIdHashMatches": true,
+          "flags": 29,
+          "userPresent": true,
+          "userVerified": true,
+          "signCount": 0,
+          "signatureValid": true,
+          "previewChallengeMatchesReturned": false,
+          "previewChallengeSha256": "c1aa989e389a42631ce925cc4f9dca149c1162a384992f18e626d60ecf50ed3b",
+          "returnedChallengeSha256": "dacc6e9b8a84eab7f5c1f09be232745ddd0754d2843e4b8aeda0305a362dcd4c"
+        },
+        "limitation": "The site login handler generates fresh authentication options when invoking get; the Preview Request challenge is separate. The actual get request challenge was not captured. No full challenge/RP-server verification is claimed."
+      }
+    }
+  },
+  "limitations": [
+    "One completed creation and one completed conditional get per supported case; no stress/reliability claim",
+    "No Google Password Manager or stock-WebView conditional result",
+    "Site preview get challenge differs from returned clientData because the call path generates fresh options; actual get request challenge was not captured",
+    "Offline assertion signature/RP binding verification is separate from RP server authentication",
+    "Empty username validation appears in both cases; treatment conditional effect still completes"
+  ]
+}
