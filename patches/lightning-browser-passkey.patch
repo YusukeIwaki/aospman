@@ -1,0 +1,84 @@
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index e7fed68..af14c12 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -76,13 +76,13 @@ android {
+         create("lightningPlus") {
+             dimension = "capabilities"
+             buildConfigField("boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")")
+-            applicationId = "acr.browser.lightning"
++            applicationId = "acr.browser.lightning.passkey"
+             versionCode = commonVersionCode
+         }
+         create("lightningLite") {
+             dimension = "capabilities"
+             buildConfigField("boolean", "FULL_VERSION", "Boolean.parseBoolean(\"false\")")
+-            applicationId = "acr.browser.barebones"
++            applicationId = "acr.browser.barebones.passkey"
+             versionCode = commonVersionCode
+         }
+     }
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index f58cd8a..eb28e1a 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -4,6 +4,8 @@
+     android:installLocation="auto">
+
+     <uses-permission android:name="android.permission.INTERNET" />
++    <uses-permission android:name="android.permission.CREDENTIAL_MANAGER_SET_ORIGIN" />
++    <uses-permission android:name="android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS" />
+     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+@@ -35,9 +37,9 @@
+         android:allowBackup="true"
+         android:hardwareAccelerated="true"
+         android:icon="@mipmap/ic_launcher"
+-        android:label="@string/app_name"
++        android:label="@string/app_name_passkey"
+         android:roundIcon="@mipmap/ic_launcher"
+-        android:taskAffinity="com.anthonycr.browser.AffinityDefault"
++        android:taskAffinity="${applicationId}.AffinityDefault"
+         android:usesCleartextTraffic="true">
+         <meta-data
+             android:name="android.webkit.WebView.MetricsOptOut"
+@@ -147,7 +149,7 @@
+             android:launchMode="singleInstance"
+             android:parentActivityName="acr.browser.lightning.DefaultBrowserActivity"
+             android:process=":incognito"
+-            android:taskAffinity="com.anthonycr.browser.AffinityIncognito"
++            android:taskAffinity="${applicationId}.AffinityIncognito"
+             android:theme="@style/Theme.DarkTheme"
+             android:windowSoftInputMode="stateHidden|adjustResize">
+
+diff --git a/app/src/main/java/acr/browser/lightning/browser/tab/WebViewFactory.kt b/app/src/main/java/acr/browser/lightning/browser/tab/WebViewFactory.kt
+index 818546a..bbb5177 100644
+--- a/app/src/main/java/acr/browser/lightning/browser/tab/WebViewFactory.kt
++++ b/app/src/main/java/acr/browser/lightning/browser/tab/WebViewFactory.kt
+@@ -73,6 +73,15 @@ class WebViewFactory @Inject constructor(
+
+             importantForAutofill = View.IMPORTANT_FOR_AUTOFILL_YES
+
++            // Delegate WebAuthn for the displayed HTTPS origin to the credential provider.
++            // Conditional mediation additionally requires a WebView with that capability.
++            if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_AUTHENTICATION)) {
++                WebSettingsCompat.setWebAuthenticationSupport(
++                    settings,
++                    WebSettingsCompat.WEB_AUTHENTICATION_SUPPORT_FOR_BROWSER
++                )
++            }
++
+             isScrollbarFadingEnabled = true
+             isSaveEnabled = true
+             overScrollMode = View.OVER_SCROLL_NEVER
+diff --git a/app/src/main/res/values/passkey.xml b/app/src/main/res/values/passkey.xml
+new file mode 100644
+index 0000000..d05c1db
+--- /dev/null
++++ b/app/src/main/res/values/passkey.xml
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="app_name_passkey" translatable="false">Lightning.passkey</string>
++</resources>
