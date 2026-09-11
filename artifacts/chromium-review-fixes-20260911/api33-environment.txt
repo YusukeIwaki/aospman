@@ -1,0 +1,29 @@
+2026-09-11T01:32:41Z
+serial=emulator-5554
+ro.build.version.sdk=33
+ro.build.version.release=13
+ro.build.fingerprint=google/sdk_gphone_x86_64/emu64xa:13/TE1A.220922.034/10940250:userdebug/dev-keys
+ro.product.cpu.abi=x86_64
+Google Play Services package version:
+    versionCode=250733032 minSdk=31 targetSdk=34
+    versionName=25.07.33 (190800-728382230)
+    versionCode=225014047 minSdk=31 targetSdk=33
+    versionName=22.50.14 (190800-499278674)
+System WebView provider (not the embedded WebViewInstrumentation code):
+Current WebView Update Service state
+  Multiprocess enabled: true
+  Current WebView package (name, version): (com.google.android.webview, 103.0.5060.71)
+  Minimum targetSdkVersion: 33
+  Minimum WebView version code: 506007137
+  Number of relros started: 1
+  Number of relros finished: 1
+  WebView package dirty: false
+  Any WebView package installed: true
+  Preferred WebView package (name, version): (com.google.android.webview, 103.0.5060.71)
+  WebView packages:
+    Valid package com.google.android.webview (versionName: 103.0.5060.71, versionCode: 506007137, targetSdkVersion: 33) is  installed/enabled for all users
+    com.google.android.webview.beta is NOT installed.
+    com.google.android.webview.dev is NOT installed.
+    com.google.android.webview.canary is NOT installed.
+    com.google.android.webview.debug is NOT installed.
+    com.android.webview is NOT installed.

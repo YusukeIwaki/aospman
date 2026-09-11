@@ -1,0 +1,89 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate",
+    "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate",
+    "WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient",
+    "WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords",
+    "WebAuthnCredManDelegateTest.RequestCompletionCallbackRun",
+    "WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 68,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient\n[       OK ] WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient (68 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_23_46/logcat/logcat_-7548619307702669030_shard0_20260911T042433-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 771,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate\n[       OK ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate (771 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_23_46/logcat/logcat_-7548619307702669030_shard0_20260911T042433-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 70,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate\n[       OK ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate (70 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_23_46/logcat/logcat_-7548619307702669030_shard0_20260911T042433-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.RequestCompletionCallbackRun": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 0,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.RequestCompletionCallbackRun\n[       OK ] WebAuthnCredManDelegateTest.RequestCompletionCallbackRun (0 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_23_46/logcat/logcat_-7548619307702669030_shard0_20260911T042433-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords\n[       OK ] WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords (1 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_23_46/logcat/logcat_-7548619307702669030_shard0_20260911T042433-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup\n[       OK ] WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup (1 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_23_46/logcat/logcat_-7548619307702669030_shard0_20260911T042433-UTC_emulator-5554"
+          }
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

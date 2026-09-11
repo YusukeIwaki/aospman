@@ -1,0 +1,180 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "WebAuthnCredManDelegateFactoryTest.DeletedFrameDoesNotKeepPendingRequest",
+    "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate",
+    "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate",
+    "WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient",
+    "WebAuthnCredManDelegateFactoryTest.NavigationAllowsNewConditionalRequest",
+    "WebAuthnCredManDelegateFactoryTest.SameDocumentNavigationKeepsRequest",
+    "WebAuthnCredManDelegateFactoryTest.UncommittedNavigationKeepsRequest",
+    "WebAuthnCredManDelegateTest.CredentialsReadyNotificationAfterCleanup",
+    "WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords",
+    "WebAuthnCredManDelegateTest.NewConditionalRequestAfterCleanup",
+    "WebAuthnCredManDelegateTest.PasswordFillingConsumesFillingCallback",
+    "WebAuthnCredManDelegateTest.RequestCompletionCallbackRun",
+    "WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "WebAuthnCredManDelegateFactoryTest.NavigationAllowsNewConditionalRequest": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 63,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.NavigationAllowsNewConditionalRequest\n[       OK ] WebAuthnCredManDelegateFactoryTest.NavigationAllowsNewConditionalRequest (63 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.SameDocumentNavigationKeepsRequest": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 56,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.SameDocumentNavigationKeepsRequest\n[       OK ] WebAuthnCredManDelegateFactoryTest.SameDocumentNavigationKeepsRequest (56 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.NewConditionalRequestAfterCleanup": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 0,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.NewConditionalRequestAfterCleanup\n[       OK ] WebAuthnCredManDelegateTest.NewConditionalRequestAfterCleanup (0 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 760,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate\n[       OK ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsSameDelegate (760 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.PasswordFillingConsumesFillingCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.PasswordFillingConsumesFillingCallback\n[       OK ] WebAuthnCredManDelegateTest.PasswordFillingConsumesFillingCallback (1 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.CredentialsReadyNotificationAfterCleanup": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 0,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.CredentialsReadyNotificationAfterCleanup\n[       OK ] WebAuthnCredManDelegateTest.CredentialsReadyNotificationAfterCleanup (0 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.RequestCompletionCallbackRun": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 0,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.RequestCompletionCallbackRun\n[       OK ] WebAuthnCredManDelegateTest.RequestCompletionCallbackRun (0 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.UncommittedNavigationKeepsRequest": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 58,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.UncommittedNavigationKeepsRequest\n[       OK ] WebAuthnCredManDelegateFactoryTest.UncommittedNavigationKeepsRequest (58 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 0,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords\n[       OK ] WebAuthnCredManDelegateTest.IfNoFillingCallbackDoesNotRequestPasswords (0 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 0,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup\n[       OK ] WebAuthnCredManDelegateTest.ShowCredManUiCallbackNotRunAfterCleanup (0 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.DeletedFrameDoesNotKeepPendingRequest": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 62,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.DeletedFrameDoesNotKeepPendingRequest\n[       OK ] WebAuthnCredManDelegateFactoryTest.DeletedFrameDoesNotKeepPendingRequest (62 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 65,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient\n[       OK ] WebAuthnCredManDelegateFactoryTest.GetNoDelegateWithoutClient (65 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ],
+      "WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 65,
+          "output_snippet": "[ RUN      ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate\n[       OK ] WebAuthnCredManDelegateFactoryTest.GetDelegateReturnsDifferentDelegate (65 ms)\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_23_49/logcat/logcat_-4147513682800894962_shard0_20260911T052432-UTC_emulator-5554"
+          }
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

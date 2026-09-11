@@ -1,0 +1,167 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportFromNonUIThread",
+    "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportFromNonUIThread__multiprocess_mode",
+    "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportLogsPermissionStatus",
+    "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportLogsPermissionStatus__multiprocess_mode",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnBlockedOnSslError",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnBlockedOnSslError__multiprocess_mode",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnDefaultDisabled",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnDefaultDisabled__multiprocess_mode",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnEnabledByFlag",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnEnabledByFlag__multiprocess_mode",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnFlagAndAppSetting",
+    "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnFlagAndAppSetting__multiprocess_mode"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnEnabledByFlag": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1960,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testWebAuthnEnabledByFlag_batch_shard0_20260911T042608-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnBlockedOnSslError__multiprocess_mode": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1922,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testSetWebAuthnSupportLogsPermissionStatus__multiprocess_mode_batch_shard0_20260911T042556-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportFromNonUIThread__multiprocess_mode": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 481,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testSetWebAuthnSupportLogsPermissionStatus__multiprocess_mode_batch_shard0_20260911T042556-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnFlagAndAppSetting": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 505,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testWebAuthnEnabledByFlag_batch_shard0_20260911T042608-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnEnabledByFlag__multiprocess_mode": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1908,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testWebAuthnEnabledByFlag__multiprocess_mode_batch_shard0_20260911T042610-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportLogsPermissionStatus": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 2539,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testSetWebAuthnSupportLogsPermissionStatus_batch_shard0_20260911T042604-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnDefaultDisabled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1963,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testWebAuthnDefaultDisabled_batch_shard0_20260911T042613-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnFlagAndAppSetting__multiprocess_mode": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 533,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testWebAuthnEnabledByFlag__multiprocess_mode_batch_shard0_20260911T042610-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnBlockedOnSslError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 893,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testSetWebAuthnSupportLogsPermissionStatus_batch_shard0_20260911T042604-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportFromNonUIThread": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 498,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testSetWebAuthnSupportLogsPermissionStatus_batch_shard0_20260911T042604-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testSetWebAuthnSupportLogsPermissionStatus__multiprocess_mode": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 4856,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testSetWebAuthnSupportLogsPermissionStatus__multiprocess_mode_batch_shard0_20260911T042556-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.android_webview.test.WebAuthnTest#testWebAuthnDefaultDisabled__multiprocess_mode": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1859,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T04_25_42/logcat/logcat_org.chromium.android_webview.test.WebAuthnTest.testWebAuthnDefaultDisabled__multiprocess_mode_batch_shard0_20260911T042615-UTC_emulator-5554"
+          }
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

@@ -1,0 +1,1 @@
+d7338c55d543c8d80cab8b8864887ed9c3325ea3517dd0ec2ab0fbb44a3d70d8  /work/chromium-webauthn-credman-bridge.patch
