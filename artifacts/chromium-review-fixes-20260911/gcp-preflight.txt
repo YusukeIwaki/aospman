@@ -1,0 +1,26 @@
+preferred profile
+  machine: c3d-highcpu-90 (90 vCPU, 181248 MiB RAM)
+  zone: asia-east1-a
+  CPUS quota: 100.0 limit, 0.0 used
+  C3_CPUS quota: 24.0 limit, 0.0 used
+  CPUS_ALL_REGIONS quota: 32.0 limit, 0.0 used
+  PREEMPTIBLE_CPUS quota: 0.0 limit, 0.0 used (informational)
+  result: insufficient C3_CPUS quota for 90 vCPUs
+Preferred profile is not currently viable; checking fallback.
+fallback profile
+  machine: n2-highcpu-96 (96 vCPU, 98304 MiB RAM)
+  zone: asia-northeast1-b
+  CPUS quota: 100.0 limit, 0.0 used
+  N2_CPUS quota: 200.0 limit, 0.0 used
+  CPUS_ALL_REGIONS quota: 32.0 limit, 0.0 used
+  PREEMPTIBLE_CPUS quota: 0.0 limit, 0.0 used (informational)
+  result: insufficient CPUS_ALL_REGIONS quota for 96 vCPUs
+Fallback profile is not currently viable; checking constrained profile.
+constrained profile
+  machine: n2-highcpu-32 (32 vCPU, 32768 MiB RAM)
+  zone: asia-northeast1-b
+  CPUS quota: 100.0 limit, 0.0 used
+  N2_CPUS quota: 200.0 limit, 0.0 used
+  CPUS_ALL_REGIONS quota: 32.0 limit, 0.0 used
+  PREEMPTIBLE_CPUS quota: 0.0 limit, 0.0 used (informational)
+  result: quota and machine checks passed; Spot capacity is checked at creation time

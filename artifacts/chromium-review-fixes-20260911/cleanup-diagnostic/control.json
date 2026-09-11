@@ -1,0 +1,294 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5681,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051715-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5514,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051721-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5513,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051728-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "FAILURE",
+          "elapsed_time_ms": 5564,
+          "output_snippet": "java.lang.AssertionError: expected:<1> but was:<0>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\n\tat org.junit.Assert.assertEquals(Assert.java:647)\n\tat org.junit.Assert.assertEquals(Assert.java:633)\n\tat org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success(Fido2CredentialRequestTest.java:1602)\n\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051734-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testGetAssertion_conditionalUiHybrid_success_batch-20260911T051739-UTC.png"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5315,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051740-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5359,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051746-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "FAILURE",
+          "elapsed_time_ms": 5541,
+          "output_snippet": "java.lang.AssertionError: expected:<1> but was:<0>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\n\tat org.junit.Assert.assertEquals(Assert.java:647)\n\tat org.junit.Assert.assertEquals(Assert.java:633)\n\tat org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success(Fido2CredentialRequestTest.java:1602)\n\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051752-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testGetAssertion_conditionalUiHybrid_success_batch-20260911T051757-UTC.png"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5390,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051758-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "FAILURE",
+          "elapsed_time_ms": 5589,
+          "output_snippet": "java.lang.AssertionError: expected:<1> but was:<0>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\n\tat org.junit.Assert.assertEquals(Assert.java:647)\n\tat org.junit.Assert.assertEquals(Assert.java:633)\n\tat org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success(Fido2CredentialRequestTest.java:1602)\n\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051804-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testGetAssertion_conditionalUiHybrid_success_batch-20260911T051809-UTC.png"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5471,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051810-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "FAILURE",
+          "elapsed_time_ms": 5530,
+          "output_snippet": "java.lang.AssertionError: expected:<1> but was:<0>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\n\tat org.junit.Assert.assertEquals(Assert.java:647)\n\tat org.junit.Assert.assertEquals(Assert.java:633)\n\tat org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success(Fido2CredentialRequestTest.java:1602)\n\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051816-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testGetAssertion_conditionalUiHybrid_success_batch-20260911T051821-UTC.png"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5328,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051822-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5338,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051828-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5377,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051834-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5407,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051840-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5327,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051846-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5255,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051852-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5277,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051857-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5329,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051903-UTC_emulator-5554"
+          }
+        }
+      ]
+    },
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5308,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_16_15/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success_batch_shard0_20260911T051909-UTC_emulator-5554"
+          }
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

@@ -1,0 +1,46 @@
+{
+  "chromiumRepository": "https://chromium.googlesource.com/chromium/src.git",
+  "buildBase": "e972dac6c18230a8cbae2a744593916a7da1d82c",
+  "treatmentPatch": "patches/chromium-webauthn-credman-bridge.patch",
+  "patchSha256": "d7338c55d543c8d80cab8b8864887ed9c3325ea3517dd0ec2ab0fbb44a3d70d8",
+  "changedFiles": 20,
+  "insertions": 767,
+  "deletions": 317,
+  "localDiffCheck": "passed",
+  "localFullPatchReverseCheck": "passed",
+  "remoteFullPatchReverseCheck": "passed",
+  "upstreamAffectedFileApplicability": {
+    "revision": "e56f04e7cf5069c69db0ea27f75c49a24014fbac",
+    "patchSha256": "d7338c55d543c8d80cab8b8864887ed9c3325ea3517dd0ec2ab0fbb44a3d70d8",
+    "existingFiles": 18,
+    "newFiles": 2,
+    "exitCode": 0
+  },
+  "fullJavaFormatter": {
+    "status": "passed except two pre-existing differences in untouched lines",
+    "knownUnchangedDifferences": [
+      "Fido2CredentialRequest.java: RequestMetrics.Builder wrap",
+      "Fido2CredentialRequestRobolectricTest.java: existing long testConditionalGetCredential_RpCancelWhileIdleWithGpmNotInCredMan_notAllowedError declaration"
+    ],
+    "formatter": "google-java-format 1.28.0 with Chromium overrides"
+  },
+  "nativeFormatter": {
+    "status": "passed --dry-run --Werror",
+    "files": [
+      "webauthn_cred_man_bridge.cc",
+      "webauthn_cred_man_delegate_unittest.cc",
+      "webauthn_cred_man_delegate_factory_unittest.cc",
+      "webauthn_client_android.h"
+    ]
+  },
+  "existingCombinedPrototype": {
+    "path": "patches/chromium-webview-browser-conditional.patch",
+    "status": "unchanged",
+    "sha256": "d6c264ac07a3d80d2d2dba065ba36cc06bad64cb4c1d3eda714aeb9cad815907"
+  },
+  "limits": [
+    "No newer-main build or Chromium CQ",
+    "Not a full Chromium/CTS suite",
+    "No real-provider passkey completion or privileged-browser approval validation"
+  ]
+}

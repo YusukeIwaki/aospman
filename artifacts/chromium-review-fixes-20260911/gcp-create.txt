@@ -1,0 +1,32 @@
+constrained profile
+  machine: n2-highcpu-32 (32 vCPU, 32768 MiB RAM)
+  zone: asia-northeast1-b
+  CPUS quota: 100.0 limit, 0.0 used
+  N2_CPUS quota: 200.0 limit, 0.0 used
+  CPUS_ALL_REGIONS quota: 32.0 limit, 0.0 used
+  PREEMPTIBLE_CPUS quota: 0.0 limit, 0.0 used (informational)
+  result: quota and machine checks passed; Spot capacity is checked at creation time
+Creating aospman-credman-review-20260911 as constrained profile in asia-northeast1-b.
+Created [https://www.googleapis.com/compute/v1/projects/aospman/zones/asia-northeast1-b/instances/aospman-credman-review-20260911].
+WARNING: Some requests generated warnings:
+ - Disk size: '500 GB' is larger than image size: '10 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details.
+
+NAME                             ZONE               MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP    STATUS
+aospman-credman-review-20260911  asia-northeast1-b  n2-highcpu-32  true         10.146.0.11  35.187.211.68  RUNNING
+advancedMachineFeatures:
+  enableNestedVirtualization: true
+disks:
+- autoDelete: true
+labels:
+  lifecycle: ephemeral
+  managed-by: aospman
+  workload: android-build
+machineType: n2-highcpu-32
+name: aospman-credman-review-20260911
+scheduling:
+  instanceTerminationAction: DELETE
+  provisioningModel: SPOT
+status: RUNNING
+zone: asia-northeast1-b
+Bootstrap: .agents/skills/manage-aosp-spot-build/scripts/spot-vm.sh bootstrap aospman-credman-review-20260911
+Cleanup:   .agents/skills/manage-aosp-spot-build/scripts/spot-vm.sh delete aospman-credman-review-20260911

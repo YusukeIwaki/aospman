@@ -1,0 +1,5 @@
+# Keep raw launcher evidence available without overwhelming the code review.
+control/*.json linguist-generated=true
+treatment/*.json linguist-generated=true
+cleanup-diagnostic/*.json linguist-generated=true
+runner-excerpts.txt linguist-generated=true

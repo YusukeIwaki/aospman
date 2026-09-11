@@ -1,0 +1,1969 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testClose_destroysBridge[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testClose_destroysBridge[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeApp_notSupported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeApp_notSupported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeBrowser_notSupported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeBrowser_notSupported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_CallsIsUvpaa[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_CallsIsUvpaa[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalCreate_Supported_WhenUvpaaAvailable[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalCreate_Supported_WhenUvpaaAvailable[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalGet_Supported_WhenUvpaaAvailable[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalGet_Supported_WhenUvpaaAvailable[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_GmsCoreTooOld[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_GmsCoreTooOld[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_HybridTransport_ShouldBeSupported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_HybridTransport_ShouldBeSupported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ImmediateGet_Supported_WhenUvpaaAvailable[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ImmediateGet_Supported_WhenUvpaaAvailable[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Ppaa_ShouldBeSupported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Ppaa_ShouldBeSupported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_RelatedOrigins_ShouldBeSupported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_RelatedOrigins_ShouldBeSupported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_SignalApi_Supported_WhenUvpaaAvailable[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_SignalApi_Supported_WhenUvpaaAvailable[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_NotSupported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_NotSupported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_Supported[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_Supported[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder_notChrome[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder_notChrome[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_inactiveFrame[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_inactiveFrame[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_notBlockedByEmbedder[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_notBlockedByEmbedder[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresIntentSender[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresIntentSender[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresRenderFrameHost[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresRenderFrameHost[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder_notChrome[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder_notChrome[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_inactiveFrame[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_inactiveFrame[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_notBlockedByEmbedder[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_notBlockedByEmbedder[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresIntentSender[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresIntentSender[36]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresRenderFrameHost[29]",
+    "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresRenderFrameHost[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_GpmNotInCredMan_success[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_GpmNotInCredMan_success[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmInCredMan_notAllowedError[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmInCredMan_notAllowedError[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmNotInCredMan_notAllowedError[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmNotInCredMan_notAllowedError[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_abortedWhileWaitingForRpIdValidation_aborted[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_abortedWhileWaitingForRpIdValidation_aborted[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_success[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_success[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeBrowser_notImplemented[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeBrowser_notImplemented[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeChrome3pp_goesToCredMan[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeChrome3pp_goesToCredMan[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeNotChrome_notImplemented[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeNotChrome_notImplemented[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConvertError[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConvertError[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetAssertionOutcomeCodeFromFidoError[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetAssertionOutcomeCodeFromFidoError[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_GpmNotInCredMan_callCredManGetCredentialsAndGmsCoreInParallel[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_GpmNotInCredMan_callCredManGetCredentialsAndGmsCoreInParallel[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_NoCredentials_fallbackToPlayServices[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_NoCredentials_fallbackToPlayServices[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_GoesToPlayServices[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_GoesToPlayServices[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_failsIfGmscoreNotAvailable[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_failsIfGmscoreNotAvailable[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListEnumerationFails_goesToCredMan[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListEnumerationFails_goesToCredMan[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatchWithExplicitHash_goesToGmsCore[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatchWithExplicitHash_goesToGmsCore[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatch_goesToPlayServices[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatch_goesToPlayServices[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatchAndGpmNotInCredMan_goesToCredMan[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatchAndGpmNotInCredMan_goesToCredMan[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatch_goesToCredMan[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatch_goesToCredMan[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_credManEnabledGpmInCredMan_success[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_credManEnabledGpmInCredMan_success[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_hybridCancel_parallelMode_failsRequest[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_hybridCancel_parallelMode_failsRequest[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_webauthnModeChrome3pp_goesToCredMan[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_webauthnModeChrome3pp_goesToCredMan[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_iframeWithPassword_passwordDisabled[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_iframeWithPassword_passwordDisabled[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_passwordOnly_subframe_fails[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_passwordOnly_subframe_fails[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_success[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_success[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_timeout_notAllowed[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_timeout_notAllowed[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_withAllowList_notAllowed[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_withAllowList_notAllowed[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredentialOutcomeCodeFromFidoError[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredentialOutcomeCodeFromFidoError[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_paymentsEnabled_goesToPlayServices[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_paymentsEnabled_goesToPlayServices[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_rkDiscouraged_goesToPlayServices[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_rkDiscouraged_goesToPlayServices[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndAboveAndroid14_goesToCredMan[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndAboveAndroid14_goesToCredMan[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndBelowAndroid14_goesToPlayServices[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndBelowAndroid14_goesToPlayServices[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_WebAuthnModeApp_originIsNull[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_WebAuthnModeApp_originIsNull[36]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_noSignalArgumentsSet_unknownError[29]",
+    "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_noSignalArgumentsSet_unknownError[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_whileWaitingForSelection_notAllowedError[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_whileWaitingForSelection_notAllowedError[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_GPM[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_GPM[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Null[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Null[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Remote[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Remote[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_credManOnly_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_credManOnly_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_timeout_notAllowed[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_timeout_notAllowed[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateMediation_userSelectsPassword_canHavePasswordResponse[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateMediation_userSelectsPassword_canHavePasswordResponse[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userCancelWhileWaitingForSelection_doesNotCancelConditionalRequest[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userCancelWhileWaitingForSelection_doesNotCancelConditionalRequest[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userSelectsPassword_canHavePasswordResponse[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userSelectsPassword_canHavePasswordResponse[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_default_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_default_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_ignoreGpm_DisablesBrandingAndHasBooleanInBundle[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_ignoreGpm_DisablesBrandingAndHasBooleanInBundle[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_errorHandlerCalledIfNoFallbackSet[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_errorHandlerCalledIfNoFallbackSet[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_noCredentialsFallbackCalled[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_noCredentialsFallbackCalled[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_unknownError_unknownError[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_unknownError_unknownError[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_userCancel_notAllowedError[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_userCancel_notAllowedError[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withExplicitHash_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withExplicitHash_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_userCancel[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_userCancel[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_default_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_default_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_invalidStateError_credentialExcluded[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_invalidStateError_credentialExcluded[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_unknownError_unknownError[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_unknownError_unknownError[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_userCancel_notAllowedError[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_userCancel_notAllowedError[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_withExplicitHash_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_withExplicitHash_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_default_success[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_default_success[36]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_unknownError_unknownError[29]",
+    "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_unknownError_unknownError[36]"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userCancelWhileWaitingForSelection_doesNotCancelConditionalRequest[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalCreate_Supported_WhenUvpaaAvailable[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_withAllowList_notAllowed[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmNotInCredMan_notAllowedError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_notBlockedByEmbedder[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 48,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_credManOnly_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresIntentSender[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_inactiveFrame[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_GPM[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatchWithExplicitHash_goesToGmsCore[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndAboveAndroid14_goesToCredMan[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_withExplicitHash_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_unknownError_unknownError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_failsIfGmscoreNotAvailable[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresRenderFrameHost[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 23,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_default_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConvertError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndBelowAndroid14_goesToPlayServices[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_CallsIsUvpaa[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListEnumerationFails_goesToCredMan[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 42,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_default_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_unknownError_unknownError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_whileWaitingForSelection_notAllowedError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_NotSupported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresRenderFrameHost[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 24,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredentialOutcomeCodeFromFidoError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_ignoreGpm_DisablesBrandingAndHasBooleanInBundle[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder_notChrome[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetAssertionOutcomeCodeFromFidoError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmInCredMan_notAllowedError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_abortedWhileWaitingForRpIdValidation_aborted[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 22,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatch_goesToPlayServices[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_HybridTransport_ShouldBeSupported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Remote[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_WebAuthnModeApp_originIsNull[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_invalidStateError_credentialExcluded[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_GpmNotInCredMan_callCredManGetCredentialsAndGmsCoreInParallel[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_default_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeBrowser_notImplemented[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder_notChrome[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userSelectsPassword_canHavePasswordResponse[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Ppaa_ShouldBeSupported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalGet_Supported_WhenUvpaaAvailable[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 28,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_NotSupported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_default_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Ppaa_ShouldBeSupported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_unknownError_unknownError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_notBlockedByEmbedder[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_inactiveFrame[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_credManEnabledGpmInCredMan_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_errorHandlerCalledIfNoFallbackSet[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListEnumerationFails_goesToCredMan[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 50,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_withExplicitHash_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_HybridTransport_ShouldBeSupported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_RelatedOrigins_ShouldBeSupported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_rkDiscouraged_goesToPlayServices[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_hybridCancel_parallelMode_failsRequest[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_passwordOnly_subframe_fails[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_timeout_notAllowed[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 22,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_unknownError_unknownError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatch_goesToPlayServices[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testClose_destroysBridge[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeApp_notSupported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_noSignalArgumentsSet_unknownError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_timeout_notAllowed[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_GmsCoreTooOld[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_errorHandlerCalledIfNoFallbackSet[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_failsIfGmscoreNotAvailable[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_noCredentialsFallbackCalled[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userSelectsPassword_canHavePasswordResponse[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_unknownError_unknownError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_noCredentials_noCredentialsFallbackCalled[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalGet_Supported_WhenUvpaaAvailable[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 30,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_notBlockedByEmbedder[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 34,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_NoCredentials_fallbackToPlayServices[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeBrowser_notImplemented[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5398,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_inactiveFrame[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_NoCredentials_fallbackToPlayServices[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_timeout_notAllowed[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 22,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Null[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_userCancel_notAllowedError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 118,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresRenderFrameHost[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListMatchWithExplicitHash_goesToGmsCore[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_GpmNotInCredMan_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresIntentSender[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withExplicitHash_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_iframeWithPassword_passwordDisabled[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatch_goesToCredMan[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_hybridCancel_parallelMode_failsRequest[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_userCancel_notAllowedError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndBelowAndroid14_goesToPlayServices[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Null[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmNotInCredMan_notAllowedError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartPrefetchRequest_default_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_userCancel_notAllowedError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withExplicitHash_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequestAfterStartPrefetchRequest_userCancelWhileWaitingForSelection_doesNotCancelConditionalRequest[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatchAndGpmNotInCredMan_goesToCredMan[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_GpmNotInCredMan_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_SignalApi_Supported_WhenUvpaaAvailable[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_credManOnly_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 31,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_Supported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_Uvpaa_Supported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_SignalApi_Supported_WhenUvpaaAvailable[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 22,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_RelatedOrigins_ShouldBeSupported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_unknownError_unknownError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatch_goesToCredMan[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateMediation_userSelectsPassword_canHavePasswordResponse[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeBrowser_notSupported[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 23,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateMediation_userSelectsPassword_canHavePasswordResponse[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_WebAuthnModeApp_originIsNull[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_inactiveFrame[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_GmsCoreTooOld[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder_notChrome[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConvertError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_allowListNoMatchAndGpmNotInCredMan_goesToCredMan[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_iframeWithPassword_passwordDisabled[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_GoesToPlayServices[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeNotChrome_notImplemented[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_ignoreGpm_DisablesBrandingAndHasBooleanInBundle[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresIntentSender[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 26,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 478,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_blockedByEmbedder[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 2910,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_GpmNotInCredMan_callCredManGetCredentialsAndGmsCoreInParallel[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeChrome3pp_goesToCredMan[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeApp_notSupported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_invalidStateError_credentialExcluded[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeBrowser_notSupported[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 26,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_userCancel[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_webauthnModeAppAndAboveAndroid14_goesToCredMan[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ImmediateGet_Supported_WhenUvpaaAvailable[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 19,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_userCancel[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_withAllowList_notAllowed[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_webauthnModeChrome3pp_goesToCredMan[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_requiresRenderFrameHost[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ImmediateGet_Supported_WhenUvpaaAvailable[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_credManEnabledGpmInCredMan_success[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 21,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_paymentsEnabled_goesToPlayServices[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 25,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testImmediateGetCredential_passwordOnly_subframe_fails[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_abortedWhileWaitingForRpIdValidation_aborted[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_Remote[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 13,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeNotChrome_notImplemented[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_webauthnModeChrome3pp_goesToCredMan[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetCredential_blockedByEmbedder_notChrome[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_CallsIsUvpaa[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartMakeRequest_userCancel_notAllowedError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 101,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_requiresIntentSender[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 18,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_paymentsEnabled_goesToPlayServices[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 26,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredentialOutcomeCodeFromFidoError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 15,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testGetBrowserAssistedLoginType_GPM[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 11,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testMakeCredential_notBlockedByEmbedder[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetAssertionOutcomeCodeFromFidoError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testClose_destroysBridge[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 16,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.AuthenticatorImplTest#testGetClientCapabilities_ConditionalCreate_Supported_WhenUvpaaAvailable[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 23,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_default_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testImmediateGetCredential_timeout_notAllowed[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_success[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 10,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_RpCancelWhileIdleWithGpmInCredMan_notAllowedError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 17,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeChrome3pp_goesToCredMan[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 14,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testGetCredential_WebAuthnModeApp_GoesToPlayServices[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 490,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testMakeCredential_rkDiscouraged_goesToPlayServices[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_whileWaitingForSelection_notAllowedError[29]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 12,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ],
+      "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testReportRequest_noSignalArgumentsSet_unknownError[36]": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 20,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {}
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

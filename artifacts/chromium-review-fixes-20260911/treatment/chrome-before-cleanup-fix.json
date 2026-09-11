@@ -1,0 +1,1692 @@
+{
+  "global_tags": [],
+  "all_tests": [
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testBackDismissesAndCallsCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingButtonTriggersCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingHybridButtonTriggersCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingManagePasswordsTriggersCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingMorePasskeysTriggersCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingSuggestionsTriggersCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingWebAuthnCredentialTriggersCallback",
+    "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertionWithPrf_success",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertionWithUvmRequestedWithUvmResponded_success",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertion_webContentsNotVisibleConditional_notRejected",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertion_webContentsNotVisible_rejected",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetCredential_resultCanceled",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_CloseBeforeBottomSheetCallback_NoCrash",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_resultCanceled",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_success",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_webContentsNotVisible_rejected",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_withConfirmationUi_rejected",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_withConfirmationUi_success",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorGetCredentialWithUvmRequestedWithUvmResponded_success",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorGetCredential_resultCanceled",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorMakeCredential_resultCanceled",
+    "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorMakeCredential_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#parcelWriteValue_knownFormat",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testConvertOriginToString_defaultPortRemoved",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_appIdUsed",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiCancelWhileRequestSentToPlatformUserDeny_cancelled",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiCancelWhileRequestSentToPlatform_ignored",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiNondiscoverableCredential_failure",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiRequestSentToPlatformUserDeny_doesNotComplete",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiRetryAfterUserDeny_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiWithAllowCredentialMatch_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiWithAllowCredentialMismatch_failure",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_cancelWhileFetchingCredentials",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_cancelWhileWaitingForSelection",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_errorFromNative",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_constraintErrorNoScreenlock",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_emptyAllowCredentialsUserCancels_notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_emptyAllowCredentials_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_generatesClientDataJson",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateInIncognito_notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateTimesOut_notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithNoPasskeysButPasswordReturned_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithNoPasskeysFound_notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithNonEmptyAllowList_notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithPasskeysOnly_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_remoteDesktopClientOverride_generatesCorrectClientDataJson__CrossOrigin",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_remoteDesktopClientOverride_generatesCorrectClientDataJson__SameOrigin",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_resultUnknown",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_securePaymentConfirmation_buildClientDataJsonParameters",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_securePaymentConfirmation_canReplaceClientDataJson",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_securePaymentConfirmation_clientDataJsonCannotBeEmpty",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_unknownErrorCredentialNotRecognized",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithUserId_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithUvmRequestedWithUvmResponded_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithUvmRequestedWithoutUvmResponded_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithoutUvmRequested_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_emptyAllowCredentials1",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_emptyAllowCredentials2",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_missingExtra",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_nullIntent",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_resultCanceled",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_unsuccessfulAttemptToShowCancelableIntent",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__constraintErrorReRegistration",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__dataError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__encodingError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__invalidStateError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__notSupportedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__securityError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__timeoutError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__unknownError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__constraintErrorReRegistration",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__dataError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__encodingError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__invalidStateError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__notSupportedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__securityError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__timeoutError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__unknownError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_attestationIncluded",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_credprops",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_rkPreferred_attestationKept",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_rkRequired_attestationKept",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationDirect",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationEnterprise",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationIndirect",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationNone",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_constraintErrorNoScreenlock",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_doesNotSetPaymentOptionsWhenNonPaymentCredential",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_generatesClientDataJson",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_invalidStateErrorDuplicateRegistration",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_isPaymentCredentialCreationPassedToFrameHostWithPaymentOptions",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_missingExtra",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_noEligibleParameters",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_noExcludeCredentials",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_nullIntent",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_parametersContainEligibleAndNoneligible",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_remoteDesktopClientOverride_generatesCorrectClientDataJson__CrossOrigin",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_remoteDesktopClientOverride_generatesCorrectClientDataJson__SameOrigin",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_resultCanceled",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_resultUnknown",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_setsPaymentOptionsWhenPaymentCredential",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_success",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_unsuccessfulAttemptToShowCancelableIntent",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__constraintErrorReRegistration",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__dataError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__encodingError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__invalidStateError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__notSupportedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__securityError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__timeoutError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__unknownError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__constraintErrorReRegistration",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__dataError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__encodingError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__invalidStateError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__notAllowedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__notSupportedError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__securityError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__timeoutError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__unknownError",
+    "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testPasskeyMakeCredential_success"
+  ],
+  "disabled_tests": [],
+  "per_iteration_data": [
+    {
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithUvmRequestedWithUvmResponded_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 514,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__unknownError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 530,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 530,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationIndirect": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 491,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_remoteDesktopClientOverride_generatesCorrectClientDataJson__CrossOrigin": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 515,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateInIncognito_notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 734,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiCancelWhileRequestSentToPlatformUserDeny_cancelled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 516,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationDirect": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 415,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiWithAllowCredentialMismatch_failure": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 489,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertion_webContentsNotVisibleConditional_notRejected": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 982,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorMakeCredential_resultCanceled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 514,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__constraintErrorReRegistration": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 460,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_generatesClientDataJson": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 493,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__securityError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 504,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#parcelWriteValue_knownFormat": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 423,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__invalidStateError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 432,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_attestationIncluded": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 500,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__constraintErrorReRegistration": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 515,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiCancelWhileRequestSentToPlatform_ignored": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 431,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_resultCanceled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 598,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertionWithPrf_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 488,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_emptyAllowCredentials_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 517,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithUserId_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 424,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_CloseBeforeBottomSheetCallback_NoCrash": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 561,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__invalidStateError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 443,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingWebAuthnCredentialTriggersCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1924,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiRequestSentToPlatformUserDeny_doesNotComplete": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 430,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_constraintErrorNoScreenlock": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 507,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_missingExtra": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 511,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_isPaymentCredentialCreationPassedToFrameHostWithPaymentOptions": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 529,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__encodingError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 477,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__invalidStateError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 500,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_credprops": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 427,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiWithAllowCredentialMatch_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5411,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__dataError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 428,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_noExcludeCredentials": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 492,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_resultUnknown": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 523,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithNoPasskeysFound_notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 745,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__constraintErrorReRegistration": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 433,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiRetryAfterUserDeny_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 489,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithNonEmptyAllowList_notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 412,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_resultUnknown": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 550,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationNone": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 534,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithNoPasskeysButPasswordReturned_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 446,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorGetCredentialWithUvmRequestedWithUvmResponded_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 760,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_nullIntent": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 472,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_remoteDesktopClientOverride_generatesCorrectClientDataJson__SameOrigin": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 607,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__notSupportedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 440,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testPasskeyMakeCredential_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 498,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__constraintErrorReRegistration": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 491,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertion_webContentsNotVisible_rejected": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 9194,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__invalidStateError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 479,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateTimesOut_notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 649,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_resultCanceled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 511,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_cancelWhileFetchingCredentials": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 462,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_securePaymentConfirmation_clientDataJsonCannotBeEmpty": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 470,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_withConfirmationUi_rejected": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 486,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__encodingError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 486,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_constraintErrorNoScreenlock": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 504,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__unknownError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 416,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__timeoutError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 446,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_remoteDesktopClientOverride_generatesCorrectClientDataJson__CrossOrigin": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 553,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__dataError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 547,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 522,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_rkPreferred_attestationKept": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 531,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithUvmRequestedWithoutUvmResponded_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 494,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__notSupportedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 514,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet": [
+        {
+          "status": "SKIPPED",
+          "elapsed_time_ms": 17430,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__notSupportedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 451,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiHybrid_success": [
+        {
+          "status": "FAILURE",
+          "elapsed_time_ms": 683,
+          "output_snippet": "java.lang.AssertionError: expected:<1> but was:<0>\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\n\tat org.junit.Assert.assertEquals(Assert.java:647)\n\tat org.junit.Assert.assertEquals(Assert.java:633)\n\tat org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_conditionalUiHybrid_success(Fido2CredentialRequestTest.java:1602)\n\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 505,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_securePaymentConfirmation_buildClientDataJsonParameters": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 554,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingSuggestionsTriggersCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1846,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_attestationEnterprise": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 483,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_remoteDesktopClientOverride_generatesCorrectClientDataJson__SameOrigin": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 534,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 474,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_unsuccessfulAttemptToShowCancelableIntent": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 582,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_setsPaymentOptionsWhenPaymentCredential": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 545,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingButtonTriggersCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1855,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_unsuccessfulAttemptToShowCancelableIntent": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 545,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_emptyAllowCredentialsUserCancels_notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 473,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_immediateWithPasskeysOnly_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 479,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__timeoutError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 487,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__encodingError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 559,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__timeoutError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 567,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_missingExtra": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 544,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_resultCanceled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 538,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 462,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_appIdUsed": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 482,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__unknownError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 431,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_cancelWhileWaitingForSelection": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 436,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__timeoutError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 460,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__notAllowedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 447,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param__securityError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5295,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingHybridButtonTriggersCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1768,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_unknownErrorCredentialNotRecognized": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 418,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetCredential_resultCanceled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 508,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_doesNotSetPaymentOptionsWhenNonPaymentCredential": [
+        {
+          "status": "SKIPPED",
+          "elapsed_time_ms": 730,
+          "output_snippet": "org.junit.AssumptionViolatedException: got: <true>, expected: is <false>\n\tat org.junit.Assume.assumeThat(Assume.java:106)\n\tat org.junit.Assume.assumeFalse(Assume.java:57)\n\tat org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_doesNotSetPaymentOptionsWhenNonPaymentCredential(Fido2CredentialRequestTest.java:1770)\n\n",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorMakeCredential_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 486,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 489,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUi_errorFromNative": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 480,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_conditionalUiNondiscoverableCredential_failure": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 413,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredentialWithoutUvmRequested_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 427,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testInternalAuthenticatorMakeCredential_rkRequired_attestationKept": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5283,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_generatesClientDataJson": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 547,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingMorePasskeysTriggersCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5592,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testBackDismissesAndCallsCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 2505,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__securityError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 456,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_emptyAllowCredentials2": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 502,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetAssertion_securePaymentConfirmation_canReplaceClientDataJson": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 473,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__unknownError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 477,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_parametersContainEligibleAndNoneligible": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 5093,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_invalidStateErrorDuplicateRegistration": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 501,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testInternalAuthenticatorGetCredential_resultCanceled": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 494,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__dataError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 454,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_webContentsNotVisible_rejected": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 504,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testClickingManagePasswordsTriggersCallback": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 1940,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest.testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet_batch_shard0_20260911T051255-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testConvertOriginToString_defaultPortRemoved": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 535,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplGetAssertionWithUvmRequestedWithUvmResponded_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 509,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_noEligibleParameters": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 526,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param_nullErrorMessage__securityError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 466,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch_shard0_20260911T051313-UTC_emulator-5554",
+            "post_test_screenshot": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/screenshot/org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest%23testMakeCredential_with_param_nullErrorMessage__invalidStateError_batch-20260911T051333-UTC.png"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_emptyAllowCredentials1": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 496,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetAssertion_immediateTimesOut_notAllowedError_batch_shard0_20260911T051352-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__dataError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 488,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.AuthenticatorImplTest#testAuthenticatorImplMakeCredential_withConfirmationUi_success": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 493,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.AuthenticatorImplTest.testAuthenticatorImplGetAssertionWithPrf_success_batch_shard0_20260911T051226-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testGetCredential_with_param_nullErrorMessage__encodingError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 441,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_nullIntent": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 476,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testMakeCredential_generatesClientDataJson_batch_shard0_20260911T051243-UTC_emulator-5554"
+          }
+        }
+      ],
+      "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_with_param__notSupportedError": [
+        {
+          "status": "SUCCESS",
+          "elapsed_time_ms": 469,
+          "output_snippet": "",
+          "losless_snippet": true,
+          "output_snippet_base64": "",
+          "links": {
+            "logcat": "file:///work/src/out/review/TEST_RESULTS_2026_09_11T05_11_25/logcat/logcat_org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest.testGetCredential_with_param__constraintErrorReRegistration_batch_shard0_20260911T051333-UTC_emulator-5554"
+          }
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

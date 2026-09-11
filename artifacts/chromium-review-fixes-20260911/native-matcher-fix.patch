@@ -1,0 +1,8 @@
+diff --git a/components/webauthn/android/webauthn_cred_man_delegate_unittest.cc b/components/webauthn/android/webauthn_cred_man_delegate_unittest.cc
+--- a/components/webauthn/android/webauthn_cred_man_delegate_unittest.cc
++++ b/components/webauthn/android/webauthn_cred_man_delegate_unittest.cc
+@@ -103,3 +103,3 @@
+ 
+-  EXPECT_CALL(filling, Run(u"username", u"password"));
++  EXPECT_CALL(filling, Run(testing::Eq(u"username"), testing::Eq(u"password")));
+   EXPECT_CALL(completion, Run(testing::_)).Times(0);

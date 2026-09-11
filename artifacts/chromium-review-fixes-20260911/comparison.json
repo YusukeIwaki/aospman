@@ -1,0 +1,264 @@
+{
+  "ok": true,
+  "errors": [],
+  "suites": [
+    {
+      "file": "junit.json",
+      "control": {
+        "reported": 162,
+        "passedOnce": 162,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "treatment": {
+        "reported": 178,
+        "passedOnce": 178,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "removed": [],
+      "addedMethods": [
+        {
+          "method": "testStartGetRequest_withoutBrowserBridge_success",
+          "variants": [
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_success[36]",
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_success[29]"
+          ]
+        },
+        {
+          "method": "testStartGetRequest_withoutBrowserBridge_userCancel",
+          "variants": [
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_userCancel[29]",
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testStartGetRequest_withoutBrowserBridge_userCancel[36]"
+          ]
+        },
+        {
+          "method": "testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp",
+          "variants": [
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp[29]",
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testCancelConditionalGetAssertion_withoutInitializedBrowserBridge_cleansUp[36]"
+          ]
+        },
+        {
+          "method": "testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest",
+          "variants": [
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest[36]",
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_cancelBeforePrefetchResponse_canStartNextRequest[29]"
+          ]
+        },
+        {
+          "method": "testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded",
+          "variants": [
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded[29]",
+            "org.chromium.components.webauthn.cred_man.CredManHelperRobolectricTest#testConditionalGetAssertion_withoutBrowserBridge_passwordIsForwarded[36]"
+          ]
+        },
+        {
+          "method": "testConditionalMediation_webAuthnModeApp_notSupported",
+          "variants": [
+            "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeApp_notSupported[36]",
+            "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeApp_notSupported[29]"
+          ]
+        },
+        {
+          "method": "testConditionalMediation_webAuthnModeBrowser_notSupported",
+          "variants": [
+            "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeBrowser_notSupported[36]",
+            "org.chromium.components.webauthn.AuthenticatorImplTest#testConditionalMediation_webAuthnModeBrowser_notSupported[29]"
+          ]
+        },
+        {
+          "method": "testConditionalGetCredential_webauthnModeBrowser_notImplemented",
+          "variants": [
+            "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeBrowser_notImplemented[36]",
+            "org.chromium.components.webauthn.Fido2CredentialRequestRobolectricTest#testConditionalGetCredential_webauthnModeBrowser_notImplemented[29]"
+          ]
+        }
+      ],
+      "unexpectedAdded": []
+    },
+    {
+      "file": "native-api34.json",
+      "control": {
+        "reported": 6,
+        "passedOnce": 6,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "treatment": {
+        "reported": 13,
+        "passedOnce": 13,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "removed": [],
+      "addedMethods": [
+        {
+          "method": "NavigationAllowsNewConditionalRequest",
+          "variants": [
+            "WebAuthnCredManDelegateFactoryTest.NavigationAllowsNewConditionalRequest"
+          ]
+        },
+        {
+          "method": "SameDocumentNavigationKeepsRequest",
+          "variants": [
+            "WebAuthnCredManDelegateFactoryTest.SameDocumentNavigationKeepsRequest"
+          ]
+        },
+        {
+          "method": "UncommittedNavigationKeepsRequest",
+          "variants": [
+            "WebAuthnCredManDelegateFactoryTest.UncommittedNavigationKeepsRequest"
+          ]
+        },
+        {
+          "method": "DeletedFrameDoesNotKeepPendingRequest",
+          "variants": [
+            "WebAuthnCredManDelegateFactoryTest.DeletedFrameDoesNotKeepPendingRequest"
+          ]
+        },
+        {
+          "method": "NewConditionalRequestAfterCleanup",
+          "variants": [
+            "WebAuthnCredManDelegateTest.NewConditionalRequestAfterCleanup"
+          ]
+        },
+        {
+          "method": "PasswordFillingConsumesFillingCallback",
+          "variants": [
+            "WebAuthnCredManDelegateTest.PasswordFillingConsumesFillingCallback"
+          ]
+        },
+        {
+          "method": "CredentialsReadyNotificationAfterCleanup",
+          "variants": [
+            "WebAuthnCredManDelegateTest.CredentialsReadyNotificationAfterCleanup"
+          ]
+        }
+      ],
+      "unexpectedAdded": []
+    },
+    {
+      "file": "webview-api34.json",
+      "control": {
+        "reported": 12,
+        "passedOnce": 12,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "treatment": {
+        "reported": 16,
+        "passedOnce": 16,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "removed": [],
+      "addedMethods": [
+        {
+          "method": "testAppModeDoesNotSupportConditionalMediation",
+          "variants": [
+            "org.chromium.android_webview.test.WebAuthnTest#testAppModeDoesNotSupportConditionalMediation__multiprocess_mode",
+            "org.chromium.android_webview.test.WebAuthnTest#testAppModeDoesNotSupportConditionalMediation"
+          ]
+        },
+        {
+          "method": "testBrowserModeDoesNotSupportConditionalMediation",
+          "variants": [
+            "org.chromium.android_webview.test.WebAuthnTest#testBrowserModeDoesNotSupportConditionalMediation",
+            "org.chromium.android_webview.test.WebAuthnTest#testBrowserModeDoesNotSupportConditionalMediation__multiprocess_mode"
+          ]
+        }
+      ],
+      "unexpectedAdded": []
+    },
+    {
+      "file": "webview-api33.json",
+      "control": {
+        "reported": 12,
+        "passedOnce": 12,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "treatment": {
+        "reported": 16,
+        "passedOnce": 16,
+        "skipped": [],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "removed": [],
+      "addedMethods": [
+        {
+          "method": "testAppModeDoesNotSupportConditionalMediation",
+          "variants": [
+            "org.chromium.android_webview.test.WebAuthnTest#testAppModeDoesNotSupportConditionalMediation",
+            "org.chromium.android_webview.test.WebAuthnTest#testAppModeDoesNotSupportConditionalMediation__multiprocess_mode"
+          ]
+        },
+        {
+          "method": "testBrowserModeDoesNotSupportConditionalMediation",
+          "variants": [
+            "org.chromium.android_webview.test.WebAuthnTest#testBrowserModeDoesNotSupportConditionalMediation__multiprocess_mode",
+            "org.chromium.android_webview.test.WebAuthnTest#testBrowserModeDoesNotSupportConditionalMediation"
+          ]
+        }
+      ],
+      "unexpectedAdded": []
+    },
+    {
+      "file": "chrome-api34.json",
+      "control": {
+        "reported": 127,
+        "passedOnce": 125,
+        "skipped": [
+          "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet",
+          "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_doesNotSetPaymentOptionsWhenNonPaymentCredential"
+        ],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "treatment": {
+        "reported": 127,
+        "passedOnce": 125,
+        "skipped": [
+          "org.chromium.chrome.browser.touch_to_fill.TouchToFillPasswordManagerIntegrationTest#testConsumesGenericMotionEventsToPreventMouseClicksThroughSheet",
+          "org.chromium.chrome.browser.webauth.Fido2CredentialRequestTest#testMakeCredential_doesNotSetPaymentOptionsWhenNonPaymentCredential"
+        ],
+        "nonPassing": [],
+        "disabledListedByJson": []
+      },
+      "removed": [],
+      "addedMethods": [],
+      "unexpectedAdded": []
+    }
+  ],
+  "cleanupDiagnostics": [
+    {
+      "phase": "control",
+      "counts": {
+        "SUCCESS": 16,
+        "FAILURE": 4
+      }
+    },
+    {
+      "phase": "treatment",
+      "counts": {
+        "SUCCESS": 18,
+        "FAILURE": 2
+      }
+    },
+    {
+      "phase": "fixed",
+      "counts": {
+        "SUCCESS": 20
+      }
+    }
+  ]
+}

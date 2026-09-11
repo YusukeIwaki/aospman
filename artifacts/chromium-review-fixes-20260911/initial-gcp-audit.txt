@@ -1,0 +1,11 @@
+Project: aospman
+
+Instances
+
+Disks
+
+Reserved addresses
+
+Snapshots
+
+Custom images
