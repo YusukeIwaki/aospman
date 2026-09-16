@@ -1,0 +1,29 @@
+webauthn: Separate CredMan bridge from Chrome UI
+
+This CL is a refactor to prepare for supporting conditional WebAuthn get
+(mediation: "conditional") in Android WebView's BROWSER mode.
+
+The intended use case is passkey autofill in WebView-based browser apps,
+while APP-mode behavior is not changed.
+
+The follow-up would use Credential Manager and WebView's Android
+Autofill path, instead of Chrome's keyboard accessory or
+touch-to-fill UI.
+The CredMan lifecycle notifications needed for this currently pass
+through the Chrome-specific WebauthnBrowserBridge.
+This CL separates that code so it can be reviewed and tested separately
+from the WebView feature.
+
+This CL does not add that WebView integration. Existing
+delegate-creation checks are preserved, and conditional create is also
+outside the scope of this CL.
+
+Also regression tests for this case are added and ensure that
+conditional capabilities remains disabled with BROWSER mode.
+
+The existing hybrid-request test waits for asynchronous cleanup before
+checking the call count to avoid flaky failures. The response may arrive
+before cleanup finishes.
+
+Bug: 40210253
+Change-Id: I81812657dc0434671b1b0485a61975e6d4b82fc2

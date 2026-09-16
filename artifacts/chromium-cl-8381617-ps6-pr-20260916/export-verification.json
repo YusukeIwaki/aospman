@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "checkedAt": "2026-09-16T13:06:58.555Z",
+  "base": "1a4f4dba744599726855e4b1ccb7c3f328cd7b01",
+  "revision": "a991e498fa0fef2028edd9b8f2dacf8a54c32235",
+  "tree": "d2b4982a792fce53e0d09aabbb0c6d9761523fc0",
+  "patchSha256": "9ada64624484a70dca42c29c7f2a91d36a23589a7254864b8ff0abf5edb8e6f3",
+  "descriptionSha256": "b767ec0c97fe53aba0d1932c5ea2ffffee332b6a3f420393867cafab189677be",
+  "checks": [
+    "PS6 has the pinned parent",
+    "4f984322475c16188601bf0a6e01a758fe65d26b: expected identical source tree",
+    "a991e498fa0fef2028edd9b8f2dacf8a54c32235: expected identical source tree",
+    "Exported patch is byte-identical to the PS6 source diff",
+    "Description is byte-identical to the PS6 commit message",
+    "Patch matches the frozen Android validation input",
+    "Fresh Gerrit response identifies PS6 as current",
+    "Gerrit remains open and WIP",
+    "Published Gerrit description matches the exported message"
+  ],
+  "errors": [],
+  "note": "Source-export identity checks only; not Android runtime validation."
+}
